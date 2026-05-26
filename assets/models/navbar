@@ -1,0 +1,21 @@
+<!--
+<nav class="navbar">
+    <div class="navbar_bloco">
+        <button class="btn_navbar_menu" id="btn_menu"><i class="fa-solid fa-bars"></i></button>
+
+        <h1>Login</h1>
+
+        <img src="../../assets/img/logo_sem_fundo.png" alt="logo">
+    </div>
+
+    <div class="menu_navbar">
+        <ul>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Relatórios</a></li>
+            <li><a href="#">Sensores</a></li>
+            <li><a href="#">Trens</a></li>
+            <li><a href="#">Usuários</a></li>
+        </ul>
+    </div>
+</nav>
+-->

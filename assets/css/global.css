@@ -1,5 +1,24 @@
 @import url("https://use.typekit.net/jgg0qzq.css");
 
+:root{
+    --cor-fundo: #0F172A;
+    --cor-secundaria: #1E293B;
+
+    --cor-azul-escuro: #2b58a0;
+    --cor-azul-claro: #8ab7ff;
+    --cor-azul: #3B82F6;
+    --cor-ciano: #22C5FE;
+
+    --cor-destaque: #EAB308;
+    --cor-texto: #F8FAFC;
+    --cor-texto-esmaecido: #9b9b9b;
+    --cor-texto-escuro: rgb(51, 51, 51);
+
+    --cor-erro: #F00000;
+
+    --transition-fast: all 0.3s ease;
+}
+
 *{
     box-sizing: border-box;
     font-family: "poppins", sans-serif;
@@ -10,3 +29,161 @@
 h1{
     font-size: clamp(2rem, 5vw, 6rem);
 }
+
+h2{
+    font-size: clamp(2rem, 5vw, 4rem);
+}
+
+h3{
+    font-size: clamp(1.7rem, 4vw, 3rem);
+}
+
+h4{
+    font-size: clamp(1.4rem, 3vw, 2.3rem);
+}
+
+h5{
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+}
+
+h6{
+    font-size: clamp(1rem, 2vw, 1.4rem);
+}
+
+p{
+    font-size: clamp(1rem, 1.2vw, 1.2rem);
+}
+
+small{
+    font-size: clamp(0.8rem, 1vw, 1rem);
+}
+
+a{
+    font-size: clamp(0.95rem, 1vw, 1.1rem);
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+
+    background: var(--cor-fundo);
+}
+
+/*NAVBAR*/
+
+.ativo{
+    display: block !important;
+}
+
+.navbar{
+    position: fixed;
+    
+    width: 100%;
+}
+
+.navbar_bloco{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: var(--cor-azul);
+
+    margin: 10px;
+    padding: 10px;
+    height: 90px;
+}
+
+.navbar_bloco img{
+    width: 70px;
+    height: 70px;
+}
+
+.navbar_bloco button{
+    background: none;
+    border: none;
+
+    align-items: center;
+
+    cursor: pointer;
+
+    font-size: 2rem;
+}
+
+.navbar_bloco button:hover{
+    color: var(--cor-secundaria);
+}
+
+.navbar_bloco button:active{
+    color: var(--cor-fundo)
+}
+
+.menu_navbar{
+    position: absolute;
+    display: none;
+}
+
+.menu_navbar ul{
+    position: relative;
+
+    background: var(--cor-azul-escuro);
+
+    padding: 10px;
+    left: 10px;
+    width: 150px;
+}
+
+.menu_navbar li{
+    padding: 5px;
+    list-style: none;
+}
+
+.menu_navbar a{
+    color: var(--cor-texto);
+    text-decoration: none;
+}
+
+.menu_navbar a:hover{
+    color: var(--cor-texto-esmaecido);
+}
+
+.menu_navbar a:active{
+    color: var(--cor-texto);
+}
+
+.perfil img{
+    object-fit: cover;
+
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+    border: 2px solid var(--cor-fundo);
+
+    filter: brightness(0.9);
+
+    transition: var(--transition-fast);
+}
+
+.perfil img:hover{
+    border: 2px solid var(--cor-secundaria);
+    filter: brightness(1);
+}
+
+.logo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo img{
+    object-fit: cover;
+    width: 50px;
+    height: 35px;
+}
+
+.vazio{
+    width: 70px;
+}
+
+/*FIM NAVBAR*/
