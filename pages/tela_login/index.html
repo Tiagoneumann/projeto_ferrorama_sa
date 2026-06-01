@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,55 +10,79 @@
     <link rel="stylesheet" href="style.css">
 
     <script src="main.js" defer></script>
-    <script src="../../assets/js/global.js" defer></script> 
+    <script src="../../assets/js/global.js" defer></script>
 
-    <title>Track Flow || Login</title>
+    <title>Track Flow | Login</title>
 </head>
+
 <body>
+
     <header>
         <nav class="navbar">
+
             <div class="navbar_bloco">
-                <button style="display: none" class="btn_navbar_menu" id="btn_menu"><i class="fa-solid fa-bars"></i></button>
+
+                <button style="display:none;" id="btn_menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
 
                 <div class="vazio"></div>
 
                 <h3>Login</h3>
 
-                <img src="../../assets/img/logo_sem_fundo.png" alt="logo">
+                <img src="../../assets/img/logo_sem_fundo.png" alt="Logo">
+
             </div>
 
-                <div class="menu_navbar">
-                    <ul>
-                        <li><a href="#">Dashboard</a></li>
-                        <li><a href="#">Relatórios</a></li>
-                        <li><a href="#">Sensores</a></li>
-                        <li><a href="#">Trens</a></li>
-                        <li><a href="#">Usuários</a></li>
-                    </ul>
-                </div>
+            <div class="menu_navbar">
+                <ul>
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Relatórios</a></li>
+                    <li><a href="#">Sensores</a></li>
+                    <li><a href="#">Trens</a></li>
+                    <li><a href="#">Usuários</a></li>
+                </ul>
+            </div>
+
         </nav>
     </header>
+
     <main>
-        
-            <div class="bloco_login">
-                <form>
-                    <input type="text" placeholder="Usuário:">
-                    <input type="password" placeholder="Senha:">
 
-                    <div class="outras_opcoes">
-                        <a href="#">Esqueci minha senha</a>
-                        <a href="#">Cadastrar-se</a>
-                    </div>
+        <div class="bloco_login">
 
-                    <input type="submit" value="Entrar">
-                </form>
-            </div>
+            <form>
+
+                <input type="text" placeholder="Usuário">
+
+                <input type="password" placeholder="Senha">
+
+                <div class="outras_opcoes">
+
+                    <a href="#">
+                        Esqueci minha senha
+                    </a>
+
+                    <a href="../tela_cadastro/index.html">
+                        Cadastrar-se
+                    </a>
+
+                </div>
+
+                <input type="submit" value="Entrar">
+
+            </form>
+
+        </div>
 
     </main>
+
     <footer>
         <div class="marca_dagua">
-            <small>Track Flow© 2026</small>
+            <small>Track Flow © 2026</small>
         </div>
     </footer>
+
 </body>
+
 </html>

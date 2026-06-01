@@ -1,81 +1,78 @@
-body{
-    height: calc(100vh - 40px);
-}
-
 main{
     display: flex;
     justify-content: center;
     align-items: center;
-
-    height: 100%;
 }
 
 .bloco_cadastro{
-    display: flex;
-
     background: var(--cor-secundaria);
-    border-radius: 10px;
 
-    padding: 20px;
+    padding: 25px;
+
+    border-radius: 12px;
+
+    display: flex;
 }
 
 .bloco_cadastro form{
     display: flex;
-    justify-content: center;
     flex-direction: column;
-
     gap: 10px;
 }
 
 .bloco_cadastro input{
-    background: var(--cor-azul-claro);
+    width: 300px;
+
+    padding: 10px;
+
     border: none;
     border-radius: 10px;
 
-    width: 300px;
-    padding: 10px;
+    background: var(--cor-azul-claro);
 
     transition: var(--transition-fast);
-}
-
-.outras_opcoes{
-    display: inline-flex;
-    justify-content: space-between;
-    
-    padding: 0px 5px;
-    margin-bottom: 30px;
-}
-
-.bloco_cadastro a{
-    font-size: 12px;
-}
-
-.bloco_cadastro input[type="submit"]{
-    background: var(--cor-azul) !important;
-    cursor: pointer;
 }
 
 .bloco_cadastro input::placeholder{
     color: var(--cor-texto-escuro);
 }
 
+.bloco_cadastro input:focus{
+    outline: none;
+    border: 1px solid var(--cor-azul);
+}
+
+.outras_opcoes{
+    display: flex;
+    justify-content: flex-end;
+
+    margin-bottom: 20px;
+    padding: 0 5px;
+}
+
+.bloco_cadastro a{
+    font-size: 12px;
+
+    color: var(--cor-texto);
+
+    text-decoration: none;
+
+    transition: var(--transition-fast);
+}
+
+.bloco_cadastro a:hover{
+    color: var(--cor-texto-esmaecido);
+}
+
+.bloco_cadastro input[type="submit"]{
+    background: var(--cor-azul);
+    cursor: pointer;
+}
+
 .bloco_cadastro input[type="submit"]:hover{
-    background: var(--cor-azul-escuro) !important;
+    background: var(--cor-azul-escuro);
 }
 
 .bloco_cadastro input[type="submit"]:active{
-    background: var(--cor-azul) !important;
-}
-
-.bloco_cadastro input:focus{
-    border: 1px solid var(--cor-azul);
-    outline: none;
-}
-
-.marca_dagua{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    color: var(--cor-texto-esmaecido);
+    background: var(--cor-azul);
 }
