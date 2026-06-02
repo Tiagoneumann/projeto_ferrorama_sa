@@ -12,7 +12,7 @@
     --cor-destaque: #EAB308;
     --cor-texto: #F8FAFC;
     --cor-texto-esmaecido: #9b9b9b;
-    --cor-texto-escuro: rgb(51, 51, 51);
+    --cor-texto-escuro: rgb(0, 0, 0);
 
     --cor-erro: #F00000;
 
@@ -35,7 +35,7 @@ body{
     grid-template-rows: var(--navbar-height) 1fr auto;
 
     background: var(--cor-fundo);
-    color: var(--cor-texto);
+    color: var(--cor-texto-escuro);
 }
 
 body.sem-navbar{
@@ -68,10 +68,12 @@ h6{
 
 p{
     font-size: clamp(1rem, 1.2vw, 1.2rem);
+    color: var(--cor-texto);
 }
 
 small{
     font-size: clamp(.8rem, 1vw, 1rem);
+    color: var(--cor-texto-esmaecido)
 }
 
 a{
@@ -196,11 +198,14 @@ footer{
     border-radius: 50%;
     border: 2px solid var(--cor-fundo);
 
+    filter: brightness(0.8);
+
     transition: var(--transition-fast);
 }
 
 .perfil img:hover{
     border-color: var(--cor-secundaria);
+    filter: brightness(1);
 }
 
 .marca_dagua{

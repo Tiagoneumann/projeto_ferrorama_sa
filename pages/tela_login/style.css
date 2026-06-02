@@ -34,8 +34,6 @@ main{
     border-radius: 10px;
 
     background: var(--cor-azul-claro);
-
-    transition: var(--transition-fast);
 }
 
 .bloco_login input::placeholder{
@@ -44,7 +42,7 @@ main{
 
 .bloco_login input:focus{
     outline: none;
-    border: 1px solid var(--cor-azul);
+    outline: 2px solid var(--cor-azul);
 }
 
 /* =====================
