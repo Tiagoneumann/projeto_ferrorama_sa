@@ -1,4 +1,107 @@
-.container{
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.bloco-alertas {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    grid-column: 1; /* coluna esquerda */
+}
+
+.bloco-lista {
+    grid-column: 2; /* coluna direita */
+}
+
+.bloco-lista .lista_trens {
+    height: 100%; /* ocupa a altura toda */
+    justify-content: space-between;
+}
+
+.card {
+  background: #232838;
+  border: 2px solid #3a3f50;
+  border-radius: 12px;
+  padding: 24px;
+  width: 100%;
+  max-width: 1200px;
+  grid-column: span 2;
+}
+
+@media (min-width: 1024px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .card,
+    .bloco-alertas,
+    .bloco-lista {
+        grid-column: 1;
+    }
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 16px;
+  font-size: 13px;
+}
+
+.legend span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--cor-texto);
+}
+
+.legend .box {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.chart-wrapper {
+  position: relative;
+  width: 100%;
+  height: 220px;
+}
+
+.refresh-info {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #8a93a6;
+  text-align: right;
+}
+
+.card_sec{
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    background: var(--cor-azul-claro);
+
+    border: 2px solid #3a3f50;
+    border-radius: 12px;
+
+    padding: 10px;
+    max-width: 1200px;
+}
+
+.informacoes{
+    display: flex; 
+    flex-direction: column;
+    width: 70%;
+}
+
+.btn_mais{
+    background: var(--cor-azul);
+    border: none;
+    border-radius: 30px;
+
+    padding: 10px 20px;
 }

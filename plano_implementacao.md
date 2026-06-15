@@ -8,7 +8,7 @@
 
 <h3 align="center"><strong>Resumo:</strong></h3>
 
-<p>&emsp;&emsp;</p>
+<p style="text-align: justify">&emsp;&emsp;O sistema desenvolvido integra-se à empresa Track Flow e tem como principal objetivo realizar o monitoramento inteligente da frota ferroviária em tempo real. A plataforma permite acompanhar o status dos trens, sensores e ocorrências operacionais, auxiliando clientes, operadores e gestores na tomada de decisões rápidas e eficientes.</p>
 
 <h3 align="center"><strong>Desisão Técnica:</strong></h3>
 
