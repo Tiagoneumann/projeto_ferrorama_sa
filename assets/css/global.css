@@ -21,6 +21,17 @@
     --navbar-height: 100px;
 }
 
+@keyframes surgir{
+    from{
+        transform: translateY(-10%);
+        opacity: 0.5;
+    }
+    to{
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -36,6 +47,8 @@ body{
 
     background: var(--cor-fundo);
     color: var(--cor-texto-escuro);
+
+    animation: surgir 0.5s ease;
 }
 
 body.sem-navbar{
