@@ -1,8 +1,13 @@
 .container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 15px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.card,
+.bloco-alertas,
+.bloco-lista {
+    grid-column: 1;
 }
 
 .card {
@@ -61,40 +66,88 @@
   grid-column: span 2;
 }
 
-@media (min-width: 1024px){
-  .bloco-lista{
-    grid-column: 2;
-    grid-row: span;
-  }
+@media (min-width: 1024px) {
+
+    .container {
+        grid-template-columns: 2fr 1fr;
+        grid-template-areas:
+            "grafico lista"
+            "alertas lista";
+        align-items: stretch;
+    }
+
+    .card {
+        grid-area: grafico;
+        max-width: none;
+    }
+
+    .bloco-alertas {
+        grid-area: alertas;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .bloco-lista {
+        grid-area: lista;
+    }
+}
+
+.bloco-lista,
+.lista_trens {
+    height: 100%;
 }
 
 .card_sec {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
-  background: var(--cor-azul-claro);
+    background: var(--cor-azul-claro);
+    border: 2px solid #3a3f50;
+    border-radius: 12px;
 
-  border: 2px solid #3a3f50;
-  border-radius: 12px;
-
-  padding: 10px;
-  max-width: 1200px;
+    padding: 30px;
+    height: 100%;
 }
 
-.informacoes {
-  display: flex;
-  flex-direction: column;
+.lista_trens h5, .ocorrencias h5, .alertas h5{
+    text-align: center;
+    margin: 0;
+}
 
-  padding: 10px 40px;
-  width: 100%;
+
+.informacoes {
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    padding: 0 20px;
+}
+
+.informacoes ul {
+    width: 100%;
+    margin: 0;
 }
 
 .btn_mais {
-  background: var(--cor-azul);
-  border: none;
-  border-radius: 30px;
+    align-self: center;
 
-  padding: 10px 20px;
+    background: var(--cor-azul);
+    border: none;
+    border-radius: 30px;
+
+    padding: 10px 20px;
+
+    transition: var(--transition-fast);
+}
+
+.btn_mais:hover{
+    background: var(--cor-ciano);
+}
+
+.btn_mais:active{
+  background: var(--cor-azul);
 }

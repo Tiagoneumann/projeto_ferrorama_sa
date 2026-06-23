@@ -62,3 +62,4 @@ async function fetchFromAPI() {
 }
 fetchFromAPI();
 setInterval(fetchFromAPI, 5000);
+
