@@ -1,0 +1,31 @@
+.texto_dados{
+    font-size: 12px;
+}
+
+.container{
+    padding: 10px;
+}
+
+.tabela{
+    width: 100%;
+}
+
+.tabela tr{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    gap: 10px;
+
+    width: 100%;
+}
+
+.tabela th{
+    color: var(--cor-texto);
+}
+
+.tabela td{
+    background-color: var(--cor-azul-claro);
+    width: 100%;
+    padding: 5px;
+}

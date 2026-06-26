@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,17 +12,19 @@
     <script src="main.js" defer></script>
     <script src="../../assets/js/global.js" defer></script>
 
-    <title>Track Flow || Relatórios</title>
+    <title>Track Flow || Sensores</title>
 </head>
+
 <body>
     <header>
+
         <nav class="navbar">
             <div class="navbar_bloco">
                 <button class="btn_navbar_menu" id="btn_menu"><i class="fa-solid fa-bars"></i></button>
 
                 <div class="logo">
                     <img src="../../assets/img/logo_sem_fundo.png" alt="logo">
-                    <h6>Relatórios</h6>
+                    <h6>Sensores</h6>
                 </div>
 
                 <a href="#" class="perfil"><img
@@ -38,68 +41,32 @@
                 </ul>
             </div>
         </nav>
+
     </header>
     <main>
+
         <div class="container">
-            <h6 class="titulo">Relatório</h6>
-
-            <div class="bloco">
-                <label> 
-                    Período:
-                    <input type="text">
-                </label>
-            </div>
-
-            <div class="bloco">
-                <label> 
-                    Tipo de relatório:
-                    <input type="text">
-                </label>
-            </div>
-
-            <div class="bloco">
-                <label> 
-                    Trem (opcional):
-                    <input type="text">
-                </label>
-            </div>
-
-            <div class="bloco">
-                <label> 
-                    Sensor (opcional):
-                    <input type="text">
-                </label>
-            </div>
-
-            <div class="bloco">
-                <label> 
-                    Status atual:
-                    <input type="text">
-                </label>
-            </div>
-
-            <div class="bloco">
-                <label> 
-                    Velocidade média:
-                    <input type="text">
-                </label>
-            </div>
-
-            <div class="bloco">
-                <label> 
-                    Ocorrências/descrição:
-                    <input type="text">
-                </label>
-            </div>
-
-            <button class="btn_relatorio">Enviar Relatório</button>
+            <table class="tabela">
+                <tr>
+                    <th>Sensores</th>
+                    <th>Leitura</th>
+                    <th>Status</th>
+                </tr>
+                
+                <tr class="dados_tabela">
+                    <td><span class="texto_dados">Sensor 1 <br> ID: Atenção</span></td>
+                    <td><span class="texto_dados">Tipo: <br>Trem vinculado: <br>Última leitura: <br>Localização atual: </span></td>
+                    <td><span class="texto_dados">OK</span></td>
+                </tr>
+            </table>
         </div>
+
     </main>
     <footer>
         <div class="marca_dagua">
             <small>Track Flow© 2026</small>
         </div>
     </footer>
-
 </body>
+
 </html>
