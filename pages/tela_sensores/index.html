@@ -46,19 +46,32 @@
     <main>
 
         <div class="container">
-            <table class="tabela">
-                <tr>
-                    <th>Sensores</th>
-                    <th>Leitura</th>
-                    <th>Status</th>
-                </tr>
-                
-                <tr class="dados_tabela">
-                    <td><span class="texto_dados">Sensor 1 <br> ID: Atenção</span></td>
-                    <td><span class="texto_dados">Tipo: <br>Trem vinculado: <br>Última leitura: <br>Localização atual: </span></td>
-                    <td><span class="texto_dados">OK</span></td>
-                </tr>
-            </table>
+            <div class="legendas">
+                <h6>Sensores</h6>
+                <h6>Leitura</h6>
+                <h6>Status</h6>
+            </div>
+
+            <div class="dados">
+                <div class="status card">
+                    <p>Sensor <span>1</span></p>
+                    <p>ID: <span>OK</span></p>
+                </div>
+                <div class="leitura card">
+                    <p>Tipo: <span></span></p>
+                    <p>Trem: <span></span></p>
+                    <p>Leitura: <span></span></p>
+                    <p>Localização: <span></span></p>
+                </div>
+                <div class="sensores card">
+                    <p><span>OK</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="inputs">
+            <input type="text" placeholder="Insira o ID do sensor">
+            <button>Enviar manutenção</button>
         </div>
 
     </main>

@@ -1,31 +1,70 @@
-.texto_dados{
-    font-size: 12px;
-}
-
 .container{
+    display: grid;
+    grid-template-columns: 1fr;
+
+    background: var(--cor-secundaria);
+    border-radius: 16px;
+
     padding: 10px;
 }
 
-.tabela{
-    width: 100%;
+.legendas{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
-.tabela tr{
+.legendas h6{
+    display: flex;
+    justify-content: center;
+
+    color: var(--cor-texto);
+}
+
+.dados{
     display: flex;
     justify-content: space-around;
     align-items: center;
 
     gap: 10px;
+}
+
+.dados p{
+    font-size: clamp(0.7rem, 1vw, 1.5rem);
+    color: var(--cor-texto-escuro);
+    font-weight: bold;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     width: 100%;
-}
+    height: 100%;
 
-.tabela th{
-    color: var(--cor-texto);
-}
+    padding: 10px;
 
-.tabela td{
     background-color: var(--cor-azul-claro);
-    width: 100%;
-    padding: 5px;
+    border-radius: 6px;
+}
+
+.leitura{
+    align-items: start;
+}
+
+.inputs{
+    position: fixed;
+
+    display: flex;
+    flex-direction: column;
+
+    left: 50%;
+    top: 90%;
+    transform: translate(-50%, -50%);
+}
+
+.inputs input{
+    background-color: var(--cor-azul);
+    border: none;
 }
