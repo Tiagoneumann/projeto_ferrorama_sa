@@ -10,17 +10,28 @@
     border: none;
     padding: 8px 30px;
 
+    border-radius: 16px;
+
     margin-bottom: 10px;
+
+    transition: var(--transition-fast);
+}
+
+.btn_novousu:hover{
+    background-color: var(--cor-azul-escuro);
+    color: var(--cor-texto);
 }
 
 .btn_novousu:active{
-    background-color: var(--cor-azul-claro);
+    background-color: var(--cor-azul);
 }
 
 .card{
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    border-radius: 12px;
 
     background-color: var(--cor-azul-claro);
 
@@ -57,9 +68,14 @@
     border: none;
     border-radius: 10px;
 
-    color: var(--cor-texto);
     background-color: var(--cor-azul);
     padding: 5px 10px;
+    transition: var(--transition-fast);
+}
+
+.opcoes button:hover{
+    background-color: var(--cor-azul-escuro);
+    color: var(--cor-texto);
 }
 
 .opcoes button:active{

@@ -96,11 +96,16 @@
     border-radius: 10px;
     border: none;
 
-    color: var(--cor-texto);
-
     padding: 6px;
+
+    transition: var(--transition-fast);
+}
+
+.inputs button:hover{
+    background-color: var(--cor-azul-escuro);
+    color: var(--cor-texto);
 }
 
 .inputs button:active{
-    background-color: var(--cor-azul-claro);
+    background-color: var(--cor-azul);
 }

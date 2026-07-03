@@ -65,10 +65,13 @@ main{
 .bloco_cadastro input[type="submit"]{
     background: var(--cor-azul);
     cursor: pointer;
+
+    transition: var(--transition-fast);
 }
 
 .bloco_cadastro input[type="submit"]:hover{
     background: var(--cor-azul-escuro);
+    color: var(--cor-texto);
 }
 
 .bloco_cadastro input[type="submit"]:active{

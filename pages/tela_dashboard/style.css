@@ -145,7 +145,8 @@
 }
 
 .btn_mais:hover{
-    background: var(--cor-ciano);
+    background: var(--cor-azul-escuro);
+    color: var(--cor-texto);
 }
 
 .btn_mais:active{
