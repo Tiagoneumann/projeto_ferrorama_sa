@@ -18,15 +18,22 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
 
-    $sql = "INSET INTO usuario (nome_usuario, email_usuario, senha_usuario) VALUES (?, ?, ?)";
+    $sql = "INSERT INTO usuario 
+    (nome_usuario, email_usuario, senha_usuario) 
+    VALUES (?, ?, ?)";
 
     $stmt = $conexao->prepare($sql);
 
     $stmt->bind_param("sss", $nome, $email, $senha_hash);
 
-    $stmt->execute();
+    if ($stmt->execute()) {
 
-    echo "Cadastro realizado com sucesso!";
+        header('Location: ../tela_login/index.php');
+        exit;
+
+    } else {
+        echo "Erro ao realizar o cadastro.";
+    }
 }
 
 ?>
