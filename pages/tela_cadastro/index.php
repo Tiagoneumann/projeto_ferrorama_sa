@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -59,7 +61,7 @@
                 <input type="password" placeholder="Confirmar senha">
 
                 <div class="outras_opcoes">
-                    <a href="../tela_login/index.html">
+                    <a href="../tela_login/index.php">
                         Já tem uma conta?
                     </a>
                 </div>

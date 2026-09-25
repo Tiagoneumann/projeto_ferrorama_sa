@@ -33,11 +33,11 @@
 
             <div class="menu_navbar">
                 <ul>
-                    <li><a href="../tela_dashboard/index.html">Dashboard</a></li>
-                    <li><a href="../tela_relatorios/index.html">Relatórios</a></li>
-                    <li><a href="../tela_sensores/index.html">Sensores</a></li>
-                    <li><a href="../tela_trens/index.html">Trens</a></li>
-                    <li><a href="../tela_usuarios/index.html">Usuários</a></li>
+                    <li><a href="../tela_dashboard/index.php">Dashboard</a></li>
+                    <li><a href="../tela_relatorios/index.php">Relatórios</a></li>
+                    <li><a href="../tela_sensores/index.php">Sensores</a></li>
+                    <li><a href="../tela_trens/index.php">Trens</a></li>
+                    <li><a href="../tela_usuarios/index.php">Usuários</a></li>
                 </ul>
             </div>
         </nav>

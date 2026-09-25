@@ -37,7 +37,7 @@
                     Entrar
                 </button>
 
-                <a href="../tela_cadastro/index.html">
+                <a href="../tela_cadastro/index.php">
                     Criar Conta
                 </a>
             </div>

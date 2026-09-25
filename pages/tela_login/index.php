@@ -63,7 +63,7 @@
                         Esqueci minha senha
                     </a>
 
-                    <a href="../tela_cadastro/index.html">
+                    <a href="../tela_cadastro/index.php">
                         Cadastrar-se
                     </a>
 

@@ -27,17 +27,17 @@
                     <h6>Trens</h6>
                 </div>
 
-                <a href="../tela_usuarios/index.html" class="perfil"><img
+                <a href="../tela_usuarios/index.php" class="perfil"><img
                         src="https://i.pinimg.com/736x/23/40/8e/23408e565fc3f43454636fec27572d1f.jpg" alt=""></a>
             </div>
 
             <div class="menu_navbar">
                 <ul>
-                    <li><a href="../tela_dashboard/index.html">Dashboard</a></li>
-                    <li><a href="../tela_relatorios/index.html">Relatórios</a></li>
-                    <li><a href="../tela_sensores/index.html">Sensores</a></li>
-                    <li><a href="../tela_trens/index.html">Trens</a></li>
-                    <li><a href="../tela_usuarios/index.html">Usuários</a></li>
+                    <li><a href="../tela_dashboard/index.php">Dashboard</a></li>
+                    <li><a href="../tela_relatorios/index.php">Relatórios</a></li>
+                    <li><a href="../tela_sensores/index.php">Sensores</a></li>
+                    <li><a href="../tela_trens/index.php">Trens</a></li>
+                    <li><a href="../tela_usuarios/index.php">Usuários</a></li>
                 </ul>
             </div>
         </nav>
