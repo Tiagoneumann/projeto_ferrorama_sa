@@ -1,4 +1,35 @@
+<?php
 
+session_start();
+
+require '../../assets/php/conexao.php';
+
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+    $nome = $_POST['nome_usuario'];
+    $email = $_POST['email_usuario'];
+    $senha = $_POST['senha_usuario'];
+    $confirmar_senha = $_POST['confirmar_senha'];
+
+    if ($senha !== $confirmar_senha){
+        echo "As senhas não são iguais.";
+        exit;
+    }
+
+    $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
+
+    $sql = "INSET INTO usuario (nome_usuario, email_usuario, senha_usuario) VALUES (?, ?, ?)";
+
+    $stmt = $conexao->prepare($sql);
+
+    $stmt->bind_param("sss", $nome, $email, $senha_hash);
+
+    $stmt->execute();
+
+    echo "Cadastro realizado com sucesso!";
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -32,33 +63,21 @@
                 <img src="../../assets/img/logo_sem_fundo.png" alt="Logo">
 
             </div>
-
-            <div class="menu_navbar">
-                <ul>
-                    <li><a href="#">Dashboard</a></li>
-                    <li><a href="#">Relatórios</a></li>
-                    <li><a href="#">Sensores</a></li>
-                    <li><a href="#">Trens</a></li>
-                    <li><a href="#">Usuários</a></li>
-                </ul>
-            </div>
         </nav>
     </header>
 
     <main>
 
         <div class="bloco_cadastro">
-            <form>
+            <form method="POST">
 
-                <input type="text" placeholder="Nome">
+                <input type="text" name="nome_usuario" placeholder="Nome">
 
-                <input type="email" placeholder="Email">
+                <input type="email" name="email_usuario" placeholder="Email">
 
-                <input type="text" placeholder="Usuário">
+                <input type="password" name="senha_usuario" placeholder="Senha">
 
-                <input type="password" placeholder="Senha">
-
-                <input type="password" placeholder="Confirmar senha">
+                <input type="password" name="confirmar_senha" placeholder="Confirmar senha">
 
                 <div class="outras_opcoes">
                     <a href="../tela_login/index.php">
