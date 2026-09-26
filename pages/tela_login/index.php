@@ -13,18 +13,44 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     if(empty($email) || empty($senha)){
 
-        $erro = "Preencha todos os campos!"
+        $erro = "Preencha todos os campos!";
 
     } else{
 
-        $sql = "SELECT * FROM usuario WHERE email_usuario = :email LIMIT 1";
+        $sql = "SELECT * FROM usuario WHERE email_usuario = ? LIMIT 1";
 
         $stmt = $conexao->prepare($sql);
-        $stmt->execute([':email' => $email]);
 
-        $usuario = $stmt->fecth()
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+
+        //Transforma a linha do banco onde contem as informações em uma array
+        $resultado = $stmt->get_result();
+        $usuario = $resultado->fetch_assoc();
+
+        if(!$usuario) {
+
+            $erro = "Usuário ou senha incorretos!";
+
+        } else {
+
+            if (password_verify($senha, $usuario['senha_usuario'])){
+
+                $_SESSION['id_usuario'] = $usuario['id'];
+                $_SESSION['email_usuario'] = $usuario['email_usuario'];
+                $_SESSION['nome_usuario'] = $usuario['nome_usuario'];
+
+                header("Location: ../tela_dashboard/index.php");
+                exit;
+                
+            } else {
+
+                $erro = "Usuário ou senha incorretos!";
+
+            }
+        }
+        $stmt->close();
     }
-
 }
 
 
