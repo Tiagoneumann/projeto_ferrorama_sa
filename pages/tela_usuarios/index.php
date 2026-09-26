@@ -1,3 +1,11 @@
+<?php
+
+session_start();
+
+require '../../assets/php/conexao.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -23,7 +31,7 @@
                 <button class="btn_navbar_menu" id="btn_menu"><i class="fa-solid fa-bars"></i></button>
 
                 <div class="logo">
-                    <img src="../../assets/img/logo_sem_fundo.png" alt="logo">
+                    <img src="../../assets/img/logo_sem_fundo_branco.png" alt="logo">
                     <h6>Usuários</h6>
                 </div>
 
@@ -68,8 +76,7 @@
                     <ul>
                         <li>Nome: <span></span></li>
                         <li>Email: <span></span></li>
-                        <li>Perfil: <span></span></li>
-                        <li>Status: <span></span></li>
+
                     </ul>
                 </div>
                 <div class="opcoes">

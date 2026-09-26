@@ -5,7 +5,8 @@ main{
 }
 
 .bloco_cadastro{
-    background: var(--cor-secundaria);
+    background: var(--cor-vidro);
+    box-shadow: var(--sombra-vidro);
 
     padding: 25px;
 
@@ -64,6 +65,9 @@ main{
 .bloco_cadastro input[type="submit"]{
     background: var(--cor-azul);
     cursor: pointer;
+
+    color: var(--cor-texto);
+    font-weight: bold;
 
     transition: var(--transition-fast);
 }

@@ -3,7 +3,12 @@
     grid-template-columns: 1fr;
     gap: 10px;
 
-    background-color: var(--cor-secundaria);
+    color: var(--cor-texto);
+    background-color: var(--cor-vidro);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow: var(--sombra-vidro);
     border-radius: 10px;
     padding: 15px;
 }
@@ -27,11 +32,17 @@
     background-color: var(--cor-azul);
     border-radius: 50px;
 
+    color: var(--cor-texto);
+
     padding: 3px;
 }
 
 .bloco{
-    background-color: var(--cor-azul-claro);
+    background-color: var(--cor-vidro-azul);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow: var(--sombra-vidro);
 
     border-radius: 16px;
     padding: 30px;
@@ -45,7 +56,7 @@
 }
 
 .bloco input{
-    background-color: #bdd6fd;
+    background-color: var(--cor-azul-claro);
     border-radius: 16px;
     border: none;
 
@@ -53,8 +64,7 @@
 }
 
 .bloco input:focus{
-    background-color: #deeaff;
-    outline: none;
+    outline: 2px solid var(--cor-azul);
 }
 
 .btn_relatorio{
@@ -65,6 +75,9 @@
     background-color: var(--cor-azul);
     border-radius: 16px;
     border: none;
+
+    color: var(--cor-texto);
+    font-weight: bold;
 
     padding: 10px;
 

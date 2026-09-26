@@ -23,7 +23,7 @@
                 <button class="btn_navbar_menu" id="btn_menu"><i class="fa-solid fa-bars"></i></button>
 
                 <div class="logo">
-                    <img src="../../assets/img/logo_sem_fundo.png" alt="logo">
+                    <img src="../../assets/img/logo_sem_fundo_branco.png" alt="logo">
                     <h6>Dashboard</h6>
                 </div>
 
@@ -45,7 +45,7 @@
     </header>
     <main>
 
-        <h5 style="display: inline-flex; justify-content: center; width: 100%; color: var(--cor-texto);">Trens</h5>
+        <h5 class="titulo">Trens</h5>
 
         <div class="container">
 

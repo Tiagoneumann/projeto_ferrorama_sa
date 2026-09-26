@@ -103,7 +103,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
                 <h3>Cadastro</h3>
 
-                <img src="../../assets/img/logo_sem_fundo.png" alt="Logo">
+                <img src="../../assets/img/logo_sem_fundo_branco.png" alt="Logo">
 
             </div>
         </nav>

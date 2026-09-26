@@ -20,7 +20,7 @@
                 <button class="btn_navbar_menu" id="btn_menu"><i class="fa-solid fa-bars"></i></button>
 
                 <div class="logo">
-                    <img src="../../assets/img/logo_sem_fundo.png" alt="logo">
+                    <img src="../../assets/img/logo_sem_fundo_branco.png" alt="logo">
                     <h6>Relatórios</h6>
                 </div>
 

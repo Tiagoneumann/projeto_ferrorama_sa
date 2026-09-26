@@ -23,7 +23,7 @@
                 <button class="btn_navbar_menu" id="btn_menu"><i class="fa-solid fa-bars"></i></button>
 
                 <div class="logo">
-                    <img src="../../assets/img/logo_sem_fundo.png" alt="logo">
+                    <img src="../../assets/img/logo_sem_fundo_branco.png" alt="logo">
                     <h6>Trens</h6>
                 </div>
 
@@ -47,6 +47,8 @@
 
         <div class="container">
             
+            <button class="botao">Adicionar Trem</button>
+
             <div class="card">
                 <img src="https://mobilidade.estadao.com.br/wp-content/uploads/2024/03/Trem.jpeg" alt="trem">
 

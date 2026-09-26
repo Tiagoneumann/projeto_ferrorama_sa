@@ -5,12 +5,42 @@
     gap: 10px;
 }
 
+.botao{
+    grid-column: 1 / -1;
+    width: 100%;
+    padding: 12px;
+
+    background: var(--cor-azul);
+    cursor: pointer;
+    transition: var(--transition-fast);
+
+    border: none;
+    border-radius: 16px;
+
+    color: var(--cor-texto);
+    font-weight: bold;
+}
+
+.botao:hover{
+    background: var(--cor-azul-escuro);
+    color: var(--cor-texto);
+}
+
+.botao:active{
+    background: var(--cor-azul);
+}
+
 .card{
     display: flex;
     flex-direction: column;
 
     border-radius: 16px;
-    background-color: var(--cor-secundaria);
+    background-color: var(--cor-vidro);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow: var(--sombra-vidro);
 
     padding: 10px;
 }
@@ -46,6 +76,10 @@
 @media (min-width: 1024px){
     .container{
         grid-template-columns: 1fr 1fr;
+    }
+
+    .botao{
+        grid-column: 1 / -1;
     }
 
     .card img{

@@ -52,6 +52,8 @@ main {
 .outras_opcoes {
     display: flex;
     justify-content: space-between;
+
+    margin: 0;
 }
 
 .outras_opcoes a {
@@ -76,6 +78,8 @@ main {
     background: var(--cor-azul);
 
     cursor: pointer;
+    color: var(--cor-texto);
+    font-weight: bold;
 
     transition: var(--transition-fast);
 }
