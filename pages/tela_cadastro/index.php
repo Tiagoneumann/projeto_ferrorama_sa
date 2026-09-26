@@ -2,37 +2,73 @@
 
 session_start();
 
+//Puxa a conexao feita com o banco de dados na pasta php
 require '../../assets/php/conexao.php';
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
-    $nome = $_POST['nome_usuario'];
-    $email = $_POST['email_usuario'];
+    $erro = "";
+
+    //Pega os daods digitados nos campos e transforma eles em variáveis
+    $nome = trim($_POST['nome_usuario']);
+    $email = trim($_POST['email_usuario']);
     $senha = $_POST['senha_usuario'];
     $confirmar_senha = $_POST['confirmar_senha'];
 
-    if ($senha !== $confirmar_senha){
-        echo "As senhas não são iguais.";
-        exit;
-    }
+    //Verifica se todos os campos foram preenchidos
+    if (empty($nome) || empty($email) || empty($senha) || empty($confirmar_senha)){
 
-    $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
+        $erro = "Preencha todos os campos!";
 
-    $sql = "INSERT INTO usuario 
-    (nome_usuario, email_usuario, senha_usuario) 
-    VALUES (?, ?, ?)";
+    //Verifica se a senha foi digitada certa
+    } elseif ($senha !== $confirmar_senha){
 
-    $stmt = $conexao->prepare($sql);
-
-    $stmt->bind_param("sss", $nome, $email, $senha_hash);
-
-    if ($stmt->execute()) {
-
-        header('Location: ../tela_login/index.php');
-        exit;
+        $erro = "As senhas não são iguais.";
 
     } else {
-        echo "Erro ao realizar o cadastro.";
+
+        //Verifica se o email não esta repetido
+        $sql_verifica = "SELECT id_usuario FROM usuario WHERE email_usuario = ?";
+        $stmt_verifica = $conexao->prepare($sql_verifica);
+
+        $stmt_verifica->bind_param("s", $email);
+        $stmt_verifica->execute();
+
+        $resultado = $stmt_verifica->get_result();
+
+        if($resultado->num_rows > 0) {
+
+            $erro = "Este e-mail já existe.";
+
+        } else {
+            $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
+
+            $sql = "INSERT INTO usuario 
+                    (nome_usuario, email_usuario, senha_usuario) 
+                    VALUES (?, ?, ?)";
+
+            $stmt = $conexao->prepare($sql);
+
+            $stmt->bind_param("sss", $nome, $email, $senha_hash);
+
+            if ($stmt->execute()) {
+
+            header('Location: ../tela_login/index.php');
+            exit;
+
+            } else {
+
+                if($stmt->errno === 1062){
+
+                $erro = "Este e-mail já esta cadastrado";
+
+                } else {
+
+                $erro = "Erro ao realizar o cadastro.";
+
+                }
+            }
+        }
     }
 }
 
@@ -91,6 +127,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                         Já tem uma conta?
                     </a>
                 </div>
+                
+                <?php if (!empty($erro)): ?>
+                    <p class="erro">
+                        <?= htmlspecialchars($erro) ?>
+                    </p>
+                <?php endif; ?>
 
                 <input type="submit" value="Cadastre-se">
 

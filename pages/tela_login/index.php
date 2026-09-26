@@ -1,3 +1,35 @@
+<?php
+
+session_start();
+
+require '../../assets/php/conexao.php';
+
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+    $erro = "";
+
+    $email = trim($_POST['email_usuario']);
+    $senha = $_POST['senha_usuario'];
+
+    if(empty($email) || empty($senha)){
+
+        $erro = "Preencha todos os campos!"
+
+    } else{
+
+        $sql = "SELECT * FROM usuario WHERE email_usuario = :email LIMIT 1";
+
+        $stmt = $conexao->prepare($sql);
+        $stmt->execute([':email' => $email]);
+
+        $usuario = $stmt->fecth()
+    }
+
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -33,17 +65,6 @@
                 <img src="../../assets/img/logo_sem_fundo.png" alt="Logo">
 
             </div>
-
-            <div class="menu_navbar">
-                <ul>
-                    <li><a href="#">Dashboard</a></li>
-                    <li><a href="#">Relatórios</a></li>
-                    <li><a href="#">Sensores</a></li>
-                    <li><a href="#">Trens</a></li>
-                    <li><a href="#">Usuários</a></li>
-                </ul>
-            </div>
-
         </nav>
     </header>
 
@@ -51,11 +72,11 @@
 
         <div class="bloco_login">
 
-            <form>
+            <form method="POST">
 
-                <input type="text" placeholder="Usuário">
+                <input type="text" name="email_usuario" placeholder="Email">
 
-                <input type="password" placeholder="Senha">
+                <input type="password" name="senha_usuario" placeholder="Senha">
 
                 <div class="outras_opcoes">
 
@@ -68,6 +89,14 @@
                     </a>
 
                 </div>
+
+                <?php if(!empty($erro)): ?>
+
+                    <P class="erro">
+                        <?= htmlspecialchars($erro)?>
+                    </P>
+
+                <?php endif; ?>
 
                 <input type="submit" value="Entrar">
 
