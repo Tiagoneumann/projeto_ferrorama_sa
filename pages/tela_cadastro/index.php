@@ -25,6 +25,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
         $erro = "As senhas não são iguais.";
 
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+
+        $erro = "Digite um email válido!";
+
+    } elseif (!checkdnsrr(substr(strrchr($email, "@"), 1), "MX")){
+
+        $erro = "O domínio deste e-mail não pode receber e-emails.";
+
     } else {
 
         //Verifica se o email não esta repetido

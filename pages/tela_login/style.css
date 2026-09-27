@@ -11,7 +11,11 @@ main {
 .bloco_login {
     display: flex;
 
-    background: var(--cor-secundaria);
+    background: var(--cor-vidro);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow: var(--sombra-vidro);
 
     padding: 25px;
 
