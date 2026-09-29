@@ -1,3 +1,9 @@
+<?php
+
+require_once '../../assets/php/autorizacao.php'
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -27,8 +33,7 @@
                     <h6>Dashboard</h6>
                 </div>
 
-                <a href="../tela_usuarios/index.php" class="perfil"><img
-                        src="https://i.pinimg.com/736x/23/40/8e/23408e565fc3f43454636fec27572d1f.jpg" alt=""></a>
+                <button class="perfil" id="perfil"><img src="https://i.pinimg.com/736x/23/40/8e/23408e565fc3f43454636fec27572d1f.jpg" alt=""></button>
             </div>
 
             <div class="menu_navbar">

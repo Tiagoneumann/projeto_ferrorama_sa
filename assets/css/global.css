@@ -45,7 +45,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "poppins", sans-serif;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 body {
@@ -58,7 +58,7 @@ body {
     120deg,
     #0f172a,
     #141733,
-    #0f172a,
+    #1c2a49,
     #141733,
     #0f172a
   );
@@ -244,6 +244,103 @@ footer {
 
 .perfil img:hover {
     filter: brightness(1);
+}
+
+.centralizar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bloco_formulario {
+    display: flex;
+
+    padding: 25px;
+    border-radius: 12px;
+}
+
+.bloco_formulario form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input_padrao {
+    width: 300px;
+    padding: 10px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: var(--cor-azul-claro);
+}
+
+.input_padrao::placeholder {
+    color: var(--cor-texto-escuro);
+}
+
+.input_padrao:focus {
+    outline: none;
+    outline: 2px solid var(--cor-azul);
+}
+
+.botao {
+    background: var(--cor-azul);
+    border: none;
+    border-radius: 10px;
+
+    color: var(--cor-texto);
+    font-weight: bold;
+
+    padding: 10px;
+
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.botao:hover {
+    background: var(--cor-azul-escuro);
+}
+
+.botao:active {
+    background: var(--cor-azul);
+}
+
+.outras_opcoes {
+    display: flex;
+    justify-content: space-between;
+
+    margin: 0;
+}
+
+.outras_opcoes a {
+    font-size: 12px;
+
+    color: var(--cor-texto);
+
+    text-decoration: none;
+
+    transition: var(--transition-fast);
+}
+
+.outras_opcoes a:hover {
+    color: var(--cor-texto-esmaecido);
+}
+
+.estilo_primario {
+    background: var(--cor-vidro);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow: var(--sombra-vidro);
+}
+
+.estilo_secundario {
+    background: var(--cor-vidro-azul);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow: var(--sombra-vidro);
 }
 
 .marca_dagua {

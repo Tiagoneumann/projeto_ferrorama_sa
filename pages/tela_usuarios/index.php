@@ -1,8 +1,7 @@
 <?php
 
-session_start();
-
 require '../../assets/php/conexao.php';
+require_once '../../assets/php/autorizacao.php'
 
 ?>
 

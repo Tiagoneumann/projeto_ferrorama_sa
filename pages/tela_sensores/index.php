@@ -1,3 +1,9 @@
+<?php
+
+require_once '../../assets/php/autorizacao.php'
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -13,7 +19,7 @@
     <script src="../../assets/js/global.js" defer></script>
 
     <title>Track Flow || Sensores</title>
-</head>
+</head> 
 
 <body>
     <header>
