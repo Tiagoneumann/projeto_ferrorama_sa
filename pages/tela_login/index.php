@@ -1,58 +1,6 @@
 <?php
 
-session_start();
-
-require '../../assets/php/conexao.php';
-
-if($_SERVER['REQUEST_METHOD'] === 'POST'){
-
-    $erro = "";
-
-    $email = trim($_POST['email_usuario']);
-    $senha = $_POST['senha_usuario'];
-
-    if(empty($email) || empty($senha)){
-
-        $erro = "Preencha todos os campos!";
-
-    } else{
-
-        $sql = "SELECT * FROM usuario WHERE email_usuario = ? LIMIT 1";
-
-        $stmt = $conexao->prepare($sql);
-
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-
-        //Transforma a linha do banco onde contem as informações em uma array
-        $resultado = $stmt->get_result();
-        $usuario = $resultado->fetch_assoc();
-
-        if(!$usuario) {
-
-            $erro = "Usuário ou senha incorretos!";
-
-        } else {
-
-            if (password_verify($senha, $usuario['senha_usuario'])){
-
-                $_SESSION['id_usuario'] = $usuario['id_usuario'];
-                $_SESSION['email_usuario'] = $usuario['email_usuario'];
-                $_SESSION['nome_usuario'] = $usuario['nome_usuario'];
-
-                header("Location: ../tela_dashboard/index.php");
-                exit;
-                
-            } else {
-
-                $erro = "Usuário ou senha incorretos!";
-
-            }
-        }
-        $stmt->close();
-    }
-}
-
+require '../../assets/php/login.php';
 
 ?>
 
@@ -94,15 +42,15 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         </nav>
     </header>
 
-    <main>
+    <main class="centralizar">
 
-        <div class="bloco_login">
+        <div class="estilo_primario bloco_formulario">
 
             <form method="POST">
 
-                <input type="text" name="email_usuario" placeholder="Email">
+                <input class="input_padrao" type="text" name="email_usuario" placeholder="Email">
 
-                <input type="password" name="senha_usuario" placeholder="Senha">
+                <input class="input_padrao" type="password" name="senha_usuario" placeholder="Senha">
 
                 <div class="outras_opcoes">
 
@@ -124,7 +72,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
                 <?php endif; ?>
 
-                <input type="submit" value="Entrar">
+                <input class="botao" type="submit" value="Entrar">
 
             </form>
 

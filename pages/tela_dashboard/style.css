@@ -12,8 +12,8 @@
 }
 
 .card,
-.bloco-alertas,
-.bloco-lista {
+.bloco_alertas,
+.bloco_lista {
     grid-column: 1;
 }
 
