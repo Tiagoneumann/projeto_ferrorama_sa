@@ -23,7 +23,7 @@ CREATE TABLE sensor (
     id_trem BIGINT NOT NULL,
 
     FOREIGN KEY (id_trem)
-        REFERENCES trem(id_trem),
+        REFERENCES trem(id_trem)
 );
 
 CREATE TABLE dados (

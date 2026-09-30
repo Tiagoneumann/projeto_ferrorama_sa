@@ -13,40 +13,27 @@
     <title>Track Flow | Início</title>
 </head>
 
-<body class="sem-navbar">
+<body class="sem_navbar">
 
-    <main>
+    <main class="divisao">
 
-        <section class="imagem_inicial">
-            <img src="../../assets/img/trem_bala.png" alt="Trem Bala">
-
-            <div class="imagem_texto">
-                <h1>Seja bem-vindo ao</h1>
-                <h1 class="texto_azul">Track Flow</h1>
+        <div class="bloco_formulario estilo_primario">
+            
+            <div class="texto">
+                <h4>Seja bem-vindo ao</h4>
+                <h3>Track Flow</h3>
             </div>
-        </section>
+            
+            <p class="subtitulo">Escolha uma das opções para entrar no sistema</p>
 
-        <section class="container">
+            <img src="../../assets/img/logo_sem_fundo_branco.png" alt="Logo do TrackFlow">
 
-            <div class="informacoes_alta">
-                <h4>Monitore trens, sensores e ocorrências em tempo real.</h4>
-            </div>
-
-            <div class="opcoes">
-                <button onclick="direcionarParaLogin()">
-                    Entrar
-                </button>
-
-                <a href="../tela_cadastro/index.php">
-                    Criar Conta
-                </a>
+            <div class="botoes">
+                <button class="botao" onclick="window.location.href='../tela_cadastro'">Criar conta</button>
+                <button class="botao" onclick="window.location.href='../tela_login'">Entrar</button>
             </div>
 
-            <div class="informacoes_baixa">
-                <h4>Controle inteligente da frota ferroviária.</h4>
-            </div>
-
-        </section>
+        </div>
 
     </main>
 
