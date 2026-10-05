@@ -36,11 +36,11 @@ require_once '../../assets/php/autorizacao.php'
 
             <div class="menu_navbar">
                 <ul>
-                    <li><a href="../tela_dashboard/index.php">Dashboard</a></li>
-                    <li><a href="../tela_relatorios/index.php">Relatórios</a></li>
-                    <li><a href="../tela_sensores/index.php">Sensores</a></li>
-                    <li><a href="../tela_trens/index.php">Trens</a></li>
-                    <li><a href="../tela_usuarios/index.php">Usuários</a></li>
+                    <li><a href="../tela_dashboard/tela_dashboard.php">Dashboard</a></li>
+                    <li><a href="../tela_relatorios/tela_relatorios.php">Relatórios</a></li>
+                    <li><a href="../tela_sensores/tela_sensores.php">Sensores</a></li>
+                    <li><a href="../tela_trens/tela_trens.php">Trens</a></li>
+                    <li><a href="../tela_usuarios/tela_usuarios.php">Usuários</a></li>
                 </ul>
             </div>
         </nav>

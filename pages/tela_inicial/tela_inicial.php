@@ -29,8 +29,8 @@
             <img src="../../assets/img/logo_sem_fundo_branco.png" alt="Logo do TrackFlow">
 
             <div class="botoes">
-                <button class="botao" onclick="window.location.href='../tela_cadastro'">Criar conta</button>
-                <button class="botao" onclick="window.location.href='../tela_login'">Entrar</button>
+                <button class="botao" onclick="window.location.href='../tela_cadastro/tela_cadastro.php'">Criar conta</button>
+                <button class="botao" onclick="window.location.href='../tela_login/tela_login.php'">Entrar</button>
             </div>
 
         </div>
@@ -38,9 +38,7 @@
     </main>
 
     <footer>
-        <div class="marca_dagua">
-            <small>Track Flow © 2026</small>
-        </div>
+        <small class="marca_dagua">Track Flow© 2026</small>
     </footer>
 
 </body>

@@ -65,14 +65,14 @@
     text-align: right;
 }
 
-.bloco-alertas {
+.bloco_alertas {
     display: flex;
     flex-direction: column;
     gap: 15px;
     grid-column: span 2;
 }
 
-.bloco-lista {
+.bloco_lista {
     grid-column: span 2;
 }
 
@@ -90,19 +90,19 @@
         max-width: none;
     }
 
-    .bloco-alertas {
+    .bloco_alertas {
         grid-area: alertas;
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 15px;
     }
 
-    .bloco-lista {
+    .bloco_lista {
         grid-area: lista;
     }
 }
 
-.bloco-lista,
+.bloco_lista,
 .lista_trens {
     height: 100%;
 }

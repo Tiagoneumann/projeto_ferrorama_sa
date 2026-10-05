@@ -257,6 +257,10 @@ footer {
     grid-template-columns: 1fr 1fr 1fr;
 }
 
+/* =====================
+   USUÁRIO
+===================== */
+
 .conta{
     z-index: 1000;
     position: fixed;
@@ -275,6 +279,9 @@ footer {
 .bloco_conta{
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+
+    height: 100%;
 
     padding: 25px;
     border-radius: 12px;
@@ -292,7 +299,11 @@ footer {
 
 .ajuste_botoes{
     display: flex;
-    gap: 10px;
+    gap: 20px;
+}
+
+.ajuste_botoes form{
+    width: 100%;
 }
 
 .extensao_botao{
@@ -366,7 +377,7 @@ footer {
 }
 
 .botao:hover {
-    transform: scale(1.02);
+    transform: scale(1.01);
     background: var(--cor-azul-escuro);
     box-shadow: var(--sombra);
 }
@@ -414,6 +425,12 @@ footer {
 }
 
 .marca_dagua {
+    position: fixed;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    bottom: 1%;
+    z-index: 1000;
+
     display: flex;
     justify-content: center;
     align-items: center;
