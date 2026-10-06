@@ -16,40 +16,16 @@ require_once '../../assets/php/autorizacao.php'
     <link rel="stylesheet" href="style.css">
 
     <script src="main.js" defer></script>
-    <script src="../../assets/js/global.js" defer></script>
+    <script src="../../assets/js/global.js" defer></script> 
 
     <title>Track Flow || Dashboard</title>
 </head>
 
 <body>
 
-    <div class="conta">
-            <div class="bloco_conta estilo_primario">
-                <div class="ajuste_conta">
-                    <h1>Usuário</h1>
-                    <button class="btn_fechar"><i class="fa-solid fa-x"></i></button>
-                </div>
-                
-                <div class="bloco_conta estilo_secundario">
-                    <ul>
-                        <li><strong>Nome:</strong> <?php echo $_SESSION['nome_usuario']?> </li>
-                        <li><strong>Email:</strong> <?php echo $_SESSION['email_usuario']?> </li>
-                        <li><strong>Autorização:</strong> <?php echo $_SESSION['tipo_usuario']?> </li>
-                    </ul>
-
-                    <br>
-
-                    <div class="ajuste_botoes">
-                        <button class="botao extensao_botao">Sair da sessão</button>
-                        <button class="botao extensao_botao">Excluír conta</button>
-                    </div>
-                    
-                </div>
-            </div>
-             
-        </div>
-
     <header>
+
+        <div id="usuario"></div>
 
         <nav class="navbar">
             <div class="navbar_bloco">
@@ -65,11 +41,11 @@ require_once '../../assets/php/autorizacao.php'
 
             <div class="menu_navbar">
                 <ul>
-                    <li><a href="../tela_dashboard/index.php">Dashboard</a></li>
-                    <li><a href="../tela_relatorios/index.php">Relatórios</a></li>
-                    <li><a href="../tela_sensores/index.php">Sensores</a></li>
-                    <li><a href="../tela_trens/index.php">Trens</a></li>
-                    <li><a href="../tela_usuarios/index.php">Usuários</a></li>
+                    <li><a href="../tela_dashboard/tela_dashboard.php">Dashboard</a></li>
+                    <li><a href="../tela_relatorios/tela_relatorios.php">Relatórios</a></li>
+                    <li><a href="../tela_sensores/tela_sensores.php">Sensores</a></li>
+                    <li><a href="../tela_trens/tela_trens.php">Trens</a></li>
+                    <li><a href="../tela_usuarios/tela_usuarios.php">Usuários</a></li>
                 </ul>
             </div>
         </nav>
@@ -98,7 +74,7 @@ require_once '../../assets/php/autorizacao.php'
                 <div class="refresh-info" id="refreshInfo">Última atualização: --</div>
             </div>
 
-            <div class="bloco bloco-alertas">
+            <div class="bloco bloco_alertas">
                 <div class="card_sec alertas">
                     <h5>⚠️ Alertas ⚠️</h5>
                     <div class="informacoes">
@@ -123,7 +99,7 @@ require_once '../../assets/php/autorizacao.php'
                 </div>
             </div>
 
-            <div class="bloco bloco-lista">
+            <div class="bloco bloco_lista">
                 <div class="card_sec lista_trens">
                     <h5>Lista rápida de trens</h5>
                     <div class="informacoes">
@@ -141,9 +117,7 @@ require_once '../../assets/php/autorizacao.php'
 
     </main>
     <footer>
-        <div class="marca_dagua">
-            <small>Track Flow© 2026</small>
-        </div>
+        <small class="marca_dagua">Track Flow© 2026</small>
     </footer>
 </body>
 

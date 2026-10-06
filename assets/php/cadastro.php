@@ -61,7 +61,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
             if ($stmt->execute()) {
 
-            header('Location: ../tela_login/index.php');
+            header('Location: ../tela_login/tela_login.php');
             exit;
 
             } else {

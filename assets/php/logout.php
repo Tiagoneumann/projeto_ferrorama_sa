@@ -1,12 +1,16 @@
 <?php
 
-session_start();
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
-session_unset();
+    session_start();
 
-session_destroy();
+    session_unset();
 
-header('Location: ../../pages/tela_inicial/index.php');
-exit;
+    session_destroy();
+
+    header('Location: ../../pages/tela_inicial/tela_inicial.php');
+    exit;
+
+}
 
 ?>

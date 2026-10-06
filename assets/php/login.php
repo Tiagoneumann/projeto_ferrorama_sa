@@ -60,7 +60,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 $_SESSION['tipo_usuario'] = $usuario['tipo_usuario'];
 
                 //Manda pra página de dashboard
-                header("Location: ../tela_dashboard/index.php");
+                header("Location: ../tela_dashboard/tela_dashboard.php");
                 exit;
                 
             } else {

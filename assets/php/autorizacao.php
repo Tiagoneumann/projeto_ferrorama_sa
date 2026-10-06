@@ -6,7 +6,7 @@ require 'conexao.php';
 
 if(!isset($_SESSION['id_usuario'])){
 
-    header('Location: ../../pages/tela_inicial/index.php');
+    header('Location: ../../pages/tela_inicial/tela_inicial.php');
     exit;
 
 }
@@ -26,7 +26,7 @@ if($resultado->num_rows === 0){
     session_unset();
     session_destroy();
 
-    header("Location: ../../pages/tela_inicial/index.php");
+    header("Location: ../../pages/tela_inicial/tela_inicial.php");
     exit;
 
 }

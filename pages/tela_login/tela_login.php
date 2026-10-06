@@ -1,11 +1,12 @@
 <?php
 
-require '../../assets/php/cadastro.php';
+require '../../assets/php/login.php';
 
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,12 +18,14 @@ require '../../assets/php/cadastro.php';
     <script src="main.js" defer></script>
     <script src="../../assets/js/global.js" defer></script>
 
-    <title>Track Flow | Cadastro</title>
+    <title>Track Flow || Login</title>
 </head>
+
 <body>
 
     <header>
         <nav class="navbar">
+
             <div class="navbar_bloco">
 
                 <button style="display:none;" id="btn_menu">
@@ -31,7 +34,7 @@ require '../../assets/php/cadastro.php';
 
                 <div class="vazio"></div>
 
-                <h3>Cadastro</h3>
+                <h3>Login</h3>
 
                 <img src="../../assets/img/logo_sem_fundo_branco.png" alt="Logo">
 
@@ -42,31 +45,37 @@ require '../../assets/php/cadastro.php';
     <main class="centralizar">
 
         <div class="estilo_primario bloco_formulario">
+
             <form method="POST">
 
-                <input class="input_padrao" type="text" name="nome_usuario" placeholder="Nome">
-
-                <input class="input_padrao" type="email" name="email_usuario" placeholder="Email">
+                <input class="input_padrao" type="text" name="email_usuario" placeholder="Email">
 
                 <input class="input_padrao" type="password" name="senha_usuario" placeholder="Senha">
 
-                <input class="input_padrao" type="password" name="confirmar_senha" placeholder="Confirmar senha">
-
                 <div class="outras_opcoes">
-                    <a href="../tela_login/index.php">
-                        Já tem uma conta?
+
+                    <a href="#">
+                        Esqueci minha senha
                     </a>
+
+                    <a href="../tela_cadastro/tela_cadastro.php">
+                        Cadastrar-se
+                    </a>
+
                 </div>
-                
-                <?php if (!empty($erro)): ?>
-                    <p class="erro">
-                        <?= htmlspecialchars($erro) ?>
-                    </p>
+
+                <?php if(!empty($erro)): ?>
+
+                    <P class="erro">
+                        <?= htmlspecialchars($erro)?>
+                    </P>
+
                 <?php endif; ?>
 
-                <input class="botao" type="submit" value="Cadastre-se">
+                <input class="botao" type="submit" value="Entrar">
 
             </form>
+
         </div>
 
     </main>
@@ -78,4 +87,5 @@ require '../../assets/php/cadastro.php';
     </footer>
 
 </body>
+
 </html>
