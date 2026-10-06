@@ -14,20 +14,20 @@ session_start();
         <div class="bloco_conta estilo_secundario">
             <form action="../../assets/php/criar_usuario.php" method='POST'>
                 <div class="separacao">
-                    <input class="input_padrao" type="text" name="nome_usuario" placeholder="Nome">
+                    <input class="input_padrao estilo_secundario" type="text" name="nome_usuario" placeholder="Nome">
 
-                    <input class="input_padrao" type="email" name="email_usuario" placeholder="Email">
+                    <input class="input_padrao estilo_secundario" type="email" name="email_usuario" placeholder="Email">
 
-                    <input class="input_padrao" type="passwoard" name="senha_usuario" placeholder="Senha">
+                    <input class="input_padrao estilo_secundario" type="passwoard" name="senha_usuario" placeholder="Senha">
 
                     <div class="opcoes_usuario">
-                        <label>
+                        <label class="opcao_usuario estilo_secundario">
                             <input type="radio" name="tipo_usuario" value="usuario">
-                            Usuário
+                            <span>Usuário</span>
                         </label>
-                        <label>
+                        <label class="opcao_usuario estilo_secundario">
                             <input type="radio" name="tipo_usuario" value="admin">
-                            Admin
+                            <span>Admin</span>
                         </label>
                     </div>
                 </div>

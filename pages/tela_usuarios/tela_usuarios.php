@@ -4,6 +4,9 @@ require '../../assets/php/conexao.php';
 require_once '../../assets/php/autorizacao.php';
 require_once '../../assets/php/admin_auto.php';
 
+$sql = "SELECT nome_usuario, email_usuario, tipo_usuario FROM usuario";
+$resultado = $conexao->query($sql);
+
 ?>
 
 <!DOCTYPE html>
@@ -58,21 +61,25 @@ require_once '../../assets/php/admin_auto.php';
         <div class="container">
             <button class="botao" id="criar_usuario">Novo Usuário</button>
 
+            <?php while ($usuario = $resultado->fetch_assoc()): ?>
+
             <div class="bloco estilo_primario">
                 <div class="dados">
                     <ul>
-                        <li>Nome: <span></span></li>
-                        <li>Email: <span></span></li>
-                        <li>Perfil: <span></span></li>
-                        <li>Status: <span></span></li>
+                        <li>Nome: <span><?= htmlspecialchars($usuario['nome_usuario']) ?></span></li>
+                        <li>Email: <span><?= htmlspecialchars($usuario['email_usuario']) ?></span></li>
+                        <li>Tipo: <span><?= htmlspecialchars($usuario['tipo_usuario']) ?></span></li>
                     </ul>
                 </div>
                 <div class="opcoes">
                     <button class="botao">Editar</button>
-                    <button class="botao">Desativar</button>
+                    <button class="botao">Excluir</button>
                 </div>
             </div>
 
+            <?php endwhile; ?>
+            
+        </div>
     </main>
     <footer>
         <div class="marca_dagua">

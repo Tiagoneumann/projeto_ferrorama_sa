@@ -44,13 +44,13 @@ require '../../assets/php/cadastro.php';
         <div class="estilo_primario bloco_formulario">
             <form method="POST">
 
-                <input class="input_padrao" type="text" name="nome_usuario" placeholder="Nome">
+                <input class="input_padrao estilo_secundario" type="text" name="nome_usuario" placeholder="Nome">
 
-                <input class="input_padrao" type="email" name="email_usuario" placeholder="Email">
+                <input class="input_padrao estilo_secundario" type="email" name="email_usuario" placeholder="Email">
 
-                <input class="input_padrao" type="password" name="senha_usuario" placeholder="Senha">
+                <input class="input_padrao estilo_secundario" type="password" name="senha_usuario" placeholder="Senha">
 
-                <input class="input_padrao" type="password" name="confirmar_senha" placeholder="Confirmar senha">
+                <input class="input_padrao estilo_secundario" type="password" name="confirmar_senha" placeholder="Confirmar senha">
 
                 <div class="outras_opcoes">
                     <a href="../tela_login/tela_login.php">

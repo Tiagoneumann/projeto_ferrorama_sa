@@ -48,9 +48,9 @@ require '../../assets/php/login.php';
 
             <form method="POST">
 
-                <input class="input_padrao" type="text" name="email_usuario" placeholder="Email">
+                <input class="input_padrao estilo_secundario" type="text" name="email_usuario" placeholder="Email">
 
-                <input class="input_padrao" type="password" name="senha_usuario" placeholder="Senha">
+                <input class="input_padrao estilo_secundario" type="password" name="senha_usuario" placeholder="Senha">
 
                 <div class="outras_opcoes">
 

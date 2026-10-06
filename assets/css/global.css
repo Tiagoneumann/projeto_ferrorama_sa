@@ -206,6 +206,7 @@ footer {
 .menu_navbar a {
     text-decoration: none;
     color: var(--cor-texto);
+    font-weight: bold;
 }
 
 .menu_navbar a:hover {
@@ -350,11 +351,13 @@ footer {
     border: none;
     border-radius: 10px;
 
-    background: var(--cor-azul-claro);
+    color: var(--cor-texto);
+    font-weight: bold;
 }
 
 .input_padrao::placeholder {
-    color: var(--cor-texto-escuro);
+    color: var(--cor-texto-esmaecido);
+    font-weight: lighter;
 }
 
 .input_padrao:focus {

@@ -53,10 +53,6 @@ require_once '../../assets/php/autorizacao.php'
     </header>
     <main>
 
-        
-
-        <h5 class="titulo">Trens</h5>
-
         <div class="container">
 
             <div class="card" style="margin-bottom: 15px;">
