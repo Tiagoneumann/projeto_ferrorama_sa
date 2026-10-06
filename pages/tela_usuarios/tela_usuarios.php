@@ -1,7 +1,8 @@
 <?php
 
 require '../../assets/php/conexao.php';
-require_once '../../assets/php/autorizacao.php'
+require_once '../../assets/php/autorizacao.php';
+require_once '../../assets/php/admin_auto.php';
 
 ?>
 
@@ -17,13 +18,15 @@ require_once '../../assets/php/autorizacao.php'
     <link rel="stylesheet" href="style.css">
 
     <script src="main.js" defer></script>
-    <script src="../../assets/js/global.js" defer></script>
+    <script src="../../assets/js/global.js" defer></script> 
 
-    <title>Track Flow || Sensores</title>
+    <title>Track Flow || Usuários</title>
 </head>
 
 <body>
     <header>
+
+        <div id="conta"></div>
 
         <nav class="navbar">
             <div class="navbar_bloco">
@@ -53,9 +56,9 @@ require_once '../../assets/php/autorizacao.php'
     <main>
 
         <div class="container">
-            <button class="btn_novousu">Novo Usuário</button>
+            <button class="botao" id="criar_usuario">Novo Usuário</button>
 
-            <div class="card">
+            <div class="bloco estilo_primario">
                 <div class="dados">
                     <ul>
                         <li>Nome: <span></span></li>
@@ -65,26 +68,10 @@ require_once '../../assets/php/autorizacao.php'
                     </ul>
                 </div>
                 <div class="opcoes">
-                    <button class="editar">Editar</button>
-                    <button class="Desativar">Desativar</button>
+                    <button class="botao">Editar</button>
+                    <button class="botao">Desativar</button>
                 </div>
             </div>
-
-            <div class="card">
-                <div class="dados">
-                    <ul>
-                        <li>Nome: <span></span></li>
-                        <li>Email: <span></span></li>
-
-                    </ul>
-                </div>
-                <div class="opcoes">
-                    <button class="editar">Editar</button>
-                    <button class="Desativar">Desativar</button>
-                </div>
-            </div>
-
-        </div>
 
     </main>
     <footer>

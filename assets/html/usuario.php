@@ -18,8 +18,6 @@ session_start();
                 <li><strong>Autorização:</strong> <?php echo $_SESSION['tipo_usuario']?> </li>
             </ul>
 
-            <br>
-
             <div class="ajuste_botoes">
                 <form action="../../assets/php/logout.php" method='POST'>
                     <button class="botao extensao_botao">Sair da sessão</button>

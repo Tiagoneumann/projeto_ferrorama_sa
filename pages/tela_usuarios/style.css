@@ -5,36 +5,12 @@
     gap: 10px;
 }
 
-.btn_novousu{
-    background-color: var(--cor-azul);
-    border: none;
-    padding: 8px 30px;
-
-    border-radius: 16px;
-
-    margin-bottom: 10px;
-
-    transition: var(--transition-fast);
-}
-
-.btn_novousu:hover{
-    background-color: var(--cor-azul-escuro);
-    color: var(--cor-texto);
-}
-
-.btn_novousu:active{
-    background-color: var(--cor-azul);
-}
-
-.card{
+.bloco{
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     border-radius: 12px;
-
-    background-color: var(--cor-azul-claro);
-
     padding: 10px;
 }
 
@@ -43,7 +19,7 @@
         grid-template-columns: 1fr 1fr;
     }
 
-    .btn_novousu{
+    .botao{
         grid-column: span 2;
     }
 }
@@ -54,6 +30,8 @@
 
 .dados li{
     font-size: clamp(0.7rem, 1vw, 1.5rem);
+    font-weight: bold;
+    color: var(--cor-texto);
 }
 
 .opcoes{
@@ -80,4 +58,37 @@
 
 .opcoes button:active{
     background-color: var(--cor-azul-claro);
+}
+
+.bloco_conta form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100%;
+
+    gap: 10px;
+}
+
+.bloco_conta input{
+    display: flex;
+    width: 100%;
+}
+
+.separacao{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10px;
+}
+
+.opcoes_usuario{
+    display: inline-flex;
+
+    gap: 20px;
+}
+
+.opcoes_usuario label{
+    display: flex;
+    align-items: center;
 }
