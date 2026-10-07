@@ -24,6 +24,8 @@ require_once '../../assets/php/autorizacao.php'
 <body>
     <header>
 
+        <div id="usuario"></div>
+
         <nav class="navbar">
             <div class="navbar_bloco">
                 <button class="btn_navbar_menu" id="btn_menu"><i class="fa-solid fa-bars"></i></button>
@@ -33,8 +35,7 @@ require_once '../../assets/php/autorizacao.php'
                     <h6>Sensores</h6>
                 </div>
 
-                <a href="../tela_usuarios/index.html" class="perfil"><img
-                        src="https://i.pinimg.com/736x/23/40/8e/23408e565fc3f43454636fec27572d1f.jpg" alt=""></a>
+                <button class="perfil" id="perfil"><img src="https://i.pinimg.com/736x/23/40/8e/23408e565fc3f43454636fec27572d1f.jpg" alt="perfil"></button>
             </div>
 
             <div class="menu_navbar">
@@ -76,8 +77,8 @@ require_once '../../assets/php/autorizacao.php'
         </div>
 
         <div class="inputs">
-            <input type="text" placeholder="Insira o ID do sensor">
-            <button>Enviar manutenção</button>
+            <input type="text" class="input_padrao estilo_secundario" placeholder="Insira o ID do sensor">
+            <button class="botao">Enviar manutenção</button>
         </div>
 
     </main>

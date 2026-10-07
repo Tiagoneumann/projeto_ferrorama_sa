@@ -29,6 +29,7 @@ $resultado = $conexao->query($sql);
 <body>
     <header>
 
+        <div id="usuario"></div>
         <div id="conta"></div>
 
         <nav class="navbar">
@@ -40,8 +41,7 @@ $resultado = $conexao->query($sql);
                     <h6>Usuários</h6>
                 </div>
 
-                <a href="../tela_usuarios/index.php" class="perfil"><img
-                        src="https://i.pinimg.com/736x/23/40/8e/23408e565fc3f43454636fec27572d1f.jpg" alt=""></a>
+                <button class="perfil" id="perfil"><img src="https://i.pinimg.com/736x/23/40/8e/23408e565fc3f43454636fec27572d1f.jpg" alt="perfil"></button>
             </div>
 
             <div class="menu_navbar">

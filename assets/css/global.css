@@ -169,13 +169,17 @@ footer {
     cursor: pointer;
 
     color: var(--cor-texto);
+
+    transition: var(--transition-fast);
 }
 
 .navbar_bloco button:hover {
-    color: var(--cor-fundo);
+    transform: scale(1.05);
+    color: var(--cor-texto-esmaecido);
 }
 
 .navbar_bloco button:active {
+    transform: scale(1);
     color: var(--cor-texto);
 }
 

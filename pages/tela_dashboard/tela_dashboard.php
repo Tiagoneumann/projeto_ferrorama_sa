@@ -36,7 +36,7 @@ require_once '../../assets/php/autorizacao.php'
                     <h6>Dashboard</h6>
                 </div>
 
-                <button class="perfil" id="perfil"><img src="https://i.pinimg.com/736x/23/40/8e/23408e565fc3f43454636fec27572d1f.jpg" alt=""></button>
+                <button class="perfil" id="perfil"><img src="https://i.pinimg.com/736x/23/40/8e/23408e565fc3f43454636fec27572d1f.jpg" alt="perfil"></button>
             </div>
 
             <div class="menu_navbar">

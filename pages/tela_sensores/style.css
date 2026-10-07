@@ -70,46 +70,6 @@
     transform: translate(-50%, -50%);
 }
 
-.inputs input{
-    background-color: var(--cor-azul-escuro);
-    border-radius: 16px;
-    border: none;
-
-    color: var(--cor-texto);
-
-    padding: 10px 50px;
-    transition: var(--transition-fast);
-}
-
 .inputs input::placeholder{
     text-align: center;
-    color: var(--cor-texto-esmaecido);
-}
-
-.inputs input:focus::placeholder{
-    color: var(--cor-texto);
-}
-
-.inputs input:focus{
-    outline: none;
-    background-color: var(--cor-azul);
-}
-
-.inputs button{
-    background-color: var(--cor-azul);
-    border-radius: 10px;
-    border: none;
-
-    padding: 6px;
-
-    transition: var(--transition-fast);
-}
-
-.inputs button:hover{
-    background-color: var(--cor-azul-escuro);
-    color: var(--cor-texto);
-}
-
-.inputs button:active{
-    background-color: var(--cor-azul);
 }

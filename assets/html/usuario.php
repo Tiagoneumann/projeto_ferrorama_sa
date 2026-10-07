@@ -25,9 +25,7 @@ session_start();
                 <form action="../../assets/php/excluir_conta.php" method='POST'>
                     <button class="botao extensao_botao">Excluír conta</button>
                 </form>
-            </div>
-                    
+            </div>    
         </div>
-    </div>
-             
+    </div>        
 </div>

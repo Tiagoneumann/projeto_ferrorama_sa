@@ -21,6 +21,9 @@ require_once '../../assets/php/autorizacao.php'
 </head>
 <body>
     <header>
+
+        <div id="usuario"></div>
+
         <nav class="navbar">
             <div class="navbar_bloco">
                 <button class="btn_navbar_menu" id="btn_menu"><i class="fa-solid fa-bars"></i></button>
@@ -30,8 +33,7 @@ require_once '../../assets/php/autorizacao.php'
                     <h6>Relatórios</h6>
                 </div>
 
-                <a href="../tela_usuarios/index.php" class="perfil"><img
-                        src="https://i.pinimg.com/736x/23/40/8e/23408e565fc3f43454636fec27572d1f.jpg" alt=""></a>
+                <button class="perfil" id="perfil"><img src="https://i.pinimg.com/736x/23/40/8e/23408e565fc3f43454636fec27572d1f.jpg" alt="perfil"></button>
             </div>
 
             <div class="menu_navbar">
@@ -46,59 +48,18 @@ require_once '../../assets/php/autorizacao.php'
         </nav>
     </header>
     <main>
-        <div class="container">
-            <h6 class="titulo">Relatório</h6>
+        <div class="container estilo_secundario">
+            <h6 class="titulo">Relatório</h6> 
 
-            <div class="bloco">
-                <label> 
-                    Período:
-                    <input type="text">
-                </label>
-            </div>
+            <input type="text" class="input_padrao estilo_secundario" placeholder="Período">
+            <input type="text" class="input_padrao estilo_secundario" placeholder="Tipo do relátorio">
+            <input type="text" class="input_padrao estilo_secundario" placeholder="Trem">
+            <input type="text" class="input_padrao estilo_secundario" placeholder="Sensor">
+            <input type="text" class="input_padrao estilo_secundario" placeholder="Status atual">
+            <input type="text" class="input_padrao estilo_secundario" placeholder="Velocidade média">
+            <input type="text" class="input_padrao estilo_secundario" placeholder="Ocorrências/Descrição">
 
-            <div class="bloco">
-                <label> 
-                    Tipo de relatório:
-                    <input type="text">
-                </label>
-            </div>
-
-            <div class="bloco">
-                <label> 
-                    Trem (opcional):
-                    <input type="text">
-                </label>
-            </div>
-
-            <div class="bloco">
-                <label> 
-                    Sensor (opcional):
-                    <input type="text">
-                </label>
-            </div>
-
-            <div class="bloco">
-                <label> 
-                    Status atual:
-                    <input type="text">
-                </label>
-            </div>
-
-            <div class="bloco">
-                <label> 
-                    Velocidade média:
-                    <input type="text">
-                </label>
-            </div>
-
-            <div class="bloco">
-                <label> 
-                    Ocorrências/descrição:
-                    <input type="text">
-                </label>
-            </div>
-
-            <button class="btn_relatorio">Enviar Relatório</button>
+            <button class="botao">Enviar Relatório</button>
         </div>
     </main>
     <footer>

@@ -1,6 +1,6 @@
 <?php
 
-require_once '../../assets/php/autorizacao.php'
+require_once '../../assets/php/autorizacao.php';
 
 ?>
 
@@ -24,6 +24,8 @@ require_once '../../assets/php/autorizacao.php'
 <body>
     <header>
 
+        <div id="usuario"></div>
+
         <nav class="navbar">
             <div class="navbar_bloco">
                 <button class="btn_navbar_menu" id="btn_menu"><i class="fa-solid fa-bars"></i></button>
@@ -33,8 +35,7 @@ require_once '../../assets/php/autorizacao.php'
                     <h6>Trens</h6>
                 </div>
 
-                <a href="../tela_usuarios/index.php" class="perfil"><img
-                        src="https://i.pinimg.com/736x/23/40/8e/23408e565fc3f43454636fec27572d1f.jpg" alt=""></a>
+                <button class="perfil" id="perfil"><img src="https://i.pinimg.com/736x/23/40/8e/23408e565fc3f43454636fec27572d1f.jpg" alt="perfil"></button>
             </div>
 
             <div class="menu_navbar">
@@ -55,6 +56,7 @@ require_once '../../assets/php/autorizacao.php'
             
             <button class="botao">Adicionar Trem</button>
 
+            
             <div class="card">
                 <img src="https://mobilidade.estadao.com.br/wp-content/uploads/2024/03/Trem.jpeg" alt="trem">
 
@@ -63,37 +65,14 @@ require_once '../../assets/php/autorizacao.php'
                         <li>ID: <span></span></li>
                         <li>Horário: <span></span></li>
                         <li>Modelo: <span></span></li>
-                        <li>Capacidade Max: <span></span></li>
                     </ul>
                     <ul>
                         <li>Linha: <span></span></li>
                         <li>Capacidade: <span></span></li>
                         <li>Operador: <span></span></li>
-                        <li>Capacidade atual: <span></span></li>
                     </ul>
                 </div>
             </div>
-
-            <div class="card">
-                <img src="https://mobilidade.estadao.com.br/wp-content/uploads/2024/03/Trem.jpeg" alt="trem">
-
-                <div class="dados">
-                    <ul>
-                        <li>ID: <span></span></li>
-                        <li>Horário: <span></span></li>
-                        <li>Modelo: <span></span></li>
-                        <li>Capacidade Max: <span></span></li>
-                    </ul>
-                    <ul>
-                        <li>Linha: <span></span></li>
-                        <li>Capacidade: <span></span></li>
-                        <li>Operador: <span></span></li>
-                        <li>Capacidade atual: <span></span></li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
 
     </main>
     <footer>
