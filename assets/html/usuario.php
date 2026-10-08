@@ -13,9 +13,9 @@ session_start();
                 
         <div class="bloco_conta estilo_secundario">
             <ul>
-                <li><strong>Nome:</strong> <?php echo $_SESSION['nome_usuario']?> </li>
-                <li><strong>Email:</strong> <?php echo $_SESSION['email_usuario']?> </li>
-                <li><strong>Autorização:</strong> <?php echo $_SESSION['tipo_usuario']?> </li>
+                <li class="estilo_secundario"><strong>Nome:</strong> <?php echo $_SESSION['nome_usuario']?> </li>
+                <li class="estilo_secundario"><strong>Email:</strong> <?php echo $_SESSION['email_usuario']?> </li>
+                <li class="estilo_secundario"><strong>Autorização:</strong> <?php echo $_SESSION['tipo_usuario']?> </li>
             </ul>
 
             <div class="ajuste_botoes">

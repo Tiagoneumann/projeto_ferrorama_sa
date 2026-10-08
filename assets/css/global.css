@@ -278,7 +278,7 @@ footer {
     width: 100%;
     height: 100vh;
 
-    padding: 100px;
+    padding: 50px 10px 50px 10px;
 }
 
 .bloco_conta{
@@ -288,12 +288,24 @@ footer {
 
     height: 100%;
 
-    padding: 25px;
+    padding: 10px;
     border-radius: 12px;
 }
 
 .bloco_conta ul{
     list-style: none;
+}
+
+.bloco_conta li{
+    color: var(--cor-texto-esmaecido);
+    border-radius: 10px;
+
+    padding: 8px;
+    margin-bottom: 5px;
+}
+
+.bloco_conta strong{
+    color: var(--cor-texto);
 }
 
 .ajuste_conta{
@@ -304,7 +316,8 @@ footer {
 
 .ajuste_botoes{
     display: flex;
-    gap: 20px;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .ajuste_botoes form{
@@ -334,6 +347,25 @@ footer {
     transform: scale(1);
     color: var(--cor-texto);
 }
+
+@media (min-width: 768px){
+    .conta{
+        padding: 60px 20px 60px 20px;
+    }
+
+    .bloco_conta{
+        padding: 20px;
+    }
+
+    .ajuste_botoes{
+        flex-direction: row;
+        gap: 15px;
+    }
+}
+
+/* =====================
+   OUTROS
+===================== */
 
 .bloco_formulario {
     display: flex;
