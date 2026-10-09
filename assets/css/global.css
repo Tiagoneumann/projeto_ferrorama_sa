@@ -408,6 +408,7 @@ footer {
 
     color: var(--cor-texto);
     font-weight: bold;
+    font-size: 0.8rem !important;
 
     padding: 10px;
 

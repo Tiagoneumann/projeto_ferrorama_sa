@@ -4,7 +4,7 @@ require '../../assets/php/conexao.php';
 require_once '../../assets/php/autorizacao.php';
 require_once '../../assets/php/admin_auto.php';
 
-$sql = "SELECT nome_usuario, email_usuario, tipo_usuario FROM usuario";
+$sql = "SELECT id_usuario, nome_usuario, email_usuario, tipo_usuario FROM usuario";
 $resultado = $conexao->query($sql);
 
 ?>
@@ -61,7 +61,7 @@ $resultado = $conexao->query($sql);
         <div class="container">
             <button class="botao" id="criar_usuario">Novo Usuário</button>
 
-            <?php while ($usuario = $resultado->fetch_assoc()): ?>
+        <?php while ($usuario = $resultado->fetch_assoc()): ?>
 
             <div class="bloco estilo_primario">
                 <div class="dados">
@@ -72,12 +72,22 @@ $resultado = $conexao->query($sql);
                     </ul>
                 </div>
                 <div class="opcoes">
-                    <button class="botao">Editar</button>
-                    <button class="botao">Excluir</button>
+
+                    <form action="../../assets/php/editar_usuario.php" method="GET">
+                        <input type="hidden" name="id_usuario" value="<?= (int) $usuario['id_usuario'] ?>">
+
+                        <button type="submit" class="botao">Editar</button>
+                    </form>
+                    
+                    <form action="../../assets/php/excluir_usuario.php" method="POST">
+                        <input type="hidden" name="id_usuario" value="<?= (int) $usuario['id_usuario'] ?>">
+
+                        <button type="submit" class="botao">Excluir</button>
+                    </form>
                 </div>
             </div>
 
-            <?php endwhile; ?>
+        <?php endwhile; ?>
             
         </div>
     </main>
