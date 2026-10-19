@@ -25,6 +25,7 @@ require_once '../../assets/php/autorizacao.php';
     <header>
 
         <div id="usuario"></div>
+        <div id="trem"></div>
 
         <nav class="navbar">
             <div class="navbar_bloco">
@@ -54,7 +55,7 @@ require_once '../../assets/php/autorizacao.php';
 
         <div class="container">
             
-            <button class="botao">Adicionar Trem</button>
+            <button id="criar_trem" class="botao">Adicionar Trem</button>
 
             
             <div class="card">
@@ -63,13 +64,13 @@ require_once '../../assets/php/autorizacao.php';
                 <div class="dados">
                     <ul>
                         <li>ID: <span></span></li>
-                        <li>Horário: <span></span></li>
+                        <li>Prefixo: <span></span></li>
                         <li>Modelo: <span></span></li>
                     </ul>
                     <ul>
+                        <li>Ano: <span></span></li>
+                        <li>Status: <span></span></li>
                         <li>Linha: <span></span></li>
-                        <li>Capacidade: <span></span></li>
-                        <li>Operador: <span></span></li>
                     </ul>
                 </div>
             </div>
