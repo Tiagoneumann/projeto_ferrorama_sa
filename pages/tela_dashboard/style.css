@@ -1,14 +1,7 @@
-.titulo {
-    display: inline-flex;
-    justify-content: center;
-    width: 100%;
-    color: var(--cor-texto);
-}
-
 .container {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 15px;
+    gap: 15px; 
 }
 
 .card,

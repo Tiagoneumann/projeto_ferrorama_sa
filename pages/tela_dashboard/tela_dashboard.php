@@ -2,7 +2,7 @@
 
 require_once '../../assets/php/autorizacao.php'
 
-?>
+?> 
 
 <!DOCTYPE html>
 <html lang="pt-BR">

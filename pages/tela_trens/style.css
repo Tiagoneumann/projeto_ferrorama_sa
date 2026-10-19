@@ -70,7 +70,19 @@
 
 .dados li{
     font-size: clamp(0.7rem, 1vw, 1.5rem);
+    font-weight: bold;
     color: var(--cor-texto);
+}
+
+.dados span{
+    font-weight: lighter;
+}
+
+.divisao_btn{
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    
 }
 
 @media (min-width: 1024px){

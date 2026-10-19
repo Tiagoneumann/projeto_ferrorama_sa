@@ -20,6 +20,7 @@ CREATE TABLE trem (
     modelo_trem VARCHAR(100) NOT NULL,
     ano_trem INT NOT NULL CHECK(ano_trem BETWEEN 1800 AND 2100),
     status_trem ENUM('ativo', 'manutencao', 'parado') DEFAULT 'ativo' NOT NULL,
+    imagem_trem VARCHAR(255) NULL;
     id_linha INT,
 
     FOREIGN KEY (id_linha) REFERENCES linha(id_linha) ON UPDATE CASCADE ON DELETE SET NULL

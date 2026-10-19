@@ -2,6 +2,9 @@
 
 require_once '../../assets/php/autorizacao.php';
 
+$sql = "SELECT * FROM trem";
+$resultado = $conexao->query($sql);
+
 ?>
 
 <!DOCTYPE html>
@@ -57,29 +60,36 @@ require_once '../../assets/php/autorizacao.php';
             
             <button id="criar_trem" class="botao">Adicionar Trem</button>
 
-            
+            <?php while($trem = $resultado->fetch_assoc()): ?>
+
             <div class="card">
-                <img src="https://mobilidade.estadao.com.br/wp-content/uploads/2024/03/Trem.jpeg" alt="trem">
+                <img src="<?= htmlspecialchars($trem['imagem_trem']) ?: "../../assets/img/trem_bala.png"?>" alt="trem">
 
                 <div class="dados">
                     <ul>
-                        <li>ID: <span></span></li>
-                        <li>Prefixo: <span></span></li>
-                        <li>Modelo: <span></span></li>
+                        <li>ID: <span><?= htmlspecialchars($trem['id_trem'])?></span></li>
+                        <li>Prefixo: <span><?= htmlspecialchars($trem['prefixo_trem'])?></span></li>
+                        <li>Modelo: <span><?= htmlspecialchars($trem['modelo_trem'])?></span></li>
                     </ul>
                     <ul>
-                        <li>Ano: <span></span></li>
-                        <li>Status: <span></span></li>
-                        <li>Linha: <span></span></li>
+                        <li>Ano: <span><?= htmlspecialchars($trem['ano_trem'])?></span></li>
+                        <li>Status: <span><?= htmlspecialchars($trem['status_trem'])?></span></li>
+                        <li>Linha: <span><?= htmlspecialchars($trem['id_linha'] ?? "Sem linha")?></span></li>
                     </ul>
                 </div>
+
+                <div class="divisao_btn">
+                    <button class="botao">Editar</button>
+                    <button class="botao">Excluir</button>
+                </div>
+                
             </div>
+
+            <?php endwhile;?>
 
     </main>
     <footer>
-        <div class="marca_dagua">
-            <small>Track Flow© 2026</small>
-        </div>
+            <small class="marca_dagua">Track Flow© 2026</small>
     </footer>
 </body>
 

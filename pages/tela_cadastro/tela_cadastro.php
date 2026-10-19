@@ -1,6 +1,6 @@
 <?php
 
-require '../../assets/php/cadastro.php';
+require '../../assets/php/cadastro.php'; 
 
 ?>
 
