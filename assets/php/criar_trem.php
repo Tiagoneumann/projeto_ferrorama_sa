@@ -1,84 +1,67 @@
-```php
+
 <?php
 
-session_start();
-
-require_once 'conexao.php';
+require 'conexao.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: ../../pages/tela_trens/tela_trens.php');
     exit;
 }
 
-$prefixo_trem = trim($_POST['prefixo_trem'] ?? '');
-$modelo_trem = trim($_POST['modelo_trem'] ?? '');
-$ano_trem = $_POST['ano_trem'] ?? '';
-$id_linha = $_POST['linhas'] ?? '';
-$status_trem = $_POST['status_trem'] ?? 'ativo';
+$prefixo = trim($_POST['prefixo_trem'] ?? '');
+$modelo  = trim($_POST['modelo_trem'] ?? '');
+$ano     = filter_input(INPUT_POST, 'ano_trem', FILTER_VALIDATE_INT);
+$linha   = $_POST['linhas'] ?? '';
+$status  = $_POST['status_trem'] ?? '';
 
 if (
-    $prefixo_trem === '' ||
-    $modelo_trem === '' ||
-    $ano_trem === ''
+    $prefixo === '' ||
+    $modelo === '' ||
+    $ano === false ||
+    $ano === null ||
+    $ano < 1800 ||
+    $ano > 2100 ||
+    !in_array($status, ['ativo', 'manutencao', 'parado'], true)
 ) {
-    $_SESSION['erro_trem'] = 'Preencha todos os campos obrigatórios!';
-    header('Location: ../../pages/tela_trens/tela_trens.php');
-    exit;
+    exit('Dados inválidos. Verifique os campos do formulário.');
 }
 
-if (
-    filter_var($ano_trem, FILTER_VALIDATE_INT) === false ||
-    (int) $ano_trem < 1800 ||
-    (int) $ano_trem > 2100
-) {
-    $_SESSION['erro_trem'] = 'Informe um ano entre 1800 e 2100!';
-    header('Location: ../../pages/tela_trens/tela_trens.php');
-    exit;
+$id_linha = null;
+
+if ($linha !== '') {
+    $id_linha = filter_var($linha, FILTER_VALIDATE_INT);
+
+    if ($id_linha === false || $id_linha <= 0) {
+        exit('Linha selecionada inválida.');
+    }
+
+    $stmtLinha = $conexao->prepare(
+        'SELECT id_linha FROM linha WHERE id_linha = ?'
+    );
+
+    $stmtLinha->bind_param('i', $id_linha);
+    $stmtLinha->execute();
+
+    $resultadoLinha = $stmtLinha->get_result();
+    $linhaExiste = $resultadoLinha->num_rows > 0;
+
+    $stmtLinha->close();
+
+    if (!$linhaExiste) {
+        exit('A linha selecionada não existe.');
+    }
 }
 
-$status_permitidos = ['ativo', 'manutencao', 'parado'];
+$pastaImagens = '../../assets/img/trens/';
 
-if (!in_array($status_trem, $status_permitidos, true)) {
-    $_SESSION['erro_trem'] = 'Status inválido!';
-    header('Location: ../../pages/tela_trens/tela_trens.php');
-    exit;
+if (!is_dir($pastaImagens)) {
+    if (!mkdir($pastaImagens, 0755, true) && !is_dir($pastaImagens)) {
+        exit('Não foi possível criar a pasta de imagens.');
+    }
 }
 
-if (
-    filter_var($id_linha, FILTER_VALIDATE_INT) === false ||
-    (int) $id_linha <= 0
-) {
-    $_SESSION['erro_trem'] = 'Selecione uma linha válida!';
-    header('Location: ../../pages/tela_trens/tela_trens.php');
-    exit;
-}
-
-$id_linha = (int) $id_linha;
-
-$sql_linha = "SELECT id_linha FROM linha WHERE id_linha = ?";
-$stmt_linha = $conexao->prepare($sql_linha);
-
-if (!$stmt_linha) {
-    $_SESSION['erro_trem'] = 'Erro ao verificar a linha.';
-    header('Location: ../../pages/tela_trens/tela_trens.php');
-    exit;
-}
-
-$stmt_linha->bind_param('i', $id_linha);
-$stmt_linha->execute();
-
-$resultado_linha = $stmt_linha->get_result();
-$linha_existe = $resultado_linha->num_rows > 0;
-
-$stmt_linha->close();
-
-if (!$linha_existe) {
-    $_SESSION['erro_trem'] = 'A linha selecionada não existe!';
-    header('Location: ../../pages/tela_trens/tela_trens.php');
-    exit;
-}
-
-$caminho_imagem = null;
+$caminhoImagem = null;
+$arquivoSalvo = null;
 
 if (
     isset($_FILES['imagem_trem']) &&
@@ -87,91 +70,77 @@ if (
     $imagem = $_FILES['imagem_trem'];
 
     if ($imagem['error'] !== UPLOAD_ERR_OK) {
-        $_SESSION['erro_trem'] = 'Erro ao enviar a imagem.';
-        header('Location: ../../pages/tela_trens/tela_trens.php');
-        exit;
+        exit('Erro durante o envio da imagem.');
     }
 
     if ($imagem['size'] > 5 * 1024 * 1024) {
-        $_SESSION['erro_trem'] = 'A imagem deve ter no máximo 5 MB!';
-        header('Location: ../../pages/tela_trens/tela_trens.php');
-        exit;
+        exit('A imagem deve ter no máximo 5 MB.');
     }
 
-    $arquivo_temporario = $imagem['tmp_name'];
+    $finfo = new finfo(FILEINFO_MIME_TYPE);
+    $mime = $finfo->file($imagem['tmp_name']);
 
-    $tipo_imagem = (new finfo(FILEINFO_MIME_TYPE))
-        ->file($arquivo_temporario);
+    $tiposPermitidos = [
+        'image/jpeg' => 'jpg',
+        'image/png'  => 'png',
+        'image/webp' => 'webp'
+    ];
 
-    $tipos_permitidos = ['image/jpeg' => 'jpg', 'image/png'  => 'png', 'image/webp' => 'webp'];
-
-    if (!isset($tipos_permitidos[$tipo_imagem])) {
-        $_SESSION['erro_trem'] = 'Envie uma imagem JPG, PNG ou WEBP!';
-        header('Location: ../../pages/tela_trens/tela_trens.php');
-        exit;
+    if (!isset($tiposPermitidos[$mime])) {
+        exit('Formato inválido. Envie uma imagem JPG, PNG ou WEBP.');
     }
 
-    $pasta_imagens = '../../assets/img/trens/';
+    $nomeArquivo = bin2hex(random_bytes(16))
+        . '.' . $tiposPermitidos[$mime];
 
-    if (
-        !is_dir($pasta_imagens) &&
-        !mkdir($pasta_imagens, 0755, true)
-    ) {
-        $_SESSION['erro_trem'] = 'Não foi possível criar a pasta de imagens.';
-        header('Location: ../../pages/tela_trens/tela_trens.php');
-        exit;
+    $arquivoSalvo = $pastaImagens . $nomeArquivo;
+
+    if (!move_uploaded_file($imagem['tmp_name'], $arquivoSalvo)) {
+        exit('Não foi possível salvar a imagem.');
     }
 
-    $nome_imagem = bin2hex(random_bytes(16))
-        . '.' . $tipos_permitidos[$tipo_imagem];
-
-    $destino = $pasta_imagens . $nome_imagem;
-
-    if (!move_uploaded_file($arquivo_temporario, $destino)) {
-        $_SESSION['erro_trem'] = 'Não foi possível salvar a imagem.';
-        header('Location: ../../pages/tela_trens/tela_trens.php');
-        exit;
-    }
-
-    $caminho_imagem = 'assets/img/trens/' . $nome_imagem;
+    $caminhoImagem = '../../assets/img/trens/' . $nomeArquivo;
 }
 
-$sql = "INSERT INTO trem (prefixo_trem, modelo_trem, ano_trem, status_trem, id_linha, imagem_trem) VALUES (?, ?, ?, ?, ?, ?)";
+$sql = "INSERT INTO trem
+        (prefixo_trem, modelo_trem, ano_trem,
+         status_trem, imagem_trem, id_linha)
+        VALUES (?, ?, ?, ?, ?, ?)";
 
 $stmt = $conexao->prepare($sql);
 
 if (!$stmt) {
-
-    if ($caminho_imagem !== null) {
-        @unlink($destino);
+    if ($arquivoSalvo !== null && file_exists($arquivoSalvo)) {
+        unlink($arquivoSalvo);
     }
 
-    $_SESSION['erro_trem'] = 'Erro ao preparar o cadastro do trem.';
-    header('Location: ../../pages/tela_trens/tela_trens.php');
+    exit('Erro ao preparar o cadastro do trem.');
+}
+
+$stmt->bind_param(
+    'ssissi',
+    $prefixo,
+    $modelo,
+    $ano,
+    $status,
+    $caminhoImagem,
+    $id_linha
+);
+
+if ($stmt->execute()) {
+    $stmt->close();
+    $conexao->close();
+
+    header('Location: ../../pages/tela_trens/tela_trens.php?cadastro_trem=sucesso');
     exit;
 }
 
-$ano_trem = (int) $ano_trem;
-
-$stmt->bind_param('ssis is', $prefixo_trem, $modelo_trem, $ano_trem, $status_trem, $id_linha, $caminho_imagem);
-
-if ($stmt->execute()) {
-
-    $_SESSION['sucesso_trem'] = 'Trem cadastrado com sucesso!';
-
-} else {
-
-    if ($caminho_imagem !== null) {
-        @unlink($destino);
-    }
-
-    $_SESSION['erro_trem'] = 'Não foi possível cadastrar o trem.';
+if ($arquivoSalvo !== null && file_exists($arquivoSalvo)) {
+    unlink($arquivoSalvo);
 }
 
 $stmt->close();
+$conexao->close();
 
-header('Location: ../../pages/tela_trens/tela_trens.php');
-exit;
-
-?>
-```
+http_response_code(500);
+exit('Não foi possível cadastrar o trem. Tente novamente.');

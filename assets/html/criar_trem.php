@@ -2,7 +2,7 @@
 
 require '../../assets/php/conexao.php';
 
-$sql = "SELECT id_linha, nome_linha FROM linha";
+$sql = "SELECT * FROM linha";
 $resultado = $conexao->query($sql);
 
 ?>
@@ -17,14 +17,8 @@ $resultado = $conexao->query($sql);
         <div class="bloco_conta estilo_secundario">
             <form action="../../assets/php/criar_trem.php" method='POST' enctype="multipart/form-data">
                 <div class="separacao">
-                    
-                    <div class="separacao_imagem">
-                        <input class="input_padrao estilo_secundario" type="file" name="imagem_trem" id="imagem_trem"accept="image/jpeg, image/png, image/webp">
-                        
-                        <div id="area_colar_imagem" class="input_padrao estilo_secundario" tabindex="0"> Cole uma imagem aqui com Ctrl + V</div>
-                        
-                        <img id="previa_imagem" alt="Prévia da imagem do trem" hidden>
-                    </div>
+
+                    <input class="input_padrao estilo_secundario" type="file" name="imagem_trem" id="imagem_trem" accept="image/jpeg, image/png, image/webp">
 
                     <input class="input_padrao estilo_secundario" type="text" name="prefixo_trem" placeholder="Prefixo | ex: BR 403" required>
 
@@ -32,7 +26,7 @@ $resultado = $conexao->query($sql);
 
                     <input class="input_padrao estilo_secundario" type="number" name="ano_trem" placeholder="Ano de criação | ex: 2019" min="1800" max="2100" required >
 
-                    <select class="input_padrao estilo_secundario" name="linhas" id="linhas" required>
+                    <select class="input_padrao estilo_secundario" name="linhas" id="linhas">
                         
                         <option value="">Selecione uma linha</option>
 

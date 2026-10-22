@@ -4,7 +4,7 @@ USE trackflow_sa;
 CREATE TABLE usuario (
     id_usuario INT AUTO_INCREMENT PRIMARY KEY,
     nome_usuario VARCHAR(100) NOT NULL CHECK (length(trim(nome_usuario)) >= 2),
-    email_usuario VARCHAR(150) NOT NULL CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci UNIQUE,
+    email_usuario VARCHAR(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL UNIQUE,
     senha_usuario VARCHAR(255) NOT NULL,
     tipo_usuario ENUM('usuario', 'admin') NOT NULL DEFAULT 'usuario'
 );
@@ -20,7 +20,7 @@ CREATE TABLE trem (
     modelo_trem VARCHAR(100) NOT NULL,
     ano_trem INT NOT NULL CHECK(ano_trem BETWEEN 1800 AND 2100),
     status_trem ENUM('ativo', 'manutencao', 'parado') DEFAULT 'ativo' NOT NULL,
-    imagem_trem VARCHAR(255) NULL;
+    imagem_trem VARCHAR(255) NULL,
     id_linha INT,
 
     FOREIGN KEY (id_linha) REFERENCES linha(id_linha) ON UPDATE CASCADE ON DELETE SET NULL
@@ -45,3 +45,11 @@ CREATE TABLE leitura (
 
     FOREIGN KEY (id_sensor) REFERENCES sensor(id_sensor) ON UPDATE CASCADE ON DELETE CASCADE
 );
+
+/*===================
+Alterar tipo_usuario
+===================*/
+
+UPDATE usuario
+SET tipo_usuario = 'admin'
+WHERE id_usuario = 1;

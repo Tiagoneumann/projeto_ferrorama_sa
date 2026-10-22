@@ -16,6 +16,10 @@
     width: 100%;
 }
 
+.botao{
+    padding: 12px;
+}
+
 .dados ul{
     list-style: none;
 }
@@ -43,6 +47,7 @@
 
     background-color: var(--cor-azul);
     padding: 5px 10px;
+    width: 70px;
     transition: var(--transition-fast);
 }
 

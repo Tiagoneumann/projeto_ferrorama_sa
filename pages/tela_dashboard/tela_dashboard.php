@@ -1,6 +1,9 @@
 <?php
 
-require_once '../../assets/php/autorizacao.php'
+require_once '../../assets/php/autorizacao.php';
+
+$sql = "SELECT * FROM trem";
+$resultado = $conexao->query($sql);
 
 ?> 
 
@@ -146,61 +149,18 @@ require_once '../../assets/php/autorizacao.php'
                             <th>Ano</th>
                         </tr>
 
-                        <tr>
-                            <td>T001</td>
-                            <td>Alstom Série 100</td>
-                            <td>Ativo</td>
-                            <td>Estação central</td>
-                            <td>2009</td>
-                        </tr>
+                        <?php while($trem = $resultado->fetch_assoc()): ?>
 
                         <tr>
-                            <td>T001</td>
-                            <td>Alstom Série 100</td>
-                            <td>Ativo</td>
-                            <td>Estação central</td>
-                            <td>2009</td>
+                            <td><?= htmlspecialchars($trem['prefixo_trem']) ?></td>
+                            <td><?= htmlspecialchars($trem['modelo_trem']) ?></td>
+                            <td><?= htmlspecialchars($trem['status_trem']) ?></td>
+                            <td><?= htmlspecialchars($trem['id_linha'] ?? "Vazio") ?></td>
+                            <td><?= htmlspecialchars($trem['ano_trem']) ?></td>
                         </tr>
 
-                        <tr>
-                            <td>T001</td>
-                            <td>Alstom Série 100</td>
-                            <td>Ativo</td>
-                            <td>Estação central</td>
-                            <td>2009</td>
-                        </tr>
+                        <?php endwhile; ?>
 
-                        <tr>
-                            <td>T001</td>
-                            <td>Alstom Série 100</td>
-                            <td>Ativo</td>
-                            <td>Estação central</td>
-                            <td>2009</td>
-                        </tr>
-
-                        <tr>
-                            <td>T001</td>
-                            <td>Alstom Série 100</td>
-                            <td>Ativo</td>
-                            <td>Estação central</td>
-                            <td>2009</td>
-                        </tr>
-
-                        <tr>
-                            <td>T001</td>
-                            <td>Alstom Série 100</td>
-                            <td>Ativo</td>
-                            <td>Estação central</td>
-                            <td>2009</td>
-                        </tr>
-
-                        <tr>
-                            <td>T001</td>
-                            <td>Alstom Série 100</td>
-                            <td>Ativo</td>
-                            <td>Estação central</td>
-                            <td>2009</td>
-                        </tr>
                     </table>
                 </div>
             </div>
@@ -208,15 +168,15 @@ require_once '../../assets/php/autorizacao.php'
             <div class="aviso estilo_primario">
                 <p><strong><i class="fa-solid fa-bell"></i> Avisos</strong></p>
                 
-                <div>
-                    
+                <div class="estilo_secundario">
+
                 </div>
             </div>
 
             <div class="ocorrencias estilo_primario">
                 <p><strong><i class="fa-solid fa-clock"></i> Ocorrências</strong></p>
 
-                <div>
+                <div class="estilo_secundario">
 
                 </div>
             </div>
