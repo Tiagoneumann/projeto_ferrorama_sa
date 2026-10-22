@@ -11,6 +11,10 @@
     --cor-azul: #3B82F6;
     --cor-ciano: #22C5FE;
 
+    --cor-verde: #10B981;
+    --cor-amarela: #F59E0B;
+    --cor-vermelha: #ff4d61;
+
     --cor-destaque: #EAB308;
     --cor-texto: #F8FAFC;
     --cor-texto-esmaecido: #9b9b9b;
@@ -444,7 +448,7 @@ footer {
     padding: 25px;
     border-radius: 12px;
 }
-
+ 
 .bloco_formulario form{
     display: flex;
     flex-direction: column;
@@ -452,6 +456,7 @@ footer {
 }
 
 .input_padrao {
+    min-width: 330px;
     width: 100%;
     padding: 10px;
 

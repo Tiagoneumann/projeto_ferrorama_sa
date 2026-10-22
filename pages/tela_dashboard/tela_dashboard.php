@@ -16,7 +16,7 @@ require_once '../../assets/php/autorizacao.php'
     <link rel="stylesheet" href="style.css">
 
     <script src="main.js" defer></script>
-    <script src="../../assets/js/global.js" defer></script> 
+    <script src="../../assets/js/global.js" defer></script>
 
     <title>Track Flow || Dashboard</title>
 </head>
@@ -55,60 +55,172 @@ require_once '../../assets/php/autorizacao.php'
 
         <div class="container">
 
-            <div class="card" style="margin-bottom: 15px;">
-                <div class="legend">
-                    <span><span class="box" style="background:#E5533D;"></span>Parado</span>
-                    <span><span class="box" style="background:#E8B931;"></span>Manutenção</span>
-                    <span><span class="box" style="background:#3DB7E4;"></span>Ativos</span>
-                </div>
+            <div class="status_trens estilo_primario">
+                <div class="status estilo_secundario">
+                    <i class="status_verde fa-solid fa-check"></i>
 
-                <div class="chart-wrapper">
-                    <canvas id="statusChart" role="img"
-                        aria-label="Gráfico de barras horizontal: Parado, Manutenção, Ativos"></canvas>
-                </div>
-
-                <div class="refresh-info" id="refreshInfo">Última atualização: --</div>
-            </div>
-
-            <div class="bloco bloco_alertas">
-                <div class="card_sec alertas">
-                    <h5>⚠️ Alertas ⚠️</h5>
-                    <div class="informacoes">
-                        <ul>
-                            <li>Teste</li>
-                            <li>Teste</li>
-                            <li>Teste</li>
-                        </ul>
+                    <div>
+                        <p><strong>Trens ativos</strong></p>
+                        <small class="quantidade_status"><span>9</span> de 25</small>
+                        <input class="barra_verde" type="range" disabled>
                     </div>
-                    <button class="btn_mais" id="btn_ver_alertas">Ver mais</button>
                 </div>
-                <div class="card_sec ocorrencias">
-                    <h5>Últimas Ocorrências</h5>
-                    <div class="informacoes">
-                        <ul>
-                            <li>Teste</li>
-                            <li>Teste</li>
-                            <li>Teste</li>
-                        </ul>
+
+                <div class="status estilo_secundario">
+                    <i class="status_amarelo fa-solid fa-gear"></i>
+
+                    <div>
+                        <p><strong>Trens em manutenção</strong></p>
+                        <small class="quantidade_status"><span>8</span> de 25</small>
+                        <input class="barra_amarela" type="range" disabled>
                     </div>
-                    <button class="btn_mais" id="btn_ver_ocorrencias">Ver mais</button>
+                </div>
+
+                <div class="status estilo_secundario">
+                    <i class="status_vermelho fa-solid fa-stop"></i>
+
+                    <div>
+                        <p><strong>Trens parados</strong></p>
+                        <small class="quantidade_status"><span>8</span> de 25</small>
+                        <input class="barra_vermelha" type="range" disabled>
+                    </div>
                 </div>
             </div>
 
-            <div class="bloco bloco_lista">
-                <div class="card_sec lista_trens">
-                    <h5>Lista rápida de trens</h5>
-                    <div class="informacoes">
-                        <ul>
-                            <li>TR-102 80km/h ✅</li>
-                            <li>TR-221 0km/h ❌</li>
-                            <li>TR-095 45km/h ⚠️</li>
-                            <li>TR-089 85km/h ✅</li>
-                        </ul>
-                    </div>
-                    <button class="btn_mais">Ver mais</button>
+            <div class="grafico_trens estilo_primario">
+                <div>
+                    <p><strong>Estado dos Trens</strong></p>
+                    <small>Distribuição da frota por status</small>
+
+                    <div class="grafico"></div>
+                </div>
+
+                <div class="dados_grafico estilo_secundario">
+                    <table>
+                        <tr>
+                            <th>Status</th>
+                            <th>Quantidade</th>
+                            <th>Porcentagem</th>
+                        </tr>
+
+                        <tr>
+                            <td><i class="bola_verde fa-solid fa-circle"></i> Ativo</td>
+                            <td>9</td>
+                            <td>36%</td>
+                        </tr>
+
+                        <tr>
+                            <td><i class="bola_amarela fa-solid fa-circle"></i> Manutenção</td>
+                            <td>8</td>
+                            <td>32%</td>
+                        </tr>
+
+                        <tr>
+                            <td><i class="bola_vermelha fa-solid fa-circle"></i> Parado</td>
+                            <td>8</td>
+                            <td>32%</td>
+                        </tr>
+            
+                    </table>
                 </div>
             </div>
+
+            <div class="lista_trens estilo_primario">
+                <div class="topo_lista_trens">
+                    <div>
+                        <p><strong>Catálogo de Trens</strong></p>
+                        <small>Todos os trens cadastrados no sistema</small>
+                    </div>
+
+                    <label for="pesquisa"><i class="fa-solid fa-magnifying-glass"></i></label>
+                    <input class="input_padrao estilo_secundario" type="text" name="pesquisa" id="pesquisa" placeholder="Pesquise um trem">
+                </div>
+
+                <div class="catalogo estilo_secundario">
+                    <table>
+                        <tr>
+                            <th>Prefixo</th>
+                            <th>Modelo</th>
+                            <th>Status</th>
+                            <th>Linha</th>
+                            <th>Ano</th>
+                        </tr>
+
+                        <tr>
+                            <td>T001</td>
+                            <td>Alstom Série 100</td>
+                            <td>Ativo</td>
+                            <td>Estação central</td>
+                            <td>2009</td>
+                        </tr>
+
+                        <tr>
+                            <td>T001</td>
+                            <td>Alstom Série 100</td>
+                            <td>Ativo</td>
+                            <td>Estação central</td>
+                            <td>2009</td>
+                        </tr>
+
+                        <tr>
+                            <td>T001</td>
+                            <td>Alstom Série 100</td>
+                            <td>Ativo</td>
+                            <td>Estação central</td>
+                            <td>2009</td>
+                        </tr>
+
+                        <tr>
+                            <td>T001</td>
+                            <td>Alstom Série 100</td>
+                            <td>Ativo</td>
+                            <td>Estação central</td>
+                            <td>2009</td>
+                        </tr>
+
+                        <tr>
+                            <td>T001</td>
+                            <td>Alstom Série 100</td>
+                            <td>Ativo</td>
+                            <td>Estação central</td>
+                            <td>2009</td>
+                        </tr>
+
+                        <tr>
+                            <td>T001</td>
+                            <td>Alstom Série 100</td>
+                            <td>Ativo</td>
+                            <td>Estação central</td>
+                            <td>2009</td>
+                        </tr>
+
+                        <tr>
+                            <td>T001</td>
+                            <td>Alstom Série 100</td>
+                            <td>Ativo</td>
+                            <td>Estação central</td>
+                            <td>2009</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="aviso estilo_primario">
+                <p><strong><i class="fa-solid fa-bell"></i> Avisos</strong></p>
+                
+                <div>
+                    
+                </div>
+            </div>
+
+            <div class="ocorrencias estilo_primario">
+                <p><strong><i class="fa-solid fa-clock"></i> Ocorrências</strong></p>
+
+                <div>
+
+                </div>
+            </div>
+
         </div>
 
     </main>
