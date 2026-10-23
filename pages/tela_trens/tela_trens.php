@@ -21,7 +21,7 @@ $resultado = $conexao->query($sql);
     <script src="main.js" defer></script>
     <script src="../../assets/js/global.js" defer></script>
 
-    <title>Track Flow || Sensores</title>
+    <title>Track Flow || Trens</title>
 </head>
 
 <body>
@@ -57,39 +57,39 @@ $resultado = $conexao->query($sql);
     <main>
 
         <div class="container">
-            
+
             <button id="criar_trem" class="botao">Adicionar Trem</button>
 
-            <?php while($trem = $resultado->fetch_assoc()): ?>
+            <?php while ($trem = $resultado->fetch_assoc()): ?>
 
-            <div class="card">
-                <img src="<?= htmlspecialchars($trem['imagem_trem']) ?: "../../assets/img/trem_bala.png"?>" alt="trem">
+                <div class="card">
+                    <img src="<?= htmlspecialchars($trem['imagem_trem']) ?: "../../assets/img/trem_bala.png" ?>" alt="trem">
 
-                <div class="dados">
-                    <ul>
-                        <li>ID: <span><?= htmlspecialchars($trem['id_trem'])?></span></li>
-                        <li>Prefixo: <span><?= htmlspecialchars($trem['prefixo_trem'])?></span></li>
-                        <li>Modelo: <span><?= htmlspecialchars($trem['modelo_trem'])?></span></li>
-                    </ul>
-                    <ul>
-                        <li>Ano: <span><?= htmlspecialchars($trem['ano_trem'])?></span></li>
-                        <li>Status: <span><?= htmlspecialchars($trem['status_trem'])?></span></li>
-                        <li>Linha: <span><?= htmlspecialchars($trem['id_linha'] ?? "Sem linha")?></span></li>
-                    </ul>
+                    <div class="dados">
+                        <ul>
+                            <li>ID: <span><?= htmlspecialchars($trem['id_trem']) ?></span></li>
+                            <li>Prefixo: <span><?= htmlspecialchars($trem['prefixo_trem']) ?></span></li>
+                            <li>Modelo: <span><?= htmlspecialchars($trem['modelo_trem']) ?></span></li>
+                        </ul>
+                        <ul>
+                            <li>Ano: <span><?= htmlspecialchars($trem['ano_trem']) ?></span></li>
+                            <li>Status: <span><?= htmlspecialchars($trem['status_trem']) ?></span></li>
+                            <li>Linha: <span><?= htmlspecialchars($trem['id_linha'] ?? "Sem linha") ?></span></li>
+                        </ul>
+                    </div>
+
+                    <div class="divisao_btn">
+                        <button type="button" class="botao" data-acao-trem="editar" data-id-trem="<?= (int) $trem['id_trem'] ?>">Editar</button>
+
+                        <button type="button" class="botao" data-acao-trem="excluir" data-id-trem="<?= (int) $trem['id_trem'] ?>">Excluir</button>
+                    </div>
                 </div>
 
-                <div class="divisao_btn">
-                    <button class="botao">Editar</button>
-                    <button class="botao">Excluir</button>
-                </div>
-                
-            </div>
-
-            <?php endwhile;?>
+            <?php endwhile; ?>
 
     </main>
     <footer>
-            <small class="marca_dagua">Track Flow© 2026</small>
+        <small class="marca_dagua">Track Flow© 2026</small>
     </footer>
 </body>
 

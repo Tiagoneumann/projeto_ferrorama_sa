@@ -30,9 +30,17 @@ while ($trem = $resultado->fetch_assoc()) {
 
 $totalTrens = count($trens);
 
-$porcentagemAtivos = round(($totalAtivos * 100) / $totalTrens);
-$porcentagemManutencao = round(($totalManutencao * 100) / $totalTrens);
-$porcentagemParados = round(($totalParados * 100) / $totalTrens);
+$porcentagemAtivos = $totalTrens > 0
+    ? round(($totalAtivos * 100) / $totalTrens)
+    : 0;
+
+$porcentagemManutencao = $totalTrens > 0
+    ? round(($totalManutencao * 100) / $totalTrens)
+    : 0;
+
+$porcentagemParados = $totalTrens > 0
+    ? round(($totalParados * 100) / $totalTrens)
+    : 0;
 
 $limiteParados = $porcentagemParados;
 $limiteManutencao = $limiteParados + $porcentagemManutencao;
