@@ -5,6 +5,39 @@ require_once '../../assets/php/autorizacao.php';
 $sql = "SELECT * FROM trem";
 $resultado = $conexao->query($sql);
 
+$trens = [];
+$totalAtivos = 0;
+$totalManutencao = 0;
+$totalParados = 0;
+
+while ($trem = $resultado->fetch_assoc()) {
+    $trens[] = $trem;
+
+    switch ($trem['status_trem']) {
+        case 'ativo':
+            $totalAtivos++;
+            break;
+
+        case 'manutencao':
+            $totalManutencao++;
+            break;
+
+        case 'parado':
+            $totalParados++;
+            break;
+    }
+}
+
+$totalTrens = count($trens);
+
+$porcentagemAtivos = round(($totalAtivos * 100) / $totalTrens);
+$porcentagemManutencao = round(($totalManutencao * 100) / $totalTrens);
+$porcentagemParados = round(($totalParados * 100) / $totalTrens);
+
+$limiteParados = $porcentagemParados;
+$limiteManutencao = $limiteParados + $porcentagemManutencao;
+$limiteAtivos = 100;
+
 ?> 
 
 <!DOCTYPE html>
@@ -64,8 +97,8 @@ $resultado = $conexao->query($sql);
 
                     <div>
                         <p><strong>Trens ativos</strong></p>
-                        <small class="quantidade_status"><span>9</span> de 25</small>
-                        <input class="barra_verde" type="range" disabled>
+                        <small class="quantidade_status"><span><?= htmlspecialchars($totalAtivos) ?></span> de <?= htmlspecialchars($totalTrens) ?></small>
+                        <input class="barra_verde" type="range" style="--progresso-verde: <?=$porcentagemAtivos?>%;" disabled>
                     </div>
                 </div>
 
@@ -74,8 +107,8 @@ $resultado = $conexao->query($sql);
 
                     <div>
                         <p><strong>Trens em manutenção</strong></p>
-                        <small class="quantidade_status"><span>8</span> de 25</small>
-                        <input class="barra_amarela" type="range" disabled>
+                        <small class="quantidade_status"><span><?= htmlspecialchars($totalManutencao) ?></span> de <?= htmlspecialchars($totalTrens) ?></small>
+                        <input class="barra_amarela" type="range" style="--progresso-amarelo: <?=$porcentagemManutencao?>%;" disabled>
                     </div>
                 </div>
 
@@ -84,8 +117,8 @@ $resultado = $conexao->query($sql);
 
                     <div>
                         <p><strong>Trens parados</strong></p>
-                        <small class="quantidade_status"><span>8</span> de 25</small>
-                        <input class="barra_vermelha" type="range" disabled>
+                        <small class="quantidade_status"><span><?= htmlspecialchars($totalParados) ?></span> de <?= htmlspecialchars($totalTrens) ?></small>
+                        <input class="barra_vermelha" type="range" style="--progresso-vermelho: <?=$porcentagemParados?>%;" disabled>
                     </div>
                 </div>
             </div>
@@ -95,7 +128,7 @@ $resultado = $conexao->query($sql);
                     <p><strong>Estado dos Trens</strong></p>
                     <small>Distribuição da frota por status</small>
 
-                    <div class="grafico"></div>
+                    <div class="grafico" style="--limite-parados: <?= $limiteParados ?>%; --limite-manutencao: <?= $limiteManutencao ?>%; --limite-ativos: <?= $limiteAtivos ?>%;"></div>
                 </div>
 
                 <div class="dados_grafico estilo_secundario">
@@ -108,20 +141,20 @@ $resultado = $conexao->query($sql);
 
                         <tr>
                             <td><i class="bola_verde fa-solid fa-circle"></i> Ativo</td>
-                            <td>9</td>
-                            <td>36%</td>
+                            <td><?= htmlspecialchars($totalAtivos) ?></td>
+                            <td><?=$porcentagemAtivos?>%</td>
                         </tr>
 
                         <tr>
                             <td><i class="bola_amarela fa-solid fa-circle"></i> Manutenção</td>
-                            <td>8</td>
-                            <td>32%</td>
+                            <td><?= htmlspecialchars($totalManutencao) ?></td>
+                            <td><?=$porcentagemManutencao?>%</td>
                         </tr>
 
                         <tr>
                             <td><i class="bola_vermelha fa-solid fa-circle"></i> Parado</td>
-                            <td>8</td>
-                            <td>32%</td>
+                            <td><?= htmlspecialchars($totalParados) ?></td>
+                            <td><?=$porcentagemParados?>%</td>
                         </tr>
             
                     </table>
@@ -149,17 +182,25 @@ $resultado = $conexao->query($sql);
                             <th>Ano</th>
                         </tr>
 
-                        <?php while($trem = $resultado->fetch_assoc()): ?>
+                        <?php foreach($trens as $trem): ?>
 
                         <tr>
-                            <td><?= htmlspecialchars($trem['prefixo_trem']) ?></td>
-                            <td><?= htmlspecialchars($trem['modelo_trem']) ?></td>
-                            <td><?= htmlspecialchars($trem['status_trem']) ?></td>
-                            <td><?= htmlspecialchars($trem['id_linha'] ?? "Vazio") ?></td>
-                            <td><?= htmlspecialchars($trem['ano_trem']) ?></td>
+                            <td><?= htmlspecialchars($trem['prefixo_trem']) ?? "--" ?></td>
+                            <td><?= htmlspecialchars($trem['modelo_trem']) ?? "--" ?></td>
+                            <td class="status_<?= match ($trem['status_trem']){ 
+                                'ativo' => 'ativo',
+                                'manutencao' => 'manutencao',
+                                'parado' => 'parado'
+                            } ?>"><?= match ($trem['status_trem']) {
+                                'ativo' => htmlspecialchars("Ativo"),
+                                'manutencao' => htmlspecialchars("Manutenção"),
+                                'parado' => htmlspecialchars("Parado")
+                            } ?? "--" ?></td>
+                            <td><?= htmlspecialchars($trem['id_linha'] ?? "--") ?></td>
+                            <td><?= htmlspecialchars($trem['ano_trem']) ?? "--" ?></td>
                         </tr>
 
-                        <?php endwhile; ?>
+                        <?php endforeach; ?>
 
                     </table>
                 </div>
