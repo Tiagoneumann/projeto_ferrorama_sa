@@ -224,7 +224,7 @@
     border-radius: 12px;
     padding: 10px;
 
-    max-height: 350px;
+    height: 350px;
     overflow-y: auto;
 
     scrollbar-color: var(--cor-texto) transparent;

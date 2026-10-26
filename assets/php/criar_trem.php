@@ -1,4 +1,3 @@
-
 <?php
 
 require 'conexao.php';
@@ -14,15 +13,7 @@ $ano     = filter_input(INPUT_POST, 'ano_trem', FILTER_VALIDATE_INT);
 $linha   = $_POST['linhas'] ?? '';
 $status  = $_POST['status_trem'] ?? '';
 
-if (
-    $prefixo === '' ||
-    $modelo === '' ||
-    $ano === false ||
-    $ano === null ||
-    $ano < 1800 ||
-    $ano > 2100 ||
-    !in_array($status, ['ativo', 'manutencao', 'parado'], true)
-) {
+if ($prefixo === '' || $modelo === '' || $ano === false || $ano === null || $ano < 1800 || $ano > 2100 || !in_array($status, ['ativo', 'manutencao', 'parado'], true)) {
     exit('Dados inválidos. Verifique os campos do formulário.');
 }
 
@@ -35,9 +26,7 @@ if ($linha !== '') {
         exit('Linha selecionada inválida.');
     }
 
-    $stmtLinha = $conexao->prepare(
-        'SELECT id_linha FROM linha WHERE id_linha = ?'
-    );
+    $stmtLinha = $conexao->prepare('SELECT id_linha FROM linha WHERE id_linha = ?');
 
     $stmtLinha->bind_param('i', $id_linha);
     $stmtLinha->execute();
@@ -102,10 +91,7 @@ if (
     $caminhoImagem = '../../assets/img/trens/' . $nomeArquivo;
 }
 
-$sql = "INSERT INTO trem
-        (prefixo_trem, modelo_trem, ano_trem,
-         status_trem, imagem_trem, id_linha)
-        VALUES (?, ?, ?, ?, ?, ?)";
+$sql = "INSERT INTO trem (prefixo_trem, modelo_trem, ano_trem, status_trem, imagem_trem, id_linha) VALUES (?, ?, ?, ?, ?, ?)";
 
 $stmt = $conexao->prepare($sql);
 
@@ -117,15 +103,7 @@ if (!$stmt) {
     exit('Erro ao preparar o cadastro do trem.');
 }
 
-$stmt->bind_param(
-    'ssissi',
-    $prefixo,
-    $modelo,
-    $ano,
-    $status,
-    $caminhoImagem,
-    $id_linha
-);
+$stmt->bind_param('ssissi', $prefixo, $modelo, $ano, $status, $caminhoImagem, $id_linha);
 
 if ($stmt->execute()) {
     $stmt->close();
