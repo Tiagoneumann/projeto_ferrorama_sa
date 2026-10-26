@@ -481,10 +481,6 @@ footer {
     outline: 2px solid var(--cor-azul);
 }
 
-.input_padrao[type="file"]{
-    visibility: hidden;
-}
-
 .botao {
     background: var(--cor-azul);
     border: none;

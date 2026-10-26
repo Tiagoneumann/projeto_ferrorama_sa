@@ -39,14 +39,14 @@ if (!$usuario) {
         <div class="bloco_conta estilo_secundario">
             <form action="../../assets/php/editar_usuario.php" method='POST'>
 
-                <input type="hidden" name="id_usuario" value="<?= (int) $usuario['id_usuario'] ?>">
+                <input type="hidden" name="id_usuario" value="<?= $usuario['id_usuario'] ?>">
 
                 <div class="separacao">
                     <input class="input_padrao estilo_secundario" type="text" name="nome_usuario" placeholder="Nome" value="<?= htmlspecialchars($usuario['nome_usuario']) ?>" required>
 
                     <input class="input_padrao estilo_secundario" type="email" name="email_usuario" placeholder="Email" value="<?= htmlspecialchars($usuario['email_usuario']) ?>" required>
 
-                    <input class="input_padrao estilo_secundario" type="passwoard" name="senha_usuario" placeholder="Nova senha (opcional)" autocomplete="new-password">
+                    <input class="input_padrao estilo_secundario" type="password" name="senha_usuario" placeholder="Nova senha (opcional)" autocomplete="new-password">
 
                     <div class="opcoes_usuario">
                         <label class="opcao_usuario estilo_secundario">

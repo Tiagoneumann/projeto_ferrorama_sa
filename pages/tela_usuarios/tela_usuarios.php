@@ -73,15 +73,10 @@ $resultado = $conexao->query($sql);
                 </div>
                 <div class="opcoes">
 
-                    <form action="../../assets/php/editar_usuario.php" method="GET">
-                        <input type="hidden" name="id_usuario" value="<?= (int) $usuario['id_usuario'] ?>">
-
-                        <button type="submit" class="botao">Editar</button>
-                    </form>
+                    <button type="button" class="botao editar_usuario" data-id="<?= $usuario['id_usuario'] ?>">Editar</button>
                     
-                    <form action="../../assets/php/excluir_usuario.php" method="POST">
-                        <input type="hidden" name="id_usuario" value="<?= (int) $usuario['id_usuario'] ?>">
-
+                    <form action="../../assets/php/excluir_usuario.php" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir essa conta?');">
+                        <input type="hidden" name="id_usuario" value="<?= $usuario['id_usuario'] ?>">
                         <button type="submit" class="botao">Excluir</button>
                     </form>
                 </div>

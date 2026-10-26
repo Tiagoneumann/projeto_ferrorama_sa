@@ -79,9 +79,12 @@ $resultado = $conexao->query($sql);
                     </div>
 
                     <div class="divisao_btn">
-                        <button type="button" class="botao" data-acao-trem="editar" data-id-trem="<?= (int) $trem['id_trem'] ?>">Editar</button>
-
-                        <button type="button" class="botao" data-acao-trem="excluir" data-id-trem="<?= (int) $trem['id_trem'] ?>">Excluir</button>
+                        <button type="button" id="editar_trem" class="botao" data-id="<?= $trem['id_trem'] ?>">Editar</button>
+                    
+                        <form action="../../assets/php/excluir_trem.php" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir esse trem?');">
+                            <input type="hidden" name="id_trem" value="<?= $trem['id_trem'] ?>">
+                            <button type="submit" class="botao">Excluir</button>
+                        </form>
                     </div>
                 </div>
 

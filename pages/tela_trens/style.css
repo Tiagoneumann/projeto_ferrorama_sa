@@ -81,8 +81,79 @@
 .divisao_btn{
     display: flex;
     width: 100%;
-    gap: 10px;
-    
+    gap: 10px;   
+}
+
+.divisao_btn form{
+    width: 100%;
+}
+
+.campo_imagem {
+    width: 100%;
+    border-radius: 12px;
+    padding: 5px;
+}
+
+.input_arquivo {
+    visibility: hidden;
+    display: none;
+}
+
+.seletor_imagem {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 18px;
+    border: 1px dashed var(--cor_azul);
+    border-radius: 12px;
+    background: var(--cor_secundaria);
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.seletor_imagem:hover {
+    border-color: var(--cor_ciano);
+    background: var(--cor_fundo);
+}
+
+.seletor_imagem > i {
+    font-size: 28px;
+    color: var(--cor_ciano);
+}
+
+.texto_imagem {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+    min-width: 0;
+}
+
+.texto_imagem strong {
+    color: var(--cor_texto);
+    font-size: 14px;
+}
+
+.texto_imagem small {
+    color: #94A3B8;
+    font-size: 12px;
+}
+
+.botao_imagem {
+    width: min-content;
+    white-space: nowrap;
+}
+
+.nome_arquivo {
+    margin: 8px 2px 0;
+    color: #94A3B8;
+    font-size: 12px;
+    overflow-wrap: anywhere;
+}
+
+.input_arquivo:focus-visible + .seletor_imagem {
+    outline: 2px solid var(--cor_ciano);
+    outline-offset: 3px;
 }
 
 @media (min-width: 1024px){

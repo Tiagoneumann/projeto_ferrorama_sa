@@ -18,7 +18,22 @@ $resultado = $conexao->query($sql);
             <form action="../../assets/php/criar_trem.php" method='POST' enctype="multipart/form-data">
                 <div class="separacao">
 
-                    <input class="input_padrao estilo_secundario" type="file" name="imagem_trem" id="imagem_trem" accept="image/jpeg, image/png, image/webp">
+                    <div class="campo_imagem estilo_secundario">
+                        <input class="input_arquivo" type="file" id="imagem_trem" name="imagem_trem" accept="image/jpeg, image/png, image/webp">
+
+                        <label for="imagem_trem" class="seletor_imagem">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                            <span class="texto_imagem">
+                                <strong>Escolha uma imagem</strong>
+                                <small>JPEG, PNG ou WebP</small>
+                            </span>
+
+                            <span class="botao botao_imagem">Selecionar</span>
+                        </label>
+
+                        <p class="nome_arquivo" id="nome_arquivo">Nenhum arquivo selecionado</p>
+                    </div>
 
                     <input class="input_padrao estilo_secundario" type="text" name="prefixo_trem" placeholder="Prefixo | ex: BR 403" required>
 

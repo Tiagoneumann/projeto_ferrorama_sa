@@ -293,3 +293,19 @@
     border-radius: 12px;
     padding: 10px;
 }
+
+@media (max-width: 780px){
+
+    .status_trens{
+        grid-column: -1 / 1;
+    }
+
+    .status i{
+        display: none;
+    }
+
+    .grafico_trens{
+        grid-column: -1/1;
+        flex-direction: column;
+    }
+}

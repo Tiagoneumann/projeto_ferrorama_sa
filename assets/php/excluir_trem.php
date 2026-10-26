@@ -1,61 +1,51 @@
-
 <?php
+
+session_start();
 
 require 'conexao.php';
 
-header('Content-Type: application/json; charset=utf-8');
+$id_trem = filter_input(INPUT_POST, 'id_trem', FILTER_VALIDATE_INT);
 
-function responder($sucesso, $mensagem, $codigo = 200)
-{
-    http_response_code($codigo);
+$sql = "SELECT imagem_trem FROM trem WHERE id_trem = ?";
 
-    echo json_encode([
-        'sucesso' => $sucesso,
-        'mensagem' => $mensagem
-    ], JSON_UNESCAPED_UNICODE);
+$stmt = $conexao->prepare($sql);
+$stmt->bind_param("i", $id_trem);
+$stmt->execute();
 
+$resultado = $stmt->get_result();
+$trem = $resultado->fetch_assoc();
+
+$stmt->close();
+
+if (!$trem) {
+    header('Location: ../../pages/tela_trens/tela_trens.php?erro=nao_encontrado');
     exit;
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+$sql = "DELETE FROM trem WHERE id_trem = ?";
 
-    $id = filter_input(INPUT_POST, 'id_trem', FILTER_VALIDATE_INT);
+$stmt = $conexao->prepare($sql);
+$stmt->bind_param("i", $id_trem);
+$stmt->execute();
 
-    if (!$id || $id < 1) {
-        responder(false, 'ID do trem inválido.', 422);
+if ($stmt->affected_rows > 0) {
+    if (!empty($trem['imagem_trem'])) {
+
+        $caminho_imagem = __DIR__ . '/../../assets/img/trens/' .
+            basename($trem['imagem_trem']);
+
+        if (is_file($caminho_imagem)) {
+            unlink($caminho_imagem);
+        }
     }
 
-    try {
-        $stmt = $conexao->prepare('SELECT imagem_trem FROM trem WHERE id_trem = ?');
-        $stmt->bind_param('i', $id);
-        $stmt->execute();
-        $trem = $stmt->get_result()->fetch_assoc();
-        $stmt->close();
-
-        if (!$trem) {
-            responder(false, 'Trem não encontrado.', 404);
-        }
-
-        $stmt = $conexao->prepare('DELETE FROM trem WHERE id_trem = ?');
-        $stmt->bind_param('i', $id);
-        $stmt->execute();
-        $stmt->close();
-
-        $imagem = $trem['imagem_trem'] ?? '';
-        $prefixo_upload = '../../assets/img/trens/';
-
-        if (strpos($imagem, $prefixo_upload) === 0) {
-            $diretorio = '../../assets/img/trens/';
-            $caminho = $diretorio . basename($imagem);
-
-            if (is_file($caminho)) {
-                unlink($caminho);
-            }
-        }
-
-        responder(true, 'Trem excluído com sucesso.');
-    } catch (Throwable $e) {
-        error_log($e->getMessage());
-        responder(false, 'Não foi possível excluir o trem.', 500);
-    }
+    header('Location: ../../pages/tela_trens/tela_trens.php?sucesso=excluido');
+} else {
+    header('Location: ../../pages/tela_trens/tela_trens.php?erro=nao_encontrado');
 }
+
+$stmt->close();
+$conexao->close();
+exit;
+
+?>
