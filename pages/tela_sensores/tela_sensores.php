@@ -63,7 +63,7 @@ $resultado = $conexao->query($sql);
                     <input type="text" name="pesquisa_sensor" class="input_padrao estilo_secundario" placeholder="Pesquise o sensor desejado">
                 </div>
 
-                <button id="criar_sensor" class="botao"><i class="fa-solid fa-plus"></i> Adicionar sensor</button>
+                <button id="criar" class="botao"><i class="fa-solid fa-plus"></i> Adicionar sensor</button>
             </div>
 
             <div class="tabela_sensores estilo_primario">

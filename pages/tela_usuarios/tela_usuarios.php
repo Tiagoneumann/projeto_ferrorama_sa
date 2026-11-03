@@ -59,7 +59,7 @@ $resultado = $conexao->query($sql);
     <main>
 
         <div class="container">
-            <button class="botao" id="criar_usuario"><i class="fa-solid fa-plus"></i> Novo Usuário</button>
+            <button class="botao" id="criar"><i class="fa-solid fa-plus"></i> Novo Usuário</button>
 
         <?php while ($usuario = $resultado->fetch_assoc()): ?>
 
