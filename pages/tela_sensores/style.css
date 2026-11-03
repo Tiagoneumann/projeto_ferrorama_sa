@@ -105,9 +105,22 @@
 }
 
 .btn_excluir:hover{
-    color: var(--cor-erro);
+    color: var(--cor-vermelha);
 }
 
 .btn_excluir:active{
     color: var(--cor-texto);
+}
+
+@media (max-width: 780px){
+
+    .topo_sensores{
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .lista_sensores{
+        width: 100vw;
+        overflow-x: auto;
+    }
 }

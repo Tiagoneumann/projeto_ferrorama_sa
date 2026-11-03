@@ -41,24 +41,29 @@
     gap: 10px;
 }
 
-.opcoes button{
-    border: none;
-    border-radius: 10px;
+.btn_editar, .btn_excluir{
+    color: var(--cor-texto);
 
-    background-color: var(--cor-azul);
-    padding: 5px 10px;
-    width: 80px;
+    background: none;
+    border: none;
+
+    cursor: pointer;
+
     transition: var(--transition-fast);
 }
 
-.opcoes button:hover{
-    background-color: var(--cor-azul-escuro);
+.btn_editar:hover{
+    color: var(--cor-azul);
+}
+
+.btn_excluir:hover{
+    color: var(--cor-vermelha);
+}
+
+.btn_editar:active, .btn_excluir:active{
     color: var(--cor-texto);
 }
 
-.opcoes button:active{
-    background-color: var(--cor-azul-claro);
-}
 
 @media (min-width: 768px){
     .container{
@@ -67,10 +72,6 @@
 
     .botao{
         grid-column: span 2;
-    }
-
-    .opcoes button{
-        grid-column: auto !important;
     }
 }
 

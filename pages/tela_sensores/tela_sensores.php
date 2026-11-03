@@ -2,7 +2,7 @@
 
 require_once '../../assets/php/autorizacao.php';
 
-$sql = "SELECT s.codigo_sensor, s.tipo_sensor, s.unidade_sensor, t.modelo_trem, t.prefixo_trem FROM sensor s INNER JOIN trem t ON s.id_trem = t.id_trem;";
+$sql = "SELECT s.id_sensor, s.codigo_sensor, s.tipo_sensor, s.unidade_sensor, t.modelo_trem, t.prefixo_trem FROM sensor s INNER JOIN trem t ON s.id_trem = t.id_trem;";
 $resultado = $conexao->query($sql);
 
 ?>
@@ -80,14 +80,18 @@ $resultado = $conexao->query($sql);
                     <?php while($sensor = $resultado->fetch_assoc()): ?>
                         <tr>
                             <td>
-                                <button class="btn_editar"><i class="fa-solid fa-pen-to-square"></i></button>
+                                <button id="editar" class="btn_editar" data-id="<?= $sensor['id_sensor'] ?>"><i class="fa-solid fa-pen-to-square"></i></button>
                                 <?= htmlspecialchars($sensor['codigo_sensor']) ?>
                             </td>
                             <td><?= htmlspecialchars($sensor['tipo_sensor']) ?></td>
                             <td><?= htmlspecialchars($sensor['unidade_sensor']) ?></td>
                             <td>
                                 <?= htmlspecialchars($sensor['prefixo_trem']), " / ", htmlspecialchars($sensor['modelo_trem'])?>
-                                <button class="btn_excluir"><i class="fa-solid fa-x"></i></button>
+                                
+                                <form action="../../assets/php/excluir_sensor.php" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir esse sensor?');">
+                                    <input type="hidden" name="id_sensor" value="<?= $sensor['id_sensor'] ?>">
+                                    <button type="submit" class="btn_excluir"><i class="fa-solid fa-x"></i></button>
+                                </form>
                             </td>
                         </tr>
 

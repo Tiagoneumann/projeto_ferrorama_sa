@@ -4,22 +4,26 @@ session_start();
 
 require 'conexao.php';
 
-$id_usuario = filter_input(INPUT_POST, 'id_usuario', FILTER_VALIDATE_INT);
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
-$sql = "DELETE FROM usuario WHERE id_usuario = ?";
+    $id_usuario = filter_input(INPUT_POST, 'id_usuario', FILTER_VALIDATE_INT);
 
-$stmt = $conexao->prepare($sql);
-$stmt->bind_param("i", $id_usuario);
-$stmt->execute();
+    $sql = "DELETE FROM usuario WHERE id_usuario = ?";
 
-if ($stmt->affected_rows > 0) {
-    header('Location: ../../pages/tela_usuarios/tela_usuarios.php?sucesso=excluido');
-} else {
-    header('Location: ../../pages/tela_usuarios/tela_usuarios.php?erro=nao_encontrado');
+    $stmt = $conexao->prepare($sql);
+    $stmt->bind_param("i", $id_usuario);
+    $stmt->execute();
+
+    if ($stmt->affected_rows > 0) {
+        header('Location: ../../pages/tela_usuarios/tela_usuarios.php?sucesso=excluido');
+    } else {
+        header('Location: ../../pages/tela_usuarios/tela_usuarios.php?erro=nao_encontrado');
+    }
+
+    $stmt->close();
+    $conexao->close();
+    exit;
+
 }
-
-$stmt->close();
-$conexao->close();
-exit;
 
 ?>

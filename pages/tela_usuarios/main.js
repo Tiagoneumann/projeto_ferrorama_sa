@@ -17,7 +17,7 @@ criar.addEventListener('click', () => {
         });
 })
 
-document.querySelectorAll('.editar_usuario').forEach(botao => {
+document.querySelectorAll('#editar').forEach(botao => {
 
     botao.addEventListener('click', () => {
 
