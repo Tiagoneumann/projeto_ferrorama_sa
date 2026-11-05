@@ -1,0 +1,74 @@
+table{
+    width: 100%;
+}
+
+td, th{
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    padding: 10px;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.linhas{
+    border-radius: 12px;
+
+    padding: 10px;
+}
+
+.linhas button{
+    width: 100%;
+}
+
+.tabela_linhas{
+    color: var(--cor-texto);
+
+    margin-top: 10px;
+    border-radius: 12px;
+
+    width: 100%;
+    height: calc(100vh - 250px);
+}
+
+.rotas{
+    grid-column: 2/5;
+
+    border-radius: 12px;
+
+    padding: 10px;
+    margin-left: 10px;
+}
+
+.topo_rotas{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pesquisa_rota{
+    display: flex;
+    align-items: center;
+    color: var(--cor-texto);
+}
+
+.pesquisa_rota i{
+    font-size: 1.5rem;
+    margin-right: 5px;
+}
+
+.tabela_rotas{
+    color: var(--cor-texto);
+
+    margin-top: 10px;
+    border-radius: 12px;
+
+    width: 100%;
+    height: calc(100vh - 250px);
+}
+
+.tabela_rotas th{
+    width: 16.6%;
+}

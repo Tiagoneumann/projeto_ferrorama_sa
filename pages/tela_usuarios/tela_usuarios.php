@@ -49,6 +49,8 @@ $resultado = $conexao->query($sql);
                     <li><a href="../tela_dashboard/tela_dashboard.php">Dashboard</a></li>
                     <li><a href="../tela_relatorios/tela_relatorios.php">Relatórios</a></li>
                     <li><a href="../tela_sensores/tela_sensores.php">Sensores</a></li>
+                    <li><a href="../tela_leituras/tela_leituras.php">Leituras</a></li>
+                    <li><a href="../tela_rotas/tela_rotas.php">Rotas</a></li>
                     <li><a href="../tela_trens/tela_trens.php">Trens</a></li>
                     <li><a href="../tela_usuarios/tela_usuarios.php">Usuários</a></li>
                 </ul>

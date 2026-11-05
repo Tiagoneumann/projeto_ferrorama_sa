@@ -26,6 +26,24 @@ CREATE TABLE trem (
     FOREIGN KEY (id_linha) REFERENCES linha(id_linha) ON UPDATE CASCADE ON DELETE SET NULL
 );
 
+CREATE TABLE rota (
+    id_rota INT AUTO_INCREMENT PRIMARY KEY,
+    origem_rota VARCHAR(150) NOT NULL,
+    destino_rota VARCHAR(150) NOT NULL,
+    data_rota DATE NOT NULL,
+    horario_partida TIME NOT NULL,
+    horario_chegada TIME NOT NULL,
+    status_rota ENUM('programada', 'em andamento', 'concluida', 'cancelada') NOT NULL DEFAULT 'programada',
+
+    id_trem INT NOT NULL,
+    id_linha INT NOT NULL,
+
+    FOREIGN KEY (id_trem) REFERENCES trem(id_trem) ON UPDATE CASCADE ON DELETE RESTRICT,
+    FOREIGN KEY (id_linha) REFERENCES linha(id_linha) ON UPDATE CASCADE ON DELETE RESTRICT,
+
+    CHECK (origem_rota <> destino_rota)
+);
+
 CREATE TABLE sensor (
     id_sensor INT AUTO_INCREMENT PRIMARY KEY,
     codigo_sensor VARCHAR(100) NOT NULL UNIQUE,
