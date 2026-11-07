@@ -33,6 +33,70 @@ td, th{
     height: calc(100vh - 250px);
 }
 
+.tabela_linhas td{
+    position: relative;
+}
+
+.tabela_rotas td{
+    position: relative;
+}
+
+.btn_editar{
+    position: absolute;
+
+    transform: translateY(-50%);
+    left: 10px;
+    top: 50%;
+
+    padding-right: 10px;
+    
+
+    background: none;
+    border: none;
+    border-right: 2px solid rgba(255, 255, 255, 0.2);
+
+    color: var(--cor-texto);
+    cursor: pointer;
+
+    transition: var(--transition-fast);
+}
+
+.btn_editar:hover{
+    color: var(--cor-azul)
+}
+
+.btn_editar:active{
+    color: var(--cor-texto);
+}
+
+.btn_excluir_linha, .btn_excluir_rota{
+    position: absolute;
+
+    transform: translateY(-50%);
+    left: 45%;
+    top: 50%;
+
+    background: none;
+    border: none;
+
+    color: var(--cor-texto);
+    cursor: pointer;
+
+    transition: var(--transition-fast);
+}
+
+.btn_excluir_rota{
+    left: 85%;
+}
+
+.btn_excluir_linha:hover, .btn_excluir_rota:hover{
+    color: var(--cor-vermelha);
+}
+
+.btn_excluir_linha:active, .btn_excluir_rota:active{
+    color: var(--cor-texto);
+}
+
 .rotas{
     grid-column: 2/5;
 

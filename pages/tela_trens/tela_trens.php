@@ -2,7 +2,12 @@
 
 require_once '../../assets/php/autorizacao.php';
 
-$sql = "SELECT * FROM trem";
+$sql = "SELECT 
+            trem.*,
+            linha.nome_linha
+        FROM trem
+        LEFT JOIN linha ON trem.id_linha = linha.id_linha";
+
 $resultado = $conexao->query($sql);
 
 ?>
@@ -76,7 +81,7 @@ $resultado = $conexao->query($sql);
                         <ul>
                             <li>Ano: <span><?= htmlspecialchars($trem['ano_trem']) ?></span></li>
                             <li>Status: <span><?= htmlspecialchars($trem['status_trem']) ?></span></li>
-                            <li>Linha: <span><?= htmlspecialchars($trem['id_linha'] ?? "Sem linha") ?></span></li>
+                            <li>Linha: <span><?= htmlspecialchars($trem['nome_linha'] ?? "Sem linha") ?></span></li>
                         </ul>
                     </div>
 

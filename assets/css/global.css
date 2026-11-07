@@ -438,6 +438,11 @@ footer {
     gap: 10px;
 }
 
+.viagem, .horario{
+    display: flex;
+    gap: 10px;
+}
+
 /* =====================
    OUTROS
 ===================== */
