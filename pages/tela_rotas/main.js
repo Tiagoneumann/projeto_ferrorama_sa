@@ -55,3 +55,27 @@ document.querySelectorAll('#editar_rota').forEach(editar_rota => {
         })
     })
 })
+
+//campo de pesquisa das rotas
+
+const campoPesquisa = document.getElementById('pesquisa_rota');
+
+const rotas = document.querySelectorAll('.rota_item');
+
+campoPesquisa.addEventListener('input', function () {
+
+    const pesquisa = campoPesquisa.value.toLowerCase().trim();
+
+    rotas.forEach(rota => {
+
+        const dadosRotas = rota.textContent.toLowerCase();
+
+        if (dadosRotas.includes(pesquisa)) {
+            rota.style.display = '';
+        } else {
+            rota.style.display = 'none';
+        }
+
+    });
+
+});

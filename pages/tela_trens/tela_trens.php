@@ -65,11 +65,19 @@ $resultado = $conexao->query($sql);
 
         <div class="container">
 
-            <button id="criar" class="botao"><i class="fa-solid fa-plus"></i> Adicionar Trem</button>
+            <div class="topo_trens">
+                <button id="criar" class="botao"><i class="fa-solid fa-plus"></i> Adicionar Trem</button>
+
+                <div class="pesquisa estilo_primario">
+                    <label for="pesquisa_trens"><i class="fa-solid fa-magnifying-glass"></i></label>
+                    <input type="text" id="pesquisa_trens" name="pesquisa_trens" class="input_padrao estilo_secundario" placeholder="Pesquise o trem desejado">
+                </div>
+            </div>
+           
 
             <?php while ($trem = $resultado->fetch_assoc()): ?>
 
-                <div class="card">
+                <div class="card trem_item">
                     <img src="<?= htmlspecialchars($trem['imagem_trem']) ?: "../../assets/img/trem_bala.png" ?>" alt="trem">
 
                     <div class="dados">

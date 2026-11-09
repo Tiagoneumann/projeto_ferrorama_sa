@@ -5,29 +5,29 @@
     gap: 10px;
 }
 
+.topo_trens{
+    grid-column: span 2;
+}
+
 .botao{
-    grid-column: 1 / -1;
     width: 100%;
     padding: 12px;
-
-    background: var(--cor-azul);
-    cursor: pointer;
-    transition: var(--transition-fast);
-
-    border: none;
-    border-radius: 16px;
-
-    color: var(--cor-texto);
-    font-weight: bold;
 }
 
-.botao:hover{
-    background: var(--cor-azul-escuro);
-    color: var(--cor-texto);
+.pesquisa{
+    display: flex;
+    align-items: center;
+
+    border-radius: 12px;
+
+    padding: 5px;
+    margin-top: 10px;
 }
 
-.botao:active{
-    background: var(--cor-azul);
+.pesquisa label{
+    color: var(--cor-texto);
+    font-size: 1.5rem;
+    margin-right: 5px;
 }
 
 .card{

@@ -121,7 +121,7 @@ $resultado_linhas = $conexao->query($sql_linhas);
                         </tr>
 
                         <?php while($rotas = $resultado->fetch_assoc()): ?>
-                            <tr>
+                            <tr class="rota_item">
                                 <td>
                                     <button id="editar_rota" class="btn_editar" data-id="<?= $rotas['id_rota'] ?>"><i class="fa-solid fa-pen-to-square"></i></button>
                                     <?= htmlspecialchars($rotas['data_rota']) ?>

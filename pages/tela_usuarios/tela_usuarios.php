@@ -61,11 +61,19 @@ $resultado = $conexao->query($sql);
     <main>
 
         <div class="container">
-            <button class="botao" id="criar"><i class="fa-solid fa-plus"></i> Novo Usuário</button>
+            <div class="topo_usuarios">
+                <button class="botao" id="criar"><i class="fa-solid fa-plus"></i> Novo Usuário</button>
+
+                <div class="pesquisa estilo_primario">
+                    <label for="pesquisa_usuarios"><i class="fa-solid fa-magnifying-glass"></i></label>
+                    <input type="text" id="pesquisa_usuarios" name="pesquisa_usuarios" class="input_padrao estilo_secundario" placeholder="Pesquise o usuário desejado">
+                </div>
+            </div>
+            
 
         <?php while ($usuario = $resultado->fetch_assoc()): ?>
 
-            <div class="bloco estilo_primario">
+            <div class="bloco estilo_primario usuario_item">
                 <div class="dados">
                     <ul>
                         <li>Nome: <span><?= htmlspecialchars($usuario['nome_usuario']) ?></span></li>

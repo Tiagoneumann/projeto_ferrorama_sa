@@ -179,8 +179,8 @@ $limiteAtivos = 100;
                     </div>
 
                     <div class="pesquisa">
-                        <label for="pesquisa"><i class="fa-solid fa-magnifying-glass"></i></label>
-                        <input class="input_padrao estilo_secundario" type="text" name="pesquisa" id="pesquisa" placeholder="Pesquise um trem">
+                        <label for="pesquisa_trens"><i class="fa-solid fa-magnifying-glass"></i></label>
+                        <input class="input_padrao estilo_secundario" type="text" name="pesquisa_trens" id="pesquisa_trens" placeholder="Pesquise um trem">
                     </div>
                 </div>
 
@@ -196,7 +196,7 @@ $limiteAtivos = 100;
 
                         <?php foreach($trens as $trem): ?>
 
-                        <tr>
+                        <tr class="trem_item">
                             <td><?= htmlspecialchars($trem['prefixo_trem']) ?? "--" ?></td>
                             <td><?= htmlspecialchars($trem['modelo_trem']) ?? "--" ?></td>
                             <td class="status_<?= match ($trem['status_trem']){ 

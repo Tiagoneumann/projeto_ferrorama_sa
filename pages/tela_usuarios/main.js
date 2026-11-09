@@ -38,3 +38,27 @@ document.querySelectorAll('#editar').forEach(editar => {
             });
     });
 });
+
+//Código de pesquisa
+
+const campoPesquisa = document.getElementById('pesquisa_usuarios');
+
+const usuarios = document.querySelectorAll('.usuario_item');
+
+campoPesquisa.addEventListener('input', function () {
+
+    const pesquisa = campoPesquisa.value.toLowerCase().trim();
+
+    usuarios.forEach(usuario => {
+
+        const dadosUsuario = usuario.textContent.toLowerCase();
+
+        if (dadosUsuario.includes(pesquisa)) {
+            usuario.style.display = '';
+        } else {
+            usuario.style.display = 'none';
+        }
+
+    });
+
+});

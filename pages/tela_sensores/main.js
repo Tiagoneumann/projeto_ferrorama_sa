@@ -37,3 +37,27 @@ document.querySelectorAll('#editar').forEach(editar => {
             });
     });
 })
+
+//campo de pesquisa
+
+const campoPesquisa = document.getElementById('pesquisa_sensor');
+
+const sensores = document.querySelectorAll('.sensor_item');
+
+campoPesquisa.addEventListener('input', function () {
+
+    const pesquisa = campoPesquisa.value.toLowerCase().trim();
+
+    sensores.forEach(sensor => {
+
+        const dadosSensores = sensor.textContent.toLowerCase();
+
+        if (dadosSensores.includes(pesquisa)) {
+            sensor.style.display = '';
+        } else {
+            sensor.style.display = 'none';
+        }
+
+    });
+
+});

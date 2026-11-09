@@ -62,7 +62,7 @@ $resultado = $conexao->query($sql);
             <div class="topo_sensores estilo_primario">
                 <div>
                     <label for="pesquisa_sensor"><i class="fa-solid fa-magnifying-glass"></i></label>
-                    <input type="text" name="pesquisa_sensor" class="input_padrao estilo_secundario" placeholder="Pesquise o sensor desejado">
+                    <input type="text" id="pesquisa_sensor" name="pesquisa_sensor" class="input_padrao estilo_secundario" placeholder="Pesquise o sensor desejado">
                 </div>
 
                 <button id="criar" class="botao"><i class="fa-solid fa-plus"></i> Adicionar sensor</button>
@@ -80,7 +80,7 @@ $resultado = $conexao->query($sql);
                         </tr>
                 
                     <?php while($sensor = $resultado->fetch_assoc()): ?>
-                        <tr>
+                        <tr class="sensor_item">
                             <td>
                                 <button id="editar" class="btn_editar" data-id="<?= $sensor['id_sensor'] ?>"><i class="fa-solid fa-pen-to-square"></i></button>
                                 <?= htmlspecialchars($sensor['codigo_sensor']) ?>

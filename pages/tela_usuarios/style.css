@@ -17,7 +17,22 @@
 }
 
 .botao{
+    width: 100%;
     padding: 12px;
+}
+
+.pesquisa{
+    display: flex;
+    align-items: center;
+
+    border-radius: 12px;
+
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.pesquisa label{
+    display: none;
 }
 
 .dados ul{
@@ -70,8 +85,15 @@
         grid-template-columns: 1fr 1fr;
     }
 
-    .botao{
+    .topo_usuarios{
         grid-column: span 2;
+    }
+
+    .pesquisa label{
+        display: block;
+        color: var(--cor-texto);
+        margin-right: 5px;
+        font-size: 1.5rem;
     }
 }
 
@@ -84,7 +106,7 @@
         font-size: 0.8rem;
     }
 
-    .botao{
+    .topo_usuarios{
         grid-column: span 3;
     }
 }
