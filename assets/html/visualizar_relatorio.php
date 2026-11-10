@@ -64,9 +64,11 @@ $secoes = [
         </div>
 
         <div class="folha_relatorio">
+            <div class="folha">
+
             <div class="cabecalho_relatorio">
 
-                <h1><?= escapar($relatorio['titulo_relatorio']) ?></h1>
+                <h2><?= escapar($relatorio['titulo_relatorio']) ?></h2>
 
                 <p>Gerado por: <?= escapar($relatorio['nome_usuario']) ?></p>
 
@@ -80,7 +82,7 @@ $secoes = [
 
                 <section class="secao_relatorio">
 
-                    <h2><?= escapar($titulo) ?></h2>
+                    <h3><?= escapar($titulo) ?></h3>
 
                     <?php if (!empty($registros)): ?>
 
@@ -131,6 +133,8 @@ $secoes = [
                 </section>
 
             <?php endforeach; ?>
+
+            </div>
         </div>
     
         <button class="botao" type="button" onclick="window.print()">Baixar / Imprimir PDF</button>
