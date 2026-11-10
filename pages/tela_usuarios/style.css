@@ -27,7 +27,6 @@
 
     border-radius: 12px;
 
-    padding: 5px;
     margin-top: 10px;
 }
 
@@ -108,6 +107,10 @@
 
     .topo_usuarios{
         grid-column: span 3;
+    }
+
+    .pesquisa{
+        padding: 5px;
     }
 }
 

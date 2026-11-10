@@ -1,47 +1,120 @@
-table{
+table {
     width: 100%;
+    border-collapse: collapse;
+    white-space: nowrap;
 }
 
-td, th{
+td, th {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     text-align: center;
     padding: 10px;
 }
 
-.container{
+.container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-}
+    grid-template-columns: 1fr;
+    gap: 15px;
 
-.linhas{
-    border-radius: 12px;
-
-    padding: 10px;
-}
-
-.linhas button{
     width: 100%;
 }
 
-.tabela_linhas{
+.linhas {
+    border-radius: 12px;
+    padding: 10px;
+    min-width: 0;
+}
+
+.linhas button {
+    width: 100%;
+}
+
+.tabela_linhas {
     color: var(--cor-texto);
 
     margin-top: 10px;
     border-radius: 12px;
 
     width: 100%;
-    height: calc(100vh - 250px);
+    height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
-.tabela_linhas td{
+.tabela_linhas td {
     position: relative;
 }
 
-.tabela_rotas td{
-    position: relative;
+.rotas {
+    border-radius: 12px;
+    padding: 10px;
+
+    width: 100%;
+    min-width: 0;
 }
 
-.btn_editar{
+.topo_rotas {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+}
+
+.topo_rotas button {
+    width: 100%;
+}
+
+.pesquisa_rota {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    width: 100%;
+    min-width: 0;
+
+    color: var(--cor-texto);
+}
+
+.pesquisa_rota i {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.pesquisa_rota input {
+    width: 100%;
+    min-width: 0;
+}
+
+.tabela_rotas {
+    color: var(--cor-texto);
+
+    margin-top: 10px;
+    border-radius: 12px;
+
+    width: 100%;
+    height: 500px;
+
+    overflow: auto;
+}
+
+.tabela_rotas th{
+    width: 16.6%;
+}
+
+.tabela_rotas td,
+.tabela_linhas td {
+    position: relative;
+    font-size: 0.8rem;
+}
+
+.tabela_rotas td:first-child{
+    padding-left: 50px;
+}
+
+.tabela_rotas td:last-child{
+    padding-right: 20px;
+}
+
+.btn_editar {
     position: absolute;
 
     transform: translateY(-50%);
@@ -49,7 +122,6 @@ td, th{
     top: 50%;
 
     padding-right: 10px;
-    
 
     background: none;
     border: none;
@@ -61,19 +133,19 @@ td, th{
     transition: var(--transition-fast);
 }
 
-.btn_editar:hover{
-    color: var(--cor-azul)
+.btn_editar:hover {
+    color: var(--cor-azul);
 }
 
-.btn_editar:active{
+.btn_editar:active {
     color: var(--cor-texto);
 }
 
-.btn_excluir_linha, .btn_excluir_rota{
+.btn_excluir_linha,
+.btn_excluir_rota {
     position: absolute;
 
     transform: translateY(-50%);
-    left: 45%;
     top: 50%;
 
     background: none;
@@ -85,54 +157,90 @@ td, th{
     transition: var(--transition-fast);
 }
 
-.btn_excluir_rota{
+.btn_excluir_linha {
+    left: 45%;
+}
+
+.btn_excluir_rota {
     left: 85%;
 }
 
-.btn_excluir_linha:hover, .btn_excluir_rota:hover{
+.btn_excluir_linha:hover,
+.btn_excluir_rota:hover {
     color: var(--cor-vermelha);
 }
 
-.btn_excluir_linha:active, .btn_excluir_rota:active{
+.btn_excluir_linha:active,
+.btn_excluir_rota:active {
     color: var(--cor-texto);
 }
 
-.rotas{
-    grid-column: 2/5;
+@media (min-width: 768px) {
 
-    border-radius: 12px;
+    .container {
+        grid-template-columns: 1fr 2fr;
+        gap: 15px;
+        padding: 15px;
+    }
 
-    padding: 10px;
-    margin-left: 10px;
+    .rotas {
+        grid-column: 2;
+    }
+
+    .topo_rotas {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .topo_rotas button {
+        width: auto;
+        white-space: nowrap;
+    }
+
+    .pesquisa_rota {
+        width: 50%;
+    }
+
+    .tabela_linhas {
+        max-height: calc(100vh - 250px);
+    }
+
+    .tabela_rotas {
+        max-height: calc(100vh - 250px);
+    }
+
+    .tabela_rotas td:first-child{
+        padding-left: 50px;
+    }
 }
 
-.topo_rotas{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+@media (min-width: 1024px) {
 
-.pesquisa_rota{
-    display: flex;
-    align-items: center;
-    color: var(--cor-texto);
-}
+    .container {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0;
+        padding: 0;
+    }
 
-.pesquisa_rota i{
-    font-size: 1.5rem;
-    margin-right: 5px;
-}
+    .linhas {
+        grid-column: 1;
+    }
 
-.tabela_rotas{
-    color: var(--cor-texto);
+    .rotas {
+        grid-column: 2 / 5;
 
-    margin-top: 10px;
-    border-radius: 12px;
+        margin-left: 10px;
+        width: auto;
+    }
 
-    width: 100%;
-    height: calc(100vh - 250px);
-}
+    .tabela_linhas,
+    .tabela_rotas {
+        height: calc(100vh - 250px);
+        max-height: none;
+    }
 
-.tabela_rotas th{
-    width: 16.6%;
+    .pesquisa_rota {
+        width: 100%;
+    }
 }

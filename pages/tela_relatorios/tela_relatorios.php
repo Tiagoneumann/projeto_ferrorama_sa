@@ -1,6 +1,10 @@
 <?php
 
-require_once '../../assets/php/autorizacao.php'
+require '../../assets/php/conexao.php';
+require_once '../../assets/php/autorizacao.php';
+
+$sql = 'SELECT  relatorio.*, usuario.nome_usuario FROM relatorio INNER JOIN usuario  ON relatorio.id_usuario = usuario.id_usuario';
+$resultado = $conexao->query($sql);
 
 ?>
 
@@ -23,6 +27,7 @@ require_once '../../assets/php/autorizacao.php'
     <header>
 
         <div id="usuario"></div>
+        <div id="relatorio"></div>
 
         <nav class="navbar">
             <div class="navbar_bloco">
@@ -50,24 +55,39 @@ require_once '../../assets/php/autorizacao.php'
         </nav>
     </header>
     <main>
-        <div class="container estilo_secundario">
-            <h6 class="titulo">Relatório</h6> 
+        
+        <div class="container">
+            <div class="topo_relatorio">
+                <form action="../../assets/php/gerar_relatorio.php" method="POST">
+                    <button type="submit" id="gerar_relatorio" class="botao"><i class="fa-solid fa-plus"></i> Gerar relatório</button>
+                </form>
+            </div>
 
-            <input type="text" class="input_padrao estilo_secundario" placeholder="Período">
-            <input type="text" class="input_padrao estilo_secundario" placeholder="Tipo do relátorio">
-            <input type="text" class="input_padrao estilo_secundario" placeholder="Trem">
-            <input type="text" class="input_padrao estilo_secundario" placeholder="Sensor">
-            <input type="text" class="input_padrao estilo_secundario" placeholder="Status atual">
-            <input type="text" class="input_padrao estilo_secundario" placeholder="Velocidade média">
-            <input type="text" class="input_padrao estilo_secundario" placeholder="Ocorrências/Descrição">
+            <div class="relatorios">
 
-            <button class="botao">Enviar Relatório</button>
+            <?php while($relatorios = $resultado->fetch_assoc()): ?>
+
+                <div class="item_relatorio estilo_primario">
+                    <div class="informacoes_relatorio">
+                        <p><strong><?= htmlspecialchars($relatorios['titulo_relatorio']) ?></strong></p>
+
+                        <div class="dados_relatorio">
+                            <small>Por: <?= htmlspecialchars($relatorios['nome_usuario']) ?></small>
+                            <small>Data: <?= htmlspecialchars($relatorios['data_geracao']) ?></small>
+                        </div>
+                    </div>
+
+                    <button id="visualizar_relatorio" class="btn_visualizar" data-id="<?= $relatorios['id_relatorio'] ?>"><i class="fa-regular fa-eye"></i></button>
+                </div>
+
+            <?php endwhile; ?>
+
+            </div>
         </div>
+
     </main>
     <footer>
-        <div class="marca_dagua">
-            <small>Track Flow© 2026</small>
-        </div>
+        <small class="marca_dagua">Track Flow© 2026</small>
     </footer>
 
 </body>

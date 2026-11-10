@@ -64,6 +64,17 @@ CREATE TABLE leitura (
     FOREIGN KEY (id_sensor) REFERENCES sensor(id_sensor) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
+CREATE TABLE relatorio (
+    id_relatorio INT AUTO_INCREMENT PRIMARY KEY,
+    titulo_relatorio VARCHAR(150) NOT NULL,
+    conteudo_relatorio LONGTEXT NOT NULL,
+    data_geracao DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    id_usuario INT NOT NULL,
+
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON UPDATE CASCADE ON DELETE RESTRICT
+);
+
 /*===================
 Alterar tipo_usuario
 ===================*/

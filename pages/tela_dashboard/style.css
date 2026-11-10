@@ -280,6 +280,11 @@
   text-align: left;
 }
 
+.catalogo td,
+.dados_grafico td{
+    font-size: 0.8rem;
+}
+
 .status_ativo,  .status_manutencao, .status_parado{
     position: relative;
     font-weight: bold;
