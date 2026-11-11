@@ -7,7 +7,12 @@ require 'conexao.php';
 try {
 
     $trens = $conexao->query("
-        SELECT t.*, l.nome_linha
+        SELECT t.id_trem, 
+        t.prefixo_trem, 
+        t.modelo_trem, 
+        t.ano_trem, 
+        t.status_trem,
+        l.nome_linha
         FROM trem t
         LEFT JOIN linha l ON t.id_linha = l.id_linha
     ")->fetch_all(MYSQLI_ASSOC);

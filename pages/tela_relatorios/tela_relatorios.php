@@ -3,7 +3,7 @@
 require '../../assets/php/conexao.php';
 require_once '../../assets/php/autorizacao.php';
 
-$sql = 'SELECT  relatorio.*, usuario.nome_usuario FROM relatorio INNER JOIN usuario  ON relatorio.id_usuario = usuario.id_usuario';
+$sql = 'SELECT  relatorio.*, usuario.nome_usuario FROM relatorio INNER JOIN usuario ON relatorio.id_usuario = usuario.id_usuario ORDER BY relatorio.id_relatorio DESC';
 $resultado = $conexao->query($sql);
 
 ?>

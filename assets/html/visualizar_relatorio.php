@@ -137,6 +137,6 @@ $secoes = [
             </div>
         </div>
     
-        <button class="botao" type="button" onclick="window.print()">Baixar / Imprimir PDF</button>
+        <button class="botao" type="button" onclick="imprimirRelatorio()">Baixar / Imprimir PDF</button>
     </div>
 </div>

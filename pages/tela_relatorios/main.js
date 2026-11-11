@@ -19,3 +19,15 @@ document.querySelectorAll('#visualizar_relatorio').forEach(visualizar_relatorio 
         })
     })
 })
+
+function imprimirRelatorio() {
+    const relatorio = document.querySelector('.relatorio');
+    const original = relatorio.parentNode;
+    const proximo = relatorio.nextSibling;
+
+    document.body.appendChild(relatorio);
+
+    window.print();
+
+    original.insertBefore(relatorio, proximo);
+}
