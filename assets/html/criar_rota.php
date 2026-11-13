@@ -24,42 +24,53 @@ $resultado_linha = $conexao->query($sql_linha);
             <form action="../../assets/php/criar_rota.php" method="POST">
                 <div class="separacao">
 
+                    <label for="data_rota">Data</label>
                     <input class="input_padrao estilo_secundario" type="date" name="data_rota" required>
 
-                <div class="viagem">
-                    <input class="input_padrao estilo_secundario" type="text" name="origem_rota" placeholder="Origem" required>
+                    <label for="origem_destino_rota">Localização</label>
+                    <div class="viagem">
+                        <input class="input_padrao estilo_secundario" type="text" name="origem_rota" placeholder="Origem" required>
 
-                    <input class="input_padrao estilo_secundario" type="text" name="destino_rota" placeholder="Destino" required>
-                </div>
+                        <input class="input_padrao estilo_secundario" type="text" name="destino_rota" placeholder="Destino" required>
+                    </div>
 
-                <div class="horario">
-                    <input class="input_padrao estilo_secundario" type="text" name="horario_partida" placeholder="Partida" required>
+                    <label for="horario_rota">Horário</label>
+                    <div class="horario">
+                        <input class="input_padrao estilo_secundario" type="time" name="horario_partida" placeholder="Partida" required>
 
-                    <input class="input_padrao estilo_secundario" type="text" name="horario_chegada" placeholder="Chegada" required>
-                </div>
+                        <input class="input_padrao estilo_secundario" type="time" name="horario_chegada" placeholder="Chegada" required>
+                    </div>
 
-                    <select class="input_padrao estilo_secundario" name="trem_rota" id="trens">
-                        
-                        <option value="">Selecione um trem</option>
+                    <div class="trem_linha_rota">
+                        <label for="trem_rota">Trem
+                            <select class="input_padrao estilo_secundario" name="trem_rota" id="trens">
 
-                        <?php while ($trem = $resultado_trem->fetch_assoc()):?>
+                                <option value="">Selecione um trem</option>
 
-                            <option value="<?= $trem['id_trem']?>"> <?= htmlspecialchars($trem['prefixo_trem']), " / ", htmlspecialchars($trem['modelo_trem']) ?></option>
+                                <?php while ($trem = $resultado_trem->fetch_assoc()): ?>
 
-                        <?php endwhile;?>
-                    </select>
+                                    <option value="<?= $trem['id_trem'] ?>"> <?= htmlspecialchars($trem['prefixo_trem']), " / ", htmlspecialchars($trem['modelo_trem']) ?></option>
 
-                    <select class="input_padrao estilo_secundario" name="linha_rota" id="linhas">
-                        
-                        <option value="">Selecione uma linha</option>
+                                <?php endwhile; ?>
+                            </select>
+                        </label>
 
-                        <?php while ($linha = $resultado_linha->fetch_assoc()):?>
+                        <label for="linha_rota">Linha
+                            <select class="input_padrao estilo_secundario" name="linha_rota" id="linhas">
 
-                            <option value="<?= $linha['id_linha']?>"> <?= htmlspecialchars($linha['nome_linha'])?></option>
+                                <option value="">Selecione uma linha</option>
 
-                        <?php endwhile;?>
-                    </select>
+                                <?php while ($linha = $resultado_linha->fetch_assoc()): ?>
 
+                                    <option value="<?= $linha['id_linha'] ?>"> <?= htmlspecialchars($linha['nome_linha']) ?></option>
+
+                                <?php endwhile; ?>
+                            </select>
+                        </label>
+                    </div>
+
+
+                    <label for="estado_usuario">Estado</label>
                     <div class="opcoes_usuario">
                         <label class="opcao_usuario estilo_secundario">
                             <input type="radio" name="status_rota" value="programada">
@@ -73,7 +84,7 @@ $resultado_linha = $conexao->query($sql_linha);
                             <input type="radio" name="status_rota" value="concluida">
                             <span>Concluida</span>
                         </label>
-                         <label class="opcao_usuario estilo_secundario">
+                        <label class="opcao_usuario estilo_secundario">
                             <input type="radio" name="status_rota" value="cancelada">
                             <span>Cancelada</span>
                         </label>

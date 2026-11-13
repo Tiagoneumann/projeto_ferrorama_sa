@@ -12,9 +12,10 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 $id_sensor = filter_input(INPUT_POST, 'id_sensor', FILTER_VALIDATE_INT);
 
-$codigo = trim($_POST['codigo_sensor'] ?? '');
-$tipo = trim($_POST['tipo_sensor'] ?? '');
-$unidade = trim($_POST['unidade_sensor'] ?? '');
+$codigo = trim($_POST['codigo_sensor']);
+$tipo = trim($_POST['tipo_sensor']);
+$unidade = trim($_POST['unidade_sensor']);
+$maximo = $_POST['maximo_sensor'];
 $id_trem = filter_input(INPUT_POST, 'trem_sensor', FILTER_VALIDATE_INT);
 
 // Valida os dados recebidos
@@ -23,13 +24,13 @@ if (
     $codigo === '' ||
     $tipo === '' ||
     $unidade === '' ||
+    $maximo === '' ||
     !$id_trem || $id_trem <= 0
 ) {
     header('Location: ../../pages/tela_sensores/tela_sensores.php?erro=dados_invalidos');
     exit;
 }
 
-// Verifica se o sensor existe
 $sql = "SELECT id_sensor FROM sensor WHERE id_sensor = ?";
 
 $stmt = $conexao->prepare($sql);
@@ -61,21 +62,22 @@ if (!$trem_existe) {
     exit;
 }
 
-// Atualiza os dados do sensor
 $sql = "UPDATE sensor
         SET codigo_sensor = ?,
             tipo_sensor = ?,
             unidade_sensor = ?,
+            maximo_sensor = ?,
             id_trem = ?
         WHERE id_sensor = ?";
 
 $stmt = $conexao->prepare($sql);
 
 $stmt->bind_param(
-    "sssii",
+    "sssdii",
     $codigo,
     $tipo,
     $unidade,
+    $maximo,
     $id_trem,
     $id_sensor
 );

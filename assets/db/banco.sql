@@ -49,6 +49,7 @@ CREATE TABLE sensor (
     codigo_sensor VARCHAR(100) NOT NULL UNIQUE,
     tipo_sensor VARCHAR(100) NOT NULL,
     unidade_sensor VARCHAR(100) NOT NULL,
+    maximo_sensor REAL NOT NULL,
 
     id_trem INT NOT NULL,
 
@@ -57,12 +58,26 @@ CREATE TABLE sensor (
 
 CREATE TABLE leitura (
     id_leitura INT AUTO_INCREMENT PRIMARY KEY,
-    id_sensor INT NOT NULL,
+    id_sensor INT NOT NULL UNIQUE,
     valor_sensor REAL NOT NULL,
     registro_sensor DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     FOREIGN KEY (id_sensor) REFERENCES sensor(id_sensor) ON UPDATE CASCADE ON DELETE CASCADE
 );
+
+
+CREATE TABLE alerta (
+    id_alerta INT AUTO_INCREMENT PRIMARY KEY,
+    titulo_alerta VARCHAR(150) NOT NULL,
+    descricao_alerta TEXT NOT NULL,
+    tipo_alerta ENUM('informativo', 'aviso', 'critico') NOT NULL DEFAULT 'informativo',
+    data_alerta DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    id_sensor INT NULL UNIQUE,
+
+    FOREIGN KEY (id_sensor) REFERENCES sensor(id_sensor) ON UPDATE CASCADE ON DELETE SET NULL
+);
+
 
 CREATE TABLE relatorio (
     id_relatorio INT AUTO_INCREMENT PRIMARY KEY,

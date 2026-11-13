@@ -35,19 +35,24 @@ if (!$usuario) {
             <h1>Editar usuário</h1>
             <button class="btn_fechar" id="fechar_conta"><i class="fa-solid fa-x"></i></button>
         </div>
-                
+
         <div class="bloco_conta estilo_secundario">
             <form action="../../assets/php/editar_usuario.php" method='POST'>
 
                 <input type="hidden" name="id_usuario" value="<?= $usuario['id_usuario'] ?>">
 
                 <div class="separacao">
+
+                    <label for="nome_usuario">Nome</label>
                     <input class="input_padrao estilo_secundario" type="text" name="nome_usuario" placeholder="Nome" value="<?= htmlspecialchars($usuario['nome_usuario']) ?>" required>
 
+                    <label for="email_usuario">Email</label>
                     <input class="input_padrao estilo_secundario" type="email" name="email_usuario" placeholder="Email" value="<?= htmlspecialchars($usuario['email_usuario']) ?>" required>
 
+                    <label for="senha_usuario">Senha</label>
                     <input class="input_padrao estilo_secundario" type="password" name="senha_usuario" placeholder="Nova senha (opcional)" autocomplete="new-password">
 
+                    <label for="tipo_usuario">Tipo</label>
                     <div class="opcoes_usuario">
                         <label class="opcao_usuario estilo_secundario">
                             <input type="radio" name="tipo_usuario" value="usuario" <?= $usuario['tipo_usuario'] === 'usuario' ? 'checked' : '' ?>>
@@ -60,8 +65,8 @@ if (!$usuario) {
                     </div>
                 </div>
 
-                    <button type="submit" class="botao extensao_botao"><i class="fa-solid fa-check"></i> Confirmar edição</button>
-            </form>             
+                <button type="submit" class="botao extensao_botao"><i class="fa-solid fa-check"></i> Confirmar edição</button>
+            </form>
         </div>
-    </div>     
+    </div>
 </div>

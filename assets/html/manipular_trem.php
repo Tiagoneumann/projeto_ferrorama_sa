@@ -49,12 +49,16 @@ $resultado_linhas = $conexao->query('SELECT id_linha, nome_linha FROM linha ORDE
                         <p class="nome_arquivo" id="nome_arquivo">Nenhum arquivo selecionado</p>
                     </div>
 
+                    <label for="prefixo_trem">Prefixo</label>
                     <input class="input_padrao estilo_secundario" type="text" name="prefixo_trem" placeholder="Prefixo | ex: BR 403" value="<?= htmlspecialchars($trem['prefixo_trem'])?>" maxlength="100" required>
 
+                    <label for="modelo_trem">Modelo</label>
                     <input class="input_padrao estilo_secundario" type="text" name="modelo_trem" placeholder="Modelo | ex: Siemens Velaro" value="<?= htmlspecialchars($trem['modelo_trem']) ?>" maxlength="100" required>
 
+                    <label for="ano_trem">Ano de criação</label>
                     <input class="input_padrao estilo_secundario" type="number" name="ano_trem" placeholder="Ano de criação" value="<?= htmlspecialchars($trem['ano_trem']) ?>" min="1800" max="2100" required>
 
+                    <label for="linhas">Linha</label>
                     <select class="input_padrao estilo_secundario" name="linhas">
                         <option value="">Sem linha</option>
 
@@ -65,6 +69,7 @@ $resultado_linhas = $conexao->query('SELECT id_linha, nome_linha FROM linha ORDE
                         <?php endwhile; ?>
                     </select>
 
+                    <label for="estado_trem">Estado</label>
                     <div class="opcoes_usuario">
 
                         <?php $status_opcoes = ['ativo' => 'Ativo', 'manutencao' => 'Manutenção', 'parado' => 'Parado']; ?>

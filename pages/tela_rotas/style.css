@@ -175,6 +175,33 @@ td, th {
     color: var(--cor-texto);
 }
 
+.viagem, .horario{
+    display: flex;
+    gap: 10px;
+}
+
+.input_padrao{
+    min-width: 100px;
+}
+
+.opcoes_usuario{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.trem_linha_rota{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.trem_linha_rota label{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
 @media (min-width: 768px) {
 
     .container {
@@ -212,6 +239,15 @@ td, th {
 
     .tabela_rotas td:first-child{
         padding-left: 50px;
+    }
+
+    .opcoes_usuario{
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .trem_linha_rota{
+        display: flex;
+        flex-direction: row;
     }
 }
 

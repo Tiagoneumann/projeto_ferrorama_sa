@@ -94,6 +94,10 @@
         margin-right: 5px;
         font-size: 1.5rem;
     }
+
+    .pesquisa{
+        padding: 5px;
+    }
 }
 
 @media (min-width: 1024px){
@@ -107,10 +111,6 @@
 
     .topo_usuarios{
         grid-column: span 3;
-    }
-
-    .pesquisa{
-        padding: 5px;
     }
 }
 

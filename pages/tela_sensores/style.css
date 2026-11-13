@@ -13,13 +13,11 @@
     justify-content: center;
 }
 
-.topo_sensores label{
-    margin-right: 10px;
-}
-
 .topo_sensores label i{
+    display: none;
     color: var(--cor-texto);
     font-size: 1.5rem;
+    margin-right: 10px;
 }
 
 .tabela_sensores{
@@ -116,11 +114,17 @@
 
     .topo_sensores{
         flex-direction: column;
+        width: calc(100vw - 40px);
         gap: 10px;
     }
 
+    .tabela_sensores{
+
+    }
+
     .lista_sensores{
-        width: 100vw;
+        width: calc(100vw - 60px);
+        height: calc(100vh - 300px);
         overflow-x: auto;
     }
 }

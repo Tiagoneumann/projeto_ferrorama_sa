@@ -10,12 +10,16 @@
             <form action="../../assets/php/criar_usuario.php" method="POST">
                 <div class="separacao">
 
+                    <label for="nome_usuario">Nome</label>
                     <input class="input_padrao estilo_secundario" type="text" name="nome_usuario" placeholder="Nome" required>
 
+                    <label for="email_usuario">Email</label>
                     <input class="input_padrao estilo_secundario" type="email" name="email_usuario" placeholder="Email" required>
 
+                    <label for="senha_usuario">Senha</label>
                     <input class="input_padrao estilo_secundario" type="password" name="senha_usuario" placeholder="Senha" required>
 
+                    <label for="tipo_usuario">Tipo</label>
                     <div class="opcoes_usuario">
 
                         <label class="opcao_usuario estilo_secundario">

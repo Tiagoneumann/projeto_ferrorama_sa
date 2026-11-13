@@ -35,12 +35,17 @@ $resultado = $conexao->query($sql);
                         <p class="nome_arquivo" id="nome_arquivo">Nenhum arquivo selecionado</p>
                     </div>
 
-                    <input class="input_padrao estilo_secundario" type="text" name="prefixo_trem" placeholder="Prefixo | ex: BR 403" required>
 
-                    <input class="input_padrao estilo_secundario" type="text" name="modelo_trem" placeholder="Modelo | ex: Siemens Velaro" required>
+                    <label for="prefixo_trem">Prefixo</label>
+                    <input class="input_padrao estilo_secundario" type="text" name="prefixo_trem" placeholder="Prefixo" required>
 
-                    <input class="input_padrao estilo_secundario" type="number" name="ano_trem" placeholder="Ano de criação | ex: 2019" min="1800" max="2100" required >
+                    <label for="modelo_trem">Modelo</label>
+                    <input class="input_padrao estilo_secundario" type="text" name="modelo_trem" placeholder="Modelo" required>
 
+                    <label for="ano_trem">Ano de criação</label>
+                    <input class="input_padrao estilo_secundario" type="number" name="ano_trem" placeholder="Ano de criação" min="1800" max="2100" required >
+
+                    <label for="linhas">Linha</label>
                     <select class="input_padrao estilo_secundario" name="linhas" id="linhas">
                         
                         <option value="">Selecione uma linha</option>
@@ -52,6 +57,7 @@ $resultado = $conexao->query($sql);
                         <?php endwhile;?>
                     </select>
 
+                    <label for="estado_trem">Estado</label>
                     <div class="opcoes_usuario">
                         <label class="opcao_usuario estilo_secundario">
                             <input type="radio" name="status_trem" value="ativo">

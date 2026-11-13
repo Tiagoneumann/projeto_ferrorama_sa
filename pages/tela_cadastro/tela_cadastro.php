@@ -72,9 +72,7 @@ require '../../assets/php/cadastro.php';
     </main>
 
     <footer>
-        <div class="marca_dagua">
-            <small>Track Flow © 2026</small>
-        </div>
+        <small class="marca_dagua">Track Flow © 2026</small>
     </footer>
 
 </body>

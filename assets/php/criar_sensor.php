@@ -11,9 +11,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $codigo = $_POST['codigo_sensor'];
     $tipo = trim($_POST['tipo_sensor']);
     $unidade = trim($_POST['unidade_sensor']);
+    $maximo = $_POST['maximo_sensor'];
     $trem = filter_input(INPUT_POST, 'trem_sensor', FILTER_VALIDATE_INT);
 
-    if($codigo === '' || $tipo === '' || $unidade === '' || $trem === false || $trem === null){
+    if($codigo === '' || $tipo === '' || $unidade === '' || $maximo === '' || $trem === false || $trem === null){
 
         $erro = "Preencha todos os campos!";
 
@@ -34,10 +35,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         } else {
 
-            $sql = "INSERT INTO sensor (codigo_sensor, tipo_sensor, unidade_sensor, id_trem) VALUES (?, ?, ?, ?)";
+            $sql = "INSERT INTO sensor (codigo_sensor, tipo_sensor, unidade_sensor, maximo_sensor, id_trem) VALUES (?, ?, ?, ?, ?)";
 
             $stmt = $conexao->prepare($sql);
-            $stmt->bind_param("sssi", $codigo, $tipo, $unidade, $trem);
+            $stmt->bind_param("sssdi", $codigo, $tipo, $unidade, $maximo, $trem);
             
             if($stmt->execute()){
 

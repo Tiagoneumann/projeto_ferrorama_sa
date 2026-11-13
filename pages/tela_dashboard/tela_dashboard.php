@@ -1,8 +1,13 @@
 <?php
 
 require_once '../../assets/php/autorizacao.php';
+require_once '../../assets/php/gerar_alertas.php';
 
-$sql = "SELECT * FROM trem";
+$sql = "SELECT trem.*, linha.nome_linha
+        FROM trem
+        LEFT JOIN linha 
+        ON trem.id_linha = linha.id_linha";
+
 $resultado = $conexao->query($sql);
 
 $trens = [];
@@ -46,7 +51,54 @@ $limiteParados = $porcentagemParados;
 $limiteManutencao = $limiteParados + $porcentagemManutencao;
 $limiteAtivos = 100;
 
-?> 
+$sqlLeituras = "SELECT
+                    leitura.id_leitura,
+                    leitura.valor_sensor,
+                    leitura.registro_sensor,
+                    sensor.tipo_sensor,
+                    sensor.unidade_sensor,
+                    sensor.codigo_sensor,
+                    trem.prefixo_trem
+                FROM leitura
+                INNER JOIN sensor
+                    ON leitura.id_sensor = sensor.id_sensor
+                INNER JOIN trem
+                    ON sensor.id_trem = trem.id_trem
+                ORDER BY leitura.registro_sensor DESC";
+
+$resultadoLeituras = $conexao->query($sqlLeituras);
+
+$leituras = [];
+
+if ($resultadoLeituras) {
+    while ($leitura = $resultadoLeituras->fetch_assoc()) {
+        $leituras[] = $leitura;
+    }
+}
+
+$sqlAlertas = "
+    SELECT
+        titulo_alerta,
+        descricao_alerta,
+        tipo_alerta,
+        data_alerta
+    FROM alerta
+    ORDER BY
+        FIELD(tipo_alerta, 'critico', 'aviso', 'informativo'),
+        data_alerta DESC
+";
+
+$resultadoAlertas = $conexao->query($sqlAlertas);
+
+$alertas = [];
+
+if ($resultadoAlertas) {
+    while ($alerta = $resultadoAlertas->fetch_assoc()) {
+        $alertas[] = $alerta;
+    }
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -108,7 +160,7 @@ $limiteAtivos = 100;
                     <div>
                         <p><strong>Trens ativos</strong></p>
                         <small class="quantidade_status"><span><?= htmlspecialchars($totalAtivos) ?></span> de <?= htmlspecialchars($totalTrens) ?></small>
-                        <input class="barra_verde" type="range" style="--progresso-verde: <?=$porcentagemAtivos?>%;" disabled>
+                        <input class="barra_verde" type="range" style="--progresso-verde: <?= $porcentagemAtivos ?>%;" disabled>
                     </div>
                 </div>
 
@@ -118,7 +170,7 @@ $limiteAtivos = 100;
                     <div>
                         <p><strong>Trens em manutenção</strong></p>
                         <small class="quantidade_status"><span><?= htmlspecialchars($totalManutencao) ?></span> de <?= htmlspecialchars($totalTrens) ?></small>
-                        <input class="barra_amarela" type="range" style="--progresso-amarelo: <?=$porcentagemManutencao?>%;" disabled>
+                        <input class="barra_amarela" type="range" style="--progresso-amarelo: <?= $porcentagemManutencao ?>%;" disabled>
                     </div>
                 </div>
 
@@ -128,7 +180,7 @@ $limiteAtivos = 100;
                     <div>
                         <p><strong>Trens parados</strong></p>
                         <small class="quantidade_status"><span><?= htmlspecialchars($totalParados) ?></span> de <?= htmlspecialchars($totalTrens) ?></small>
-                        <input class="barra_vermelha" type="range" style="--progresso-vermelho: <?=$porcentagemParados?>%;" disabled>
+                        <input class="barra_vermelha" type="range" style="--progresso-vermelho: <?= $porcentagemParados ?>%;" disabled>
                     </div>
                 </div>
             </div>
@@ -152,21 +204,21 @@ $limiteAtivos = 100;
                         <tr>
                             <td><i class="bola_verde fa-solid fa-circle"></i> Ativo</td>
                             <td><?= htmlspecialchars($totalAtivos) ?></td>
-                            <td><?=$porcentagemAtivos?>%</td>
+                            <td><?= $porcentagemAtivos ?>%</td>
                         </tr>
 
                         <tr>
                             <td><i class="bola_amarela fa-solid fa-circle"></i> Manutenção</td>
                             <td><?= htmlspecialchars($totalManutencao) ?></td>
-                            <td><?=$porcentagemManutencao?>%</td>
+                            <td><?= $porcentagemManutencao ?>%</td>
                         </tr>
 
                         <tr>
                             <td><i class="bola_vermelha fa-solid fa-circle"></i> Parado</td>
                             <td><?= htmlspecialchars($totalParados) ?></td>
-                            <td><?=$porcentagemParados?>%</td>
+                            <td><?= $porcentagemParados ?>%</td>
                         </tr>
-            
+
                     </table>
                 </div>
             </div>
@@ -174,7 +226,7 @@ $limiteAtivos = 100;
             <div class="lista_trens estilo_primario">
                 <div class="topo_lista_trens">
                     <div class="lista_trens_info">
-                        <p><strong>Catálogo de Trens</strong></p>
+                        <p><strong><i class="fa-solid fa-train"></i> Catálogo de Trens</strong></p>
                         <small>Todos os trens cadastrados no sistema</small>
                     </div>
 
@@ -194,23 +246,23 @@ $limiteAtivos = 100;
                             <th>Ano</th>
                         </tr>
 
-                        <?php foreach($trens as $trem): ?>
+                        <?php foreach ($trens as $trem): ?>
 
-                        <tr class="trem_item">
-                            <td><?= htmlspecialchars($trem['prefixo_trem']) ?? "--" ?></td>
-                            <td><?= htmlspecialchars($trem['modelo_trem']) ?? "--" ?></td>
-                            <td class="status_<?= match ($trem['status_trem']){ 
-                                'ativo' => 'ativo',
-                                'manutencao' => 'manutencao',
-                                'parado' => 'parado'
-                            } ?>"><?= match ($trem['status_trem']) {
-                                'ativo' => htmlspecialchars("Ativo"),
-                                'manutencao' => htmlspecialchars("Manutenção"),
-                                'parado' => htmlspecialchars("Parado")
-                            } ?? "--" ?></td>
-                            <td><?= htmlspecialchars($trem['id_linha'] ?? "--") ?></td>
-                            <td><?= htmlspecialchars($trem['ano_trem']) ?? "--" ?></td>
-                        </tr>
+                            <tr class="trem_item">
+                                <td><?= htmlspecialchars($trem['prefixo_trem']) ?? "--" ?></td>
+                                <td><?= htmlspecialchars($trem['modelo_trem']) ?? "--" ?></td>
+                                <td class="status_<?= match ($trem['status_trem']) {
+                                                        'ativo' => 'ativo',
+                                                        'manutencao' => 'manutencao',
+                                                        'parado' => 'parado'
+                                                    } ?>"><?= match ($trem['status_trem']) {
+                                                                'ativo' => htmlspecialchars("Ativo"),
+                                                                'manutencao' => htmlspecialchars("Manutenção"),
+                                                                'parado' => htmlspecialchars("Parado")
+                                                            } ?? "--" ?></td>
+                                <td><?= htmlspecialchars($trem['nome_linha'] ?? "--") ?></td>
+                                <td><?= htmlspecialchars($trem['ano_trem']) ?? "--" ?></td>
+                            </tr>
 
                         <?php endforeach; ?>
 
@@ -218,20 +270,101 @@ $limiteAtivos = 100;
                 </div>
             </div>
 
-            <div class="aviso estilo_primario">
-                <p><strong><i class="fa-solid fa-bell"></i> Avisos</strong></p>
-                
-                <div class="estilo_secundario">
+            <div class="leitura estilo_primario">
+                <div class="topo_lista_leituras">
+                    <div class="lista_leituras_info">
+                        <p><strong><i class="fa-solid fa-clock"></i> Leituras</strong></p>
+                        <small>Todos as leituras do sistema</small>
+                    </div>
 
+                    <div class="pesquisa">
+                        <label for="pesquisa_leituras"><i class="fa-solid fa-magnifying-glass"></i></label>
+                        <input class="input_padrao estilo_secundario" type="text" name="pesquisa_leituras" id="pesquisa_leituras" placeholder="Pesquise por uma leitura">
+                    </div>
+                </div>
+
+
+                <div class="catalogo estilo_secundario">
+                    <table>
+                        <tr>
+                            <th>Trem</th>
+                            <th>Tipo</th>
+                            <th>Valor</th>
+                        </tr>
+
+                        <?php foreach ($leituras as $leitura): ?>
+
+                            <tr class="leitura_item">
+                                <td><?= htmlspecialchars($leitura['prefixo_trem']) ?></td>
+                                <td><?= htmlspecialchars($leitura['tipo_sensor']) ?></td>
+                                <td><?= htmlspecialchars(number_format((float)$leitura['valor_sensor'], 2, ',', '.') . ' ' . $leitura['unidade_sensor']) ?></td>
+                            </tr>
+
+                        <?php endforeach; ?>
+                    </table>
                 </div>
             </div>
 
-            <div class="ocorrencias estilo_primario">
-                <p><strong><i class="fa-solid fa-clock"></i> Ocorrências</strong></p>
+            <div class="aviso estilo_primario">
 
-                <div class="estilo_secundario">
+                <p><strong><i class="fa-solid fa-bell"></i> Avisos</strong></p>
+
+                <div class="lista_avisos estilo_secundario">
+
+                    <?php if (empty($alertas)): ?>
+
+                        <div class="sem_avisos">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <p>Nenhum alerta no momento!</p>
+                            <small>Todos os sensores estão dentro dos limites.</small>
+                        </div>
+
+                    <?php else: ?>
+
+                        <?php foreach ($alertas as $alerta): ?>
+
+                            <div class="item_aviso aviso_<?= htmlspecialchars($alerta['tipo_alerta']) ?>">
+
+                                <div class="aviso_icone">
+
+                                    <?php if ($alerta['tipo_alerta'] === 'critico'): ?>
+
+                                        <i class="fa-solid fa-circle-exclamation"></i>
+
+                                    <?php elseif ($alerta['tipo_alerta'] === 'aviso'): ?>
+
+                                        <i class="fa-solid fa-triangle-exclamation"></i>
+
+                                    <?php else: ?>
+
+                                        <i class="fa-solid fa-circle-info"></i>
+
+                                    <?php endif; ?>
+
+                                </div>
+
+                                <div class="aviso_conteudo">
+
+                                    <div class="aviso_cabecalho">
+
+                                        <strong><?= htmlspecialchars($alerta['titulo_alerta']) ?></strong>
+                                        <span class="aviso_tipo"><?= ucfirst(htmlspecialchars($alerta['tipo_alerta'])) ?></span>
+
+                                    </div>
+
+                                    <p><?= htmlspecialchars($alerta['descricao_alerta']) ?></p>
+                                    <small><i class="fa-regular fa-clock"></i><?= date('d/m/Y H:i', strtotime($alerta['data_alerta'])) ?></small>
+
+                                </div>
+
+                            </div>
+
+                        <?php endforeach; ?>
+
+                    <?php endif; ?>
 
                 </div>
+
             </div>
 
         </div>

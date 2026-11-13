@@ -447,15 +447,14 @@ footer {
     width: 100%;
 }
 
+.bloco_conta label{
+    font-size: 0.8rem;
+}
+
 .separacao{
     display: grid;
     grid-template-columns: 1fr;
 
-    gap: 10px;
-}
-
-.viagem, .horario{
-    display: flex;
     gap: 10px;
 }
 
