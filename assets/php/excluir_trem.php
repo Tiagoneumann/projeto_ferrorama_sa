@@ -1,3 +1,4 @@
+
 <?php
 
 session_start();
@@ -5,6 +6,11 @@ session_start();
 require 'conexao.php';
 
 $id_trem = filter_input(INPUT_POST, 'id_trem', FILTER_VALIDATE_INT);
+
+if (!$id_trem) {
+    header('Location: ../../pages/tela_trens/tela_trens.php?erro=nao_encontrado');
+    exit;
+}
 
 $sql = "SELECT imagem_trem FROM trem WHERE id_trem = ?";
 
@@ -22,13 +28,27 @@ if (!$trem) {
     exit;
 }
 
-$sql = "DELETE FROM trem WHERE id_trem = ?";
+try {
 
-$stmt = $conexao->prepare($sql);
-$stmt->bind_param("i", $id_trem);
-$stmt->execute();
+    $conexao->begin_transaction();
 
-if ($stmt->affected_rows > 0) {
+    $sql = "DELETE FROM rota WHERE id_trem = ?";
+
+    $stmt = $conexao->prepare($sql);
+    $stmt->bind_param("i", $id_trem);
+    $stmt->execute();
+    $stmt->close();
+
+    $sql = "DELETE FROM trem WHERE id_trem = ?";
+
+    $stmt = $conexao->prepare($sql);
+    $stmt->bind_param("i", $id_trem);
+    $stmt->execute();
+
+    $stmt->close();
+
+    $conexao->commit();
+
     if (!empty($trem['imagem_trem'])) {
 
         $caminho_imagem = __DIR__ . '/../../assets/img/trens/' .
@@ -40,11 +60,14 @@ if ($stmt->affected_rows > 0) {
     }
 
     header('Location: ../../pages/tela_trens/tela_trens.php?sucesso=excluido');
-} else {
-    header('Location: ../../pages/tela_trens/tela_trens.php?erro=nao_encontrado');
+
+} catch (mysqli_sql_exception $erro) {
+
+    $conexao->rollback();
+
+    header('Location: ../../pages/tela_trens/tela_trens.php?erro=exclusao');
 }
 
-$stmt->close();
 $conexao->close();
 exit;
 

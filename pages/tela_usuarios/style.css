@@ -78,6 +78,19 @@
     color: var(--cor-texto);
 }
 
+.mensagem{
+    display: flex;
+    justify-content: center;
+
+    grid-column: span;
+
+    width: 100%;
+    margin-top: 10px;
+}
+
+.mensagem small{
+    font-size: 0.9rem;
+}
 
 @media (min-width: 768px){
     .container{

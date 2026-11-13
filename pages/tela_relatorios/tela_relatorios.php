@@ -65,6 +65,8 @@ $resultado = $conexao->query($sql);
 
             <div class="relatorios">
 
+            <?php if($resultado->num_rows > 0): ?>
+
             <?php while($relatorios = $resultado->fetch_assoc()): ?>
 
                 <div class="item_relatorio estilo_primario">
@@ -81,6 +83,14 @@ $resultado = $conexao->query($sql);
                 </div>
 
             <?php endwhile; ?>
+
+            <?php else: ?>
+
+                <div class="mensagem">
+                    <small>Nenhum relatório encontrado!</small>
+                </div>
+
+            <?php endif;?>
 
             </div>
         </div>

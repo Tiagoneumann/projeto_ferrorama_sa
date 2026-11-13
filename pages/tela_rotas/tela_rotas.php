@@ -82,6 +82,8 @@ $resultado_linhas = $conexao->query($sql_linhas);
                             <th>Linhas</th> 
                         </tr>
 
+                        <?php if($resultado_linhas->num_rows > 0): ?>
+
                         <?php while($linhas = $resultado_linhas->fetch_assoc()): ?>
                             <tr>
                                 <td>
@@ -94,6 +96,14 @@ $resultado_linhas = $conexao->query($sql_linhas);
                                 </td>
                             </tr>
                         <?php endwhile; ?>
+
+                        <?php else: ?>
+                            
+                            <tr>
+                                <td class="mensagem" colspan="4"><small>Nenhuma linha encontrada!</small></td>
+                            </tr>
+
+                        <?php endif; ?>
 
                     </table>
                 </div>
@@ -120,6 +130,8 @@ $resultado_linhas = $conexao->query($sql_linhas);
                             <th>Linha</th>
                         </tr>
 
+                        <?php if($resultado->num_rows > 0): ?>
+
                         <?php while($rotas = $resultado->fetch_assoc()): ?>
                             <tr class="rota_item">
                                 <td>
@@ -140,6 +152,14 @@ $resultado_linhas = $conexao->query($sql_linhas);
                                 </td>
                             </tr>
                         <?php endwhile; ?>
+
+                        <?php else: ?>
+                            
+                            <tr>
+                                <td class="mensagem" colspan="6"><small>Nenhuma rota encontrada!</small></td>
+                            </tr>
+
+                        <?php endif; ?>
                     </table>
                 </div>
                 

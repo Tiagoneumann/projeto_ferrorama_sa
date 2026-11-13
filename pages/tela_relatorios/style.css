@@ -107,6 +107,20 @@
     text-align: left;
 }
 
+.mensagem{
+    display: flex;
+    justify-content: center;
+
+    grid-column: span;
+
+    width: 100%;
+    margin-top: 10px;
+}
+
+.mensagem small{
+    font-size: 0.9rem;
+}
+
 table{
     width: 100%;
     word-break: break-all;

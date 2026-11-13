@@ -22,7 +22,7 @@ $resultado = $conexao->query($sql);
     <script src="../../assets/js/global.js" defer></script>
 
     <title>Track Flow || Sensores</title>
-</head> 
+</head>
 
 <body>
     <header>
@@ -78,31 +78,41 @@ $resultado = $conexao->query($sql);
                             <th>Unidade</th>
                             <th>Trem vinculado</th>
                         </tr>
-                
-                    <?php while($sensor = $resultado->fetch_assoc()): ?>
-                        <tr class="sensor_item">
-                            <td>
-                                <button id="editar" class="btn_editar" data-id="<?= $sensor['id_sensor'] ?>"><i class="fa-solid fa-pen-to-square"></i></button>
-                                <?= htmlspecialchars($sensor['codigo_sensor']) ?>
-                            </td>
-                            <td><?= htmlspecialchars($sensor['tipo_sensor']) ?></td>
-                            <td><?= htmlspecialchars($sensor['unidade_sensor']) ?></td>
-                            <td>
-                                <?= htmlspecialchars($sensor['prefixo_trem']), " / ", htmlspecialchars($sensor['modelo_trem'])?>
-                                
-                                <form action="../../assets/php/excluir_sensor.php" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir esse sensor?');">
-                                    <input type="hidden" name="id_sensor" value="<?= $sensor['id_sensor'] ?>">
-                                    <button type="submit" class="btn_excluir"><i class="fa-solid fa-x"></i></button>
-                                </form>
-                            </td>
-                        </tr>
 
-                    <?php endwhile; ?>    
+                        <?php if ($resultado->num_rows > 0): ?>
+
+                            <?php while ($sensor = $resultado->fetch_assoc()): ?>
+                                <tr class="sensor_item">
+                                    <td>
+                                        <button id="editar" class="btn_editar" data-id="<?= $sensor['id_sensor'] ?>"><i class="fa-solid fa-pen-to-square"></i></button>
+                                        <?= htmlspecialchars($sensor['codigo_sensor']) ?>
+                                    </td>
+                                    <td><?= htmlspecialchars($sensor['tipo_sensor']) ?></td>
+                                    <td><?= htmlspecialchars($sensor['unidade_sensor']) ?></td>
+                                    <td>
+                                        <?= htmlspecialchars($sensor['prefixo_trem']), " / ", htmlspecialchars($sensor['modelo_trem']) ?>
+
+                                        <form action="../../assets/php/excluir_sensor.php" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir esse sensor?');">
+                                            <input type="hidden" name="id_sensor" value="<?= $sensor['id_sensor'] ?>">
+                                            <button type="submit" class="btn_excluir"><i class="fa-solid fa-x"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+
+                            <?php endwhile; ?>
+
+                        <?php else: ?>
+                            
+                            <tr>
+                                <td class="mensagem" colspan="4"><small>Nenhum sensor encontrado!</small></td>
+                            </tr>
+
+                        <?php endif; ?>
 
                     </table>
                 </div>
             </div>
-            
+
 
         </div>
 

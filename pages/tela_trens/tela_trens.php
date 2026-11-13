@@ -74,6 +74,7 @@ $resultado = $conexao->query($sql);
                 </div>
             </div>
            
+            <?php if($resultado->num_rows > 0): ?>
 
             <?php while ($trem = $resultado->fetch_assoc()): ?>
 
@@ -104,6 +105,12 @@ $resultado = $conexao->query($sql);
                 </div>
 
             <?php endwhile; ?>
+
+            <?php else: ?>
+
+                <div class="mensagem"><small>Nenhum trem encontrado!</small></div>
+
+            <?php endif; ?>
 
     </main>
     <footer>

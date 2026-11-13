@@ -53,7 +53,7 @@ async function atualizarLeituras() {
 
             lista.innerHTML = `
                 <tr>
-                    <td colspan="4">Nenhuma leitura encontrada.</td>
+                    <td class="mensagem" colspan="4"><small>Nenhuma leitura encontrada!</small></td>
                 </tr>
             `;
 

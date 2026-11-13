@@ -246,25 +246,33 @@ if ($resultadoAlertas) {
                             <th>Ano</th>
                         </tr>
 
-                        <?php foreach ($trens as $trem): ?>
+                        <?php if (count($trens) > 0): ?>
+                            <?php foreach ($trens as $trem): ?>
 
-                            <tr class="trem_item">
-                                <td><?= htmlspecialchars($trem['prefixo_trem']) ?? "--" ?></td>
-                                <td><?= htmlspecialchars($trem['modelo_trem']) ?? "--" ?></td>
-                                <td class="status_<?= match ($trem['status_trem']) {
-                                                        'ativo' => 'ativo',
-                                                        'manutencao' => 'manutencao',
-                                                        'parado' => 'parado'
-                                                    } ?>"><?= match ($trem['status_trem']) {
-                                                                'ativo' => htmlspecialchars("Ativo"),
-                                                                'manutencao' => htmlspecialchars("Manutenção"),
-                                                                'parado' => htmlspecialchars("Parado")
-                                                            } ?? "--" ?></td>
-                                <td><?= htmlspecialchars($trem['nome_linha'] ?? "--") ?></td>
-                                <td><?= htmlspecialchars($trem['ano_trem']) ?? "--" ?></td>
+                                <tr class="trem_item">
+                                    <td><?= htmlspecialchars($trem['prefixo_trem']) ?? "--" ?></td>
+                                    <td><?= htmlspecialchars($trem['modelo_trem']) ?? "--" ?></td>
+                                    <td class="status_<?= match ($trem['status_trem']) {
+                                                            'ativo' => 'ativo',
+                                                            'manutencao' => 'manutencao',
+                                                            'parado' => 'parado'
+                                                        } ?>"><?= match ($trem['status_trem']) {
+                                                                    'ativo' => htmlspecialchars("Ativo"),
+                                                                    'manutencao' => htmlspecialchars("Manutenção"),
+                                                                    'parado' => htmlspecialchars("Parado")
+                                                                } ?? "--" ?></td>
+                                    <td><?= htmlspecialchars($trem['nome_linha'] ?? "--") ?></td>
+                                    <td><?= htmlspecialchars($trem['ano_trem']) ?? "--" ?></td>
+                                </tr>
+
+                            <?php endforeach; ?>
+                        <?php else: ?>
+
+                            <tr>
+                                <td class="mensagem" colspan="5"><small>Nenhum trem encontrado!</small></td>
                             </tr>
 
-                        <?php endforeach; ?>
+                        <?php endif; ?>
 
                     </table>
                 </div>
@@ -292,15 +300,23 @@ if ($resultadoAlertas) {
                             <th>Valor</th>
                         </tr>
 
-                        <?php foreach ($leituras as $leitura): ?>
+                        <?php if (count($leituras) > 0): ?>
+                            <?php foreach ($leituras as $leitura): ?>
 
-                            <tr class="leitura_item">
-                                <td><?= htmlspecialchars($leitura['prefixo_trem']) ?></td>
-                                <td><?= htmlspecialchars($leitura['tipo_sensor']) ?></td>
-                                <td><?= htmlspecialchars(number_format((float)$leitura['valor_sensor'], 2, ',', '.') . ' ' . $leitura['unidade_sensor']) ?></td>
+                                <tr class="leitura_item">
+                                    <td><?= htmlspecialchars($leitura['prefixo_trem']) ?></td>
+                                    <td><?= htmlspecialchars($leitura['tipo_sensor']) ?></td>
+                                    <td><?= htmlspecialchars(number_format((float)$leitura['valor_sensor'], 2, ',', '.') . ' ' . $leitura['unidade_sensor']) ?></td>
+                                </tr>
+
+                            <?php endforeach; ?>
+                        <?php else: ?>
+
+                            <tr>
+                                <td class="mensagem" colspan="3"><small>Nenhuma leitura encontrada!</small></td>
                             </tr>
 
-                        <?php endforeach; ?>
+                        <?php endif; ?>
                     </table>
                 </div>
             </div>

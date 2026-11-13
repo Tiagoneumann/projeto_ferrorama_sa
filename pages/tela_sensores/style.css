@@ -110,16 +110,20 @@
     color: var(--cor-texto);
 }
 
+.mensagem{
+    text-align: center !important;
+}
+
+.mensagem small{
+    font-size: 0.9rem;
+}
+
 @media (max-width: 780px){
 
     .topo_sensores{
         flex-direction: column;
         width: calc(100vw - 40px);
         gap: 10px;
-    }
-
-    .tabela_sensores{
-
     }
 
     .lista_sensores{

@@ -156,6 +156,20 @@
     outline-offset: 3px;
 }
 
+.mensagem{
+    display: flex;
+    justify-content: center;
+
+    grid-column: span 1;
+
+    width: 100%;
+    margin-top: 10px;
+}
+
+.mensagem small{
+    font-size: 0.9rem;
+}
+
 @media (min-width: 768px){
     .container{
         grid-template-columns: 1fr 1fr;
@@ -176,6 +190,10 @@
     .card img{
         object-fit: cover;
         height: 400px;
+    }
+
+    .mensagem{
+        grid-column: span 2;
     }
 }
 

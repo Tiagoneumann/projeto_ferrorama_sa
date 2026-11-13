@@ -344,6 +344,14 @@
     overflow-y: auto;
 }
 
+.mensagem{
+    text-align: center !important;
+}
+
+.mensagem small{
+    font-size: 0.9rem;
+}
+
 @media (min-width: 1024px){
 
     .status_trens{

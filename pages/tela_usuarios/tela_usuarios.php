@@ -21,7 +21,7 @@ $resultado = $conexao->query($sql);
     <link rel="stylesheet" href="style.css">
 
     <script src="main.js" defer></script>
-    <script src="../../assets/js/global.js" defer></script> 
+    <script src="../../assets/js/global.js" defer></script>
 
     <title>Track Flow || Usuários</title>
 </head>
@@ -69,31 +69,41 @@ $resultado = $conexao->query($sql);
                     <input type="text" id="pesquisa_usuarios" name="pesquisa_usuarios" class="input_padrao estilo_secundario" placeholder="Pesquise o usuário desejado">
                 </div>
             </div>
-            
 
-        <?php while ($usuario = $resultado->fetch_assoc()): ?>
+            <?php if ($resultado->num_rows > 0): ?>
 
-            <div class="bloco estilo_primario usuario_item">
-                <div class="dados">
-                    <ul>
-                        <li>Nome: <span><?= htmlspecialchars($usuario['nome_usuario']) ?></span></li>
-                        <li>Email: <span><?= htmlspecialchars($usuario['email_usuario']) ?></span></li>
-                        <li>Tipo: <span><?= htmlspecialchars($usuario['tipo_usuario']) ?></span></li>
-                    </ul>
+                <?php while ($usuario = $resultado->fetch_assoc()): ?>
+
+                    <div class="bloco estilo_primario usuario_item">
+                        <div class="dados">
+                            <ul>
+                                <li>Nome: <span><?= htmlspecialchars($usuario['nome_usuario']) ?></span></li>
+                                <li>Email: <span><?= htmlspecialchars($usuario['email_usuario']) ?></span></li>
+                                <li>Tipo: <span><?= htmlspecialchars($usuario['tipo_usuario']) ?></span></li>
+                            </ul>
+                        </div>
+                        <div class="opcoes">
+
+                            <button type="button" id="editar" class="btn_editar" data-id="<?= $usuario['id_usuario'] ?>"><i class="fa-solid fa-pen-to-square"></i></button>
+
+                            <form action="../../assets/php/excluir_usuario.php" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir essa conta?');">
+                                <input type="hidden" name="id_usuario" value="<?= $usuario['id_usuario'] ?>">
+                                <button type="submit" class="btn_excluir"><i class="fa-solid fa-x"></i></button>
+                            </form>
+                        </div>
+                    </div>
+
+                <?php endwhile; ?>
+
+            <?php else: ?>
+
+                <!-- Quase impossível, mas é bom pra precaução-->
+                <div class="mensagem">
+                    <small>Nenhum usuário encontrado!</small>
                 </div>
-                <div class="opcoes">
 
-                    <button type="button" id="editar" class="btn_editar" data-id="<?= $usuario['id_usuario'] ?>"><i class="fa-solid fa-pen-to-square"></i></button>
-                    
-                    <form action="../../assets/php/excluir_usuario.php" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir essa conta?');">
-                        <input type="hidden" name="id_usuario" value="<?= $usuario['id_usuario'] ?>">
-                        <button type="submit" class="btn_excluir"><i class="fa-solid fa-x"></i></button>
-                    </form>
-                </div>
-            </div>
+            <?php endif; ?>
 
-        <?php endwhile; ?>
-            
         </div>
     </main>
     <footer>

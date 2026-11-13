@@ -101,14 +101,14 @@ if ($resultado_dados) {
             <div class="dados_leituras estilo_primario">
                 <div class="total_leituras estilo_secundario">
                     <p><strong>Total de leituras</strong></p>
-                    <small>Todas as leituras cadastradas no sistema</small>
+                    <small>Leituras cadastradas no sistema</small>
 
                     <h1><?= htmlspecialchars($totalLeituras) ?></h1>
                 </div>
 
                 <div class="total_sensores estilo_secundario">
                     <p><strong>Total de sensores</strong></p>
-                    <small>Todos os sensores cadastros no sistema</small>
+                    <small>Sensores cadastros no sistema</small>
 
                     <h1><?= htmlspecialchars($totalSensores) ?></h1>
                 </div>
@@ -149,9 +149,7 @@ if ($resultado_dados) {
                             <?php else: ?>
 
                                 <tr>
-                                    <td colspan="4">
-                                        Nenhuma leitura encontrada.
-                                    </td>
+                                    <td class="mensagem" colspan="4"><small>Nenhuma leitura encontrada!</small></td>
                                 </tr>
 
                             <?php endif; ?>
