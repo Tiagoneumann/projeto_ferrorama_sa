@@ -1,6 +1,6 @@
 # Track Flow
 
-![Logo Track Flow](assets/img/logo_sem_fundo.png)
+![Logo Track Flow](../../assets/img/banner_trackflow.png)
 
 Sistema web para gerenciamento e monitoramento de operações ferroviárias. O Track Flow reúne informações sobre trens, linhas ferroviárias, sensores e usuários em uma única plataforma, com o objetivo de facilitar a organização, a consulta e o acompanhamento das informações relacionadas à frota ferroviária.
 
